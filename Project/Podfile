@@ -1,1 +1,7 @@
- podspec :path => ".."
+podspec :path => ".."
+
+target "Demo" do
+end
+
+target "Tests" do
+end

@@ -5,19 +5,19 @@
 # To learn more about the attributes see http://docs.cocoapods.org/specification.html
 #
 Pod::Spec.new do |s|
-  s.name         = "NAME"
-  s.version      = "0.0.1"
-  s.summary      = "A short description of NAME."
+  s.name         = "${POD_NAME}"
+  s.version      = "0.1.0"
+  s.summary      = "A short description of ${POD_NAME}."
   s.description  = <<-DESC
-                    An optional longer description of NAME
-  
+                    An optional longer description of ${POD_NAME}
+
                     * Markdown format.
                     * Don't worry about the indent, we strip it!
                    DESC
   s.homepage     = "http://EXAMPLE/NAME"
   s.screenshots  = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
   s.license      = 'MIT'
-  s.author       = { "NAME" => "EMAIL@EXAMPLE.COM" }
+  s.author       = { "${USER_NAME}" => "${USER_EMAIL}" }
   s.source       = { :git => "http://EXAMPLE/NAME.git", :tag => version.to_s }
 
   # s.platform     = :ios, '5.0'
