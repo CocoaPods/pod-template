@@ -3,5 +3,5 @@ podspec :path => ".."
 target "Demo" do
 end
 
-target "Tests" do
+target "DemoTests" do
 end
