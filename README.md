@@ -16,7 +16,7 @@ An opinionated template for creating a Pod with the following features:
    - Optionally integrate your project with CocoaPods.
    - The Podfile inherits the dependencies your podspec.
 - Add the source files of your library in the `Classes` folder.
-- Add the resources of your library in the `Resources` folder.
+- Add the resources of your library in the `Assets` folder.
 - Use `$ rake -T` to see the available tasks.
 - Use `$ rake release` to release a new version of the Pod (after editing the
   version number in the podspec).
