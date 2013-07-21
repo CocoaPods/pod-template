@@ -16,7 +16,7 @@ simply add the following line to your Podfile:
 
 ## Author
 
-${USER_NAME}
+${USER_NAME} <${USER_EMAIL}>
 
 ## License
 
