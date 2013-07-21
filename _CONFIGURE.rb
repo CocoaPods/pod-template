@@ -57,11 +57,11 @@ module Pod
     #----------------------------------------#
 
     def user_name
-      ENV['GIT_COMMITTER_NAME'] || `git config user.email`.chomp
+      (ENV['GIT_COMMITTER_NAME'] || `git config user.name`).strip
     end
 
     def user_email
-      ENV['GIT_COMMITTER_EMAIL'] || `git config user.name`
+      (ENV['GIT_COMMITTER_EMAIL'] || `git config user.email`).strip
     end
 
     def year
