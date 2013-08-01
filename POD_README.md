@@ -12,7 +12,7 @@
 ${POD_NAME} is available through [CocoaPods](http://cocoapods.org), to install
 it simply add the following line to your Podfile:
 
-    pod ${POD_NAME}
+    pod "${POD_NAME}"
 
 ## Author
 
