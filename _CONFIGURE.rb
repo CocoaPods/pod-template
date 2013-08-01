@@ -31,14 +31,14 @@ module Pod
     end
 
     def replace_variables_in_files
-      file_names = ['LICENSE', 'POD_README.md', 'CHANGELOG.md', 'NAME.podspec']
+      file_names = ['LICENSE', 'POD_README.md', 'CHANGELOG.md', 'NAME.podspec', 'Project/Podfile']
       file_names.each do |file_name|
         text = File.read(file_name)
         text.gsub!("${POD_NAME}", pod_name)
         text.gsub!("${USER_NAME}", user_name)
         text.gsub!("${USER_EMAIL}", user_email)
         text.gsub!("${YEAR}", year)
-        File.open(file_name, "w") {|file| file.puts text}
+        File.open(file_name, "w") { |file| file.puts text }
       end
     end
 

@@ -1,4 +1,4 @@
-podspec :path => ".."
+pod "${POD_NAME}", :path => "../"
 
 target "Demo" do
 end
