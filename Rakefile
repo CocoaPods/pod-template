@@ -7,14 +7,14 @@ task :version do
   puts "-- fetching version number from github"
   sh 'git fetch'
 
-  puts "The current released version of your pod is " + current_released_version
-  print "Enter the version you want to release (" + suggested_version + ") "
-  new_version = $stdin.gets.strip
-  if new_version == ""
-    new_version = suggested_version
+  puts "The current released version of your pod is " + remote_spec_version.to_s()
+  puts "Enter the version you want to release (" + suggested_version_number + ") "
+  new_version_number = $stdin.gets.strip
+  if new_version_number == ""
+    new_version_number = suggested_version_number
   end
 
-  replace_version_number(new_version)
+  replace_version_number(new_version_number)
 end
 
 desc "Release a new version of the Pod"
@@ -60,6 +60,14 @@ def spec_version
   spec.version
 end
 
+# @return [Pod::Version] The version as reported by the Podspec from remote.
+#
+def remote_spec_version
+  require 'cocoapods-core'
+  remote_spec = eval(`git show origin/master:#{podspec_path}`)
+  remote_spec.version
+end
+
 # @return [String] The relative path of the Podspec.
 #
 def podspec_path
@@ -71,28 +79,37 @@ def podspec_path
   end
 end
 
-def current_released_version
-  diff_version_lines = `git diff *.podspec | grep \'\\-  s.version\'`.strip.split("\n")
-  if diff_version_lines.count == 0
+# @return [String] The suggested version number based on the local and remote version numbers.
+#
+def suggested_version_number
+  if spec_version != remote_spec_version
     spec_version.to_s()
   else
-    diff_version_line = diff_version_lines.first
-    remote_version = diff_version_line.split("=").last.strip.gsub("\"","").gsub("\'","")
-    remote_version
+    new_version(spec_version).to_s()
   end
 end
 
-def suggested_version
-  if spec_version.to_s() != current_released_version
-    spec_version.to_s()
-  else
-    version_components = spec_version.to_s().split(".");
-    last = (version_components.last.to_i() + 1).to_s
-    version_components[-1] = last
-    version_components.join(".")
-  end
+# @param  [Pod::Version] version
+#         the version for which you need the next version
+#
+# @note   It is computed by bumping the last component of the versino string by 1.
+#
+# @return [Pod::Version] The version that comes next after the version supplied.
+#
+def next_version(version)
+  version_components = version.to_s().split(".");
+  last = (version_components.last.to_i() + 1).to_s
+  version_components[-1] = last
+  Pod::Version.new(version_components.join("."))
 end
 
+# @param  [String] new_version_number
+#         the new version number
+#
+# @note   This methods replaces the version number in the podspec file with a new version number.
+#
+# @return void
+#
 def replace_version_number(new_version_number)
   text = File.read(podspec_path)
   text.gsub!(/(s.version( )*= ")#{spec_version}(")/, "\\1#{new_version_number}\\3")
