@@ -4,14 +4,22 @@ task :spec do
 end
 
 task :version do
-  puts "-- fetching version number from github"
-  sh 'git fetch'
+  git_remotes = `git remote`.strip.split("\n")
+  if git_remotes.count > 0
+    puts "-- fetching version number from github"
+    sh 'git fetch'
 
-  puts "The current released version of your pod is " + remote_spec_version.to_s()
-  puts "Enter the version you want to release (" + suggested_version_number + ") "
+    puts "The current released version of your pod is " + remote_spec_version.to_s()
+    version = suggested_version_number
+  else
+    puts "There is no current released version. You're about to release a new Pod."
+    version = "0.0.1"
+  end
+  
+  puts "Enter the version you want to release (" + version + ") "
   new_version_number = $stdin.gets.strip
   if new_version_number == ""
-    new_version_number = suggested_version_number
+    new_version_number = version
   end
 
   replace_version_number(new_version_number)
@@ -85,7 +93,7 @@ def suggested_version_number
   if spec_version != remote_spec_version
     spec_version.to_s()
   else
-    new_version(spec_version).to_s()
+    next_version(spec_version).to_s()
   end
 end
 
