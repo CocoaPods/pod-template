@@ -4,14 +4,27 @@ task :spec do
 end
 
 task :version do
-  puts "-- fetching version number from github"
-  sh 'git fetch'
+  git_remotes = `git remote`.strip.split("\n")
 
-  puts "The current released version of your pod is " + remote_spec_version.to_s()
-  puts "Enter the version you want to release (" + suggested_version_number + ") "
+  if git_remotes.count > 0
+    puts "-- fetching version number from github"
+    sh 'git fetch'
+
+    remote_version = remote_spec_version
+  end
+
+  if remote_version.nil?
+    puts "There is no current released version. You're about to release a new Pod."
+    version = "0.0.1"
+  else
+    puts "The current released version of your pod is " + remote_spec_version.to_s()
+    version = suggested_version_number
+  end
+  
+  puts "Enter the version you want to release (" + version + ") "
   new_version_number = $stdin.gets.strip
   if new_version_number == ""
-    new_version_number = suggested_version_number
+    new_version_number = version
   end
 
   replace_version_number(new_version_number)
@@ -64,8 +77,26 @@ end
 #
 def remote_spec_version
   require 'cocoapods-core'
-  remote_spec = eval(`git show origin/master:#{podspec_path}`)
-  remote_spec.version
+
+  if spec_file_exist_on_remote?
+    remote_spec = eval(`git show origin/master:#{podspec_path}`)
+    remote_spec.version
+  else
+    nil
+  end
+end
+
+# @return [Bool] If the remote repository has a copy of the podpesc file or not.
+#
+def spec_file_exist_on_remote?
+  test_condition = `if git rev-parse --verify --quiet origin/master:#{podspec_path} >/dev/null;
+  then
+  echo 'true'
+  else
+  echo 'false'
+  fi`
+
+  'true' == test_condition.strip
 end
 
 # @return [String] The relative path of the Podspec.
@@ -85,7 +116,7 @@ def suggested_version_number
   if spec_version != remote_spec_version
     spec_version.to_s()
   else
-    new_version(spec_version).to_s()
+    next_version(spec_version).to_s()
   end
 end
 
