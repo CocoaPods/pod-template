@@ -36,9 +36,7 @@ task :release do
   puts "* Running version"
   sh "rake version"
   
-  curr_branch = current_branch
-  rem_branch = remote_branch_for_branch(curr_branch)
-  remote = git_remote_for_branch(curr_branch)
+  curr_branch, rem_branch, remote = git_information
   
   unless ENV['SKIP_CHECKS']
     if curr_branch.length == 0
@@ -59,14 +57,14 @@ task :release do
   sh "rake spec"
  
   puts "* Linting the podspec"
-#  sh "pod lib lint"
+  sh "pod lib lint"
 
   # Then release
   
-  # If we have no origin set (perhaps new branch) configure git 
+  # If we have no origin set (perhaps new branch) exit because we cannot push
   if remote.length == 0
-    remote = "origin"
-    %x[git config --add "branch.#{curr_branch}.remote" #{remote}]
+    $stderr.puts "[!] You need to have a configured remote for the current branch."
+    exit 1
   end
   
   sh "git commit #{podspec_path} CHANGELOG.md -m 'Release #{spec_version}'"
@@ -95,6 +93,13 @@ def git_remote_for_branch(branch)
   %x[git config --get 'branch.#{branch}.remote'].strip
 end
 
+# @return All git information needed to push/fetch 
+#
+def git_information
+  branch = current_branch
+  return branch, remote_branch_for_branch(branch), git_remote_for_branch(branch)
+end
+
 # @return [Pod::Version] The version as reported by the Podspec.
 #
 def spec_version
@@ -109,9 +114,7 @@ def remote_spec_version
   require 'cocoapods-core'
 
   if spec_file_exist_on_remote?
-    curr_branch = current_branch
-    rem_branch = remote_branch_for_branch(curr_branch)
-    remote = git_remote_for_branch(curr_branch)
+    curr_branch, rem_branch, remote = git_information
     
     remote_spec = eval(`git show #{remote}/#{remote_branch}:#{podspec_path}`)
     remote_spec.version
@@ -123,9 +126,7 @@ end
 # @return [Bool] If the remote repository has a copy of the podpesc file or not.
 #
 def spec_file_exist_on_remote?
-  curr_branch = current_branch
-  rem_branch = remote_branch_for_branch(curr_branch)
-  remote = git_remote_for_branch(curr_branch)
+  curr_branch, rem_branch, remote = git_information
   
   test_condition = `if git rev-parse --verify --quiet #{remote}/#{rem_branch}:#{podspec_path} >/dev/null;
   then
