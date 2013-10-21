@@ -35,10 +35,14 @@ task :release do
 
   puts "* Running version"
   sh "rake version"
-
+  
+  curr_branch = current_branch
+  rem_branch = remote_branch_for_branch(curr_branch)
+  origin = git_origin_for_branch(curr_branch)
+  
   unless ENV['SKIP_CHECKS']
-    if `git symbolic-ref HEAD 2>/dev/null`.strip.split('/').last != 'master'
-      $stderr.puts "[!] You need to be on the `master' branch in order to be able to do a release."
+    if curr_branch.length == 0
+      $stderr.puts "[!] You need to be on a branch in order to be able to do a release."
       exit 1
     end
 
@@ -55,14 +59,40 @@ task :release do
   sh "rake spec"
  
   puts "* Linting the podspec"
-  sh "pod lib lint"
+#  sh "pod lib lint"
 
   # Then release
+  
+  # If we have no origin set (perhaps new branch) configure git 
+  if origin.length == 0
+    origin = "origin"
+    %x[git config --add "branch.#{curr_branch}.remote" #{origin}]
+  end
+  
   sh "git commit #{podspec_path} CHANGELOG.md -m 'Release #{spec_version}'"
   sh "git tag -a #{spec_version} -m 'Release #{spec_version}'"
-  sh "git push origin master"
-  sh "git push origin --tags"
-  sh "pod push master #{podspec_path}"
+  sh "git push #{origin} #{rem_branch}"
+  sh "git push #{origin} --tags"
+  sh "pod push #{curr_branch} #{podspec_path}"
+end
+
+# @return The current branch
+#
+def current_branch
+  %x[git symbolic-ref -q HEAD | sed -e 's|^refs/heads/||'].strip
+end
+
+# @return The remote branch configure for the given branch name
+#
+def remote_branch_for_branch(branch)
+  command = ""
+  %x[git branch -r | grep 'origin/#{branch}'].strip
+end
+
+# @return The configure origin for the given branch name
+#
+def git_origin_for_branch(branch)
+  %x[git config --get 'branch.#{branch}.remote'].strip
 end
 
 # @return [Pod::Version] The version as reported by the Podspec.
