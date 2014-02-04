@@ -35,10 +35,12 @@ task :release do
 
   puts "* Running version"
   sh "rake version"
-
+  
+  curr_branch, rem_branch, remote = git_information
+  
   unless ENV['SKIP_CHECKS']
-    if `git symbolic-ref HEAD 2>/dev/null`.strip.split('/').last != 'master'
-      $stderr.puts "[!] You need to be on the `master' branch in order to be able to do a release."
+    if curr_branch.length == 0
+      $stderr.puts "[!] You need to be on a branch in order to be able to do a release."
       exit 1
     end
 
@@ -58,11 +60,44 @@ task :release do
   sh "pod lib lint"
 
   # Then release
+  
+  # If we have no origin set (perhaps new branch) exit because we cannot push
+  if remote.length == 0
+    $stderr.puts "[!] You need to have a configured remote for the current branch."
+    exit 1
+  end
+  
   sh "git commit #{podspec_path} CHANGELOG.md -m 'Release #{spec_version}'"
   sh "git tag -a #{spec_version} -m 'Release #{spec_version}'"
-  sh "git push origin master"
-  sh "git push origin --tags"
-  sh "pod push master #{podspec_path}"
+  sh "git push #{remote} #{rem_branch}"
+  sh "git push #{remote} --tags"
+  sh "pod push #{curr_branch} #{podspec_path}"
+end
+
+# @return The current branch
+#
+def current_branch
+  %x[git symbolic-ref -q HEAD | sed -e 's|^refs/heads/||'].strip
+end
+
+# @return The remote branch configure for the given branch name
+#
+def remote_branch_for_branch(branch)
+  remote = git_remote_for_branch(branch)
+  %x[git branch -r | grep '#{remote}/#{branch}'].strip
+end
+
+# @return The configure remote for the given branch name
+#
+def git_remote_for_branch(branch)
+  %x[git config --get 'branch.#{branch}.remote'].strip
+end
+
+# @return All git information needed to push/fetch 
+#
+def git_information
+  branch = current_branch
+  return branch, remote_branch_for_branch(branch), git_remote_for_branch(branch)
 end
 
 # @return [Pod::Version] The version as reported by the Podspec.
@@ -79,7 +114,9 @@ def remote_spec_version
   require 'cocoapods-core'
 
   if spec_file_exist_on_remote?
-    remote_spec = eval(`git show origin/master:#{podspec_path}`)
+    curr_branch, rem_branch, remote = git_information
+    
+    remote_spec = eval(`git show #{remote}/#{remote_branch}:#{podspec_path}`)
     remote_spec.version
   else
     nil
@@ -89,7 +126,9 @@ end
 # @return [Bool] If the remote repository has a copy of the podpesc file or not.
 #
 def spec_file_exist_on_remote?
-  test_condition = `if git rev-parse --verify --quiet origin/master:#{podspec_path} >/dev/null;
+  curr_branch, rem_branch, remote = git_information
+  
+  test_condition = `if git rev-parse --verify --quiet #{remote}/#{rem_branch}:#{podspec_path} >/dev/null;
   then
   echo 'true'
   else
