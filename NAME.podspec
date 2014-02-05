@@ -2,7 +2,7 @@
 # Be sure to run `pod spec lint NAME.podspec' to ensure this is a
 # valid spec and remove all comments before submitting the spec.
 #
-# To learn more about the attributes see http://docs.cocoapods.org/specification.html
+# To learn more about the attributes see http://guides.cocoapods.org/syntax/podspec.html
 #
 Pod::Spec.new do |s|
   s.name             = "${POD_NAME}"
