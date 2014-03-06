@@ -30,7 +30,7 @@ task :version do
   replace_version_number(new_version_number)
 end
 
-desc "Release a new version of the Pod"
+desc "Release a new version of the Pod (append repo=name to push to a private spec repo)"
 task :release do
   # Allow override of spec repo name using `repo=private` after task name
   repo = ENV["repo"] || "master"
