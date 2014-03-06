@@ -32,6 +32,8 @@ end
 
 desc "Release a new version of the Pod"
 task :release do
+  # Allow override of spec repo name using `specrepo=private` after task name
+  specrepo = ENV["specrepo"] || "master"
 
   puts "* Running version"
   sh "rake version"
@@ -62,7 +64,7 @@ task :release do
   sh "git tag -a #{spec_version} -m 'Release #{spec_version}'"
   sh "git push origin master"
   sh "git push origin --tags"
-  sh "pod push master #{podspec_path}"
+  sh "pod push #{specrepo} #{podspec_path}"
 end
 
 # @return [Pod::Version] The version as reported by the Podspec.
