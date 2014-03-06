@@ -12,11 +12,11 @@ An opinionated template for creating a Pod with the following features:
 
 1. Recursively delete the `delete_me` files.
 - Replace the placeholders in the license file.
-- Create your project in the `Project` folder.
+- Create your project in the `Example` folder.
    - Optionally integrate your project with CocoaPods.
    - The Podfile inherits the dependencies your podspec.
 - Add the source files of your library in the `Classes` folder.
-- Add the resources of your library in the `Assets` folder.
+- Add the resources of your library in the `Resources` folder.
 - Use `$ rake -T` to see the available tasks.
 - Use `$ rake release` to release a new version of the Pod (after editing the
   version number in the podspec).
