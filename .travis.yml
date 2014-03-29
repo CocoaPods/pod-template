@@ -1,0 +1,12 @@
+language: objective-c
+rvm: 1.9.3
+before_install: gem install cocoapods
+before_script:
+  - export LANG=en_US.UTF-8
+  - brew update
+  - brew uninstall xctool
+  - brew install xctool
+
+xcode_workspace: UnitTests.xcworkspace
+xcode_scheme: UnitTests
+xcode_sdk: iphonesimulator
