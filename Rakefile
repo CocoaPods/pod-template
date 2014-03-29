@@ -112,7 +112,8 @@ def podspec_path
   end
 end
 
-# @return [String] The suggested version number based on the local and remote version numbers.
+# @return [String] The suggested version number based on the local and remote
+#                  version numbers.
 #
 def suggested_version_number
   if spec_version != remote_spec_version
@@ -125,9 +126,11 @@ end
 # @param  [Pod::Version] version
 #         the version for which you need the next version
 #
-# @note   It is computed by bumping the last component of the versino string by 1.
+# @note   It is computed by bumping the last component of
+#         the version string by 1.
 #
-# @return [Pod::Version] The version that comes next after the version supplied.
+# @return [Pod::Version] The version that comes next after
+#                        the version supplied.
 #
 def next_version(version)
   version_components = version.to_s().split(".");
@@ -139,7 +142,8 @@ end
 # @param  [String] new_version_number
 #         the new version number
 #
-# @note   This methods replaces the version number in the podspec file with a new version number.
+# @note   This methods replaces the version number in the podspec file
+#         with a new version number.
 #
 # @return void
 #
