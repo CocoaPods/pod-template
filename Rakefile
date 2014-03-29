@@ -17,7 +17,8 @@ task :version do
     puts "There is no current released version. You're about to release a new Pod."
     version = "0.0.1"
   else
-    puts "The current released version of your pod is " + remote_spec_version.to_s()
+    puts "The current released version of your pod is " +
+          remote_spec_version.to_s()
     version = suggested_version_number
   end
   
@@ -112,7 +113,8 @@ def podspec_path
   end
 end
 
-# @return [String] The suggested version number based on the local and remote version numbers.
+# @return [String] The suggested version number based on the local and remote
+#                  version numbers.
 #
 def suggested_version_number
   if spec_version != remote_spec_version
@@ -125,9 +127,11 @@ end
 # @param  [Pod::Version] version
 #         the version for which you need the next version
 #
-# @note   It is computed by bumping the last component of the versino string by 1.
+# @note   It is computed by bumping the last component of
+#         the version string by 1.
 #
-# @return [Pod::Version] The version that comes next after the version supplied.
+# @return [Pod::Version] The version that comes next after
+#                        the version supplied.
 #
 def next_version(version)
   version_components = version.to_s().split(".");
@@ -139,12 +143,14 @@ end
 # @param  [String] new_version_number
 #         the new version number
 #
-# @note   This methods replaces the version number in the podspec file with a new version number.
+# @note   This methods replaces the version number in the podspec file
+#         with a new version number.
 #
 # @return void
 #
 def replace_version_number(new_version_number)
   text = File.read(podspec_path)
-  text.gsub!(/(s.version( )*= ")#{spec_version}(")/, "\\1#{new_version_number}\\3")
+  text.gsub!(/(s.version( )*= ")#{spec_version}(")/,
+              "\\1#{new_version_number}\\3")
   File.open(podspec_path, "w") { |file| file.puts text }
 end
