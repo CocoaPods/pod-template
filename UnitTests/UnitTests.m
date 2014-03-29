@@ -15,7 +15,7 @@
 
 - (void)testFail
 {
-    XCAssert(false);
+    XCTAssert(false);
 }
 
 @end
