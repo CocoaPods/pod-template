@@ -35,13 +35,15 @@ module Pod
                     'POD_README.md',
                     'CHANGELOG.md',
                     'NAME.podspec',
-                    'Example/Podfile']
+                    'Podfile',
+                    'UnitTests/UnitTests.m']
       file_names.each do |file_name|
         text = File.read(file_name)
         text.gsub!("${POD_NAME}", pod_name)
         text.gsub!("${USER_NAME}", user_name)
         text.gsub!("${USER_EMAIL}", user_email)
         text.gsub!("${YEAR}", year)
+        text.gsub!("${DATE}", date)
         File.open(file_name, "w") { |file| file.puts text }
       end
     end
@@ -70,6 +72,10 @@ module Pod
 
     def year
       Time.now.year.to_s
+    end
+
+    def date
+      Time.now.strftime "%m/%d/%Y"
     end
 
     #----------------------------------------#
