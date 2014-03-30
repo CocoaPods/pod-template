@@ -1,4 +1,28 @@
+require "io/console"
+
 module Pod
+  class ConfigureIOS
+    attr_reader :configurator
+
+    def self.perform(options)
+      new(options).perform
+    end
+
+    def initialize(options)
+      @configurator = options.fetch(:configurator)
+    end
+
+    def perform
+      `mv ./templates/ios/* ./`
+      configurator.replace_variables_in_files(additional_files)
+    end
+
+    private
+    def additional_files
+      ["UnitTests/UnitTests.m"]
+    end
+  end
+
   class TemplateCofigurator
 
     attr_reader :pod_name
@@ -7,36 +31,50 @@ module Pod
       @pod_name = pod_name
     end
 
+    def ask_with_answers(question, possible_answers)
+      possible_answers_string = possible_answers.join(" ")
+      puts "#{question} [#{possible_answers_string}]"
+      answer = gets.downcase.chomp
+      unless possible_answers.include? answer
+        puts "Possible answers: #{possible_answers_string}"
+        ask_with_answers question, possible_answers
+      end
+      answer
+    end
+
     def run
       puts "Configuring #{pod_name}"
-      print_info
+      platform = ask_with_answers("platform", ["ios", "mac", "both"]).to_sym
+
+      case platform
+        when :ios
+          ConfigureIOS.perform(configurator: self)
+        when :mac
+          puts "CONFIGURE MAC"
+        when :both
+          puts "CONFIGURE BOTH"
+      end
+
       clean_template_files
-      replace_variables_in_files
       rename_template_files
       reinitialize_git_repo
     end
 
     #----------------------------------------#
 
-    def print_info
-      puts "user name:#{user_name}"
-      puts "user email:#{user_email}"
-      puts "year:#{year}"
-    end
-
     def clean_template_files
       `rm -rf ./**/.gitkeep`
       `rm -rf _CONFIGURE.rb`
       `rm -rf README.md`
+      `rm -rf templates`
     end
 
-    def replace_variables_in_files
-      file_names = ['LICENSE',
+    def replace_variables_in_files(file_names)
+      file_names += ['LICENSE',
                     'POD_README.md',
                     'CHANGELOG.md',
                     'NAME.podspec',
-                    'Podfile',
-                    'UnitTests/UnitTests.m']
+                    'Podfile']
       file_names.each do |file_name|
         text = File.read(file_name)
         text.gsub!("${POD_NAME}", pod_name)
