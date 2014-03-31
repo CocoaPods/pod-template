@@ -64,7 +64,7 @@ module Pod
 
     def clean_template_files
       `rm -rf ./**/.gitkeep`
-      `rm -rf _CONFIGURE.rb`
+      `rm -rf configure`
       `rm -rf README.md`
       `rm -rf templates`
     end
