@@ -1,7 +1,0 @@
-pod "${POD_NAME}", :path => "../${POD_NAME}.podspec"
-
-target "Demo" do
-end
-
-target "DemoTests" do
-end

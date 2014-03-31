@@ -7,14 +7,11 @@ An opinionated template for creating a Pod with the following features:
 - Clean folder structure.
 - MIT license.
 - Rake as task management tool.
+- Testing as a standard
 
 ## Getting started
 
-1. Recursively delete the `delete_me` files.
 - Replace the placeholders in the license file.
-- Create your project in the `Example` folder.
-   - Optionally integrate your project with CocoaPods.
-   - The Podfile inherits the dependencies your podspec.
 - Add the source files of your library in the `Classes` folder.
 - Add the file assets of your library in the `Assets` folder.
 - Use `$ rake -T` to see the available tasks.
@@ -24,6 +21,8 @@ An opinionated template for creating a Pod with the following features:
 
 ## Best practices
 
+See the guides page: LINK
+
 ## Requirements:
 
-- CocoaPods 0.19
+- CocoaPods 0.30
