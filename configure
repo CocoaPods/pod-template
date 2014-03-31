@@ -1,5 +1,10 @@
 #!/usr/bin/env ruby
 
+pod_name = ARGV.shift
+puts pod_name
+
+return
+
 module Pod
   class ConfigureIOS
     attr_reader :configurator
@@ -65,6 +70,7 @@ module Pod
     def clean_template_files
       `rm -rf ./**/.gitkeep`
       `rm -rf configure`
+      `rm -rf _CONFIGURE.rb`
       `rm -rf README.md`
       `rm -rf templates`
     end
