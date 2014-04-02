@@ -1,1 +1,1 @@
-pod "${POD_NAME}", :path => "./${POD_NAME}.podspec"
+pod "${POD_NAME}", :path => "."
