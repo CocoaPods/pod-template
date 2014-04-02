@@ -31,10 +31,11 @@ module Pod
       `rm -rf configure`
       `rm -rf _CONFIGURE.rb`
       `rm -rf README.md`
+      `rm -rf LICENSE`
     end
 
     def replace_variables_in_files
-      file_names = ['LICENSE',
+      file_names = ['POD_LICENSE',
                     'POD_README.md',
                     'CHANGELOG.md',
                     'NAME.podspec',
@@ -50,6 +51,7 @@ module Pod
     end
 
     def rename_template_files
+      `mv POD_LICENSE LICENSE`
       `mv POD_README.md README.md`
       `mv NAME.podspec #{pod_name}.podspec`
     end
