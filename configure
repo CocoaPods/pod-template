@@ -10,7 +10,6 @@ module Pod
     end
 
     def run
-      puts "Configuring #{pod_name}"
       clean_template_files
       replace_variables_in_files
       rename_template_files
