@@ -11,7 +11,6 @@ module Pod
 
     def run
       puts "Configuring #{pod_name}"
-      print_info
       clean_template_files
       replace_variables_in_files
       rename_template_files
@@ -19,12 +18,6 @@ module Pod
     end
 
     #----------------------------------------#
-
-    def print_info
-      puts "user name:#{user_name}"
-      puts "user email:#{user_email}"
-      puts "year:#{year}"
-    end
 
     def clean_template_files
       `rm -rf ./**/.gitkeep`
