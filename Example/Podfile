@@ -5,7 +5,8 @@ target "Demo" do
   pod "${POD_NAME}", :path => "../"
 end
 
-target "DemoTests" do
-  # You can add your testing dependencies here
-end
+# Uncomment the following lines to add testing dependencies
+# target "DemoTests" do
+#   pod 'Expecta'
+# end
 
