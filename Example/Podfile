@@ -1,7 +1,11 @@
-pod "${POD_NAME}", :path => "../"
+# Uncomment this line to define a global platform for your project
+# platform :ios, '7.0'
 
 target "Demo" do
+  pod "${POD_NAME}", :path => "../"
 end
 
 target "DemoTests" do
+  # You can add your testing dependencies here
 end
+
