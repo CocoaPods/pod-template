@@ -21,7 +21,7 @@ task :version do
           remote_spec_version.to_s()
     version = suggested_version_number
   end
-  
+
   puts "Enter the version you want to release (" + version + ") "
   new_version_number = $stdin.gets.strip
   if new_version_number == ""
@@ -56,7 +56,7 @@ task :release do
 
   puts "* Running specs"
   sh "rake spec"
- 
+
   puts "* Linting the podspec"
   sh "pod lib lint"
 
