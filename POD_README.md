@@ -1,7 +1,8 @@
 # ${POD_NAME}
 
-[![Version](http://cocoapod-badges.herokuapp.com/v/${POD_NAME}/badge.png)](http://cocoadocs.org/docsets/${POD_NAME})
-[![Platform](http://cocoapod-badges.herokuapp.com/p/${POD_NAME}/badge.png)](http://cocoadocs.org/docsets/${POD_NAME})
+[![Version](https://img.shields.io/cocoapods/v/${POD_NAME}.svg?style=flat)](http://cocoadocs.org/docsets/${POD_NAME})
+[![License](https://img.shields.io/cocoapods/l/${POD_NAME}.svg?style=flat)](http://cocoadocs.org/docsets/${POD_NAME})
+[![Platform](https://img.shields.io/cocoapods/p/${POD_NAME}.svg?style=flat)](http://cocoadocs.org/docsets/${POD_NAME})
 
 ## Usage
 
