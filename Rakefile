@@ -21,7 +21,7 @@ task :version do
           remote_spec_version.to_s()
     version = suggested_version_number
   end
-  
+
   puts "Enter the version you want to release (" + version + ") "
   new_version_number = $stdin.gets.strip
   if new_version_number == ""
@@ -56,7 +56,7 @@ task :release do
 
   puts "* Running specs"
   sh "rake spec"
- 
+
   puts "* Linting the podspec"
   sh "pod lib lint"
 
@@ -65,7 +65,11 @@ task :release do
   sh "git tag -a #{spec_version} -m 'Release #{spec_version}'"
   sh "git push origin master"
   sh "git push origin --tags"
-  sh "pod push #{repo} #{podspec_path}"
+  if repo == "master"
+    sh "pod trunk push #{podspec_path}"
+  else
+    sh "pod repo push #{repo} #{podspec_path}"
+  end
 end
 
 # @return [Pod::Version] The version as reported by the Podspec.
