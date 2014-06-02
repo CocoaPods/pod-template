@@ -21,7 +21,7 @@ task :version do
           remote_spec_version.to_s()
     version = suggested_version_number
   end
-  
+
   puts "Enter the version you want to release (" + version + ") "
   new_version_number = $stdin.gets.strip
   if new_version_number == ""
@@ -56,12 +56,12 @@ task :release do
 
   puts "* Running specs"
   sh "rake spec"
- 
+
   puts "* Linting the podspec"
   sh "pod lib lint"
 
   # Then release
-  sh "git commit #{podspec_path} CHANGELOG.md -m 'Release #{spec_version}' --allow-empty"
+  sh "git commit #{podspec_path} CHANGELOG.md VERSION -m 'Release #{spec_version}' --allow-empty"
   sh "git tag -a #{spec_version} -m 'Release #{spec_version}'"
   sh "git push origin master"
   sh "git push origin --tags"
@@ -149,8 +149,5 @@ end
 # @return void
 #
 def replace_version_number(new_version_number)
-  text = File.read(podspec_path)
-  text.gsub!(/(s.version( )*= ")#{spec_version}(")/,
-              "\\1#{new_version_number}\\3")
-  File.open(podspec_path, "w") { |file| file.puts text }
+  File.open('VERSION', "w") { |file| file.puts new_version_number }
 end
