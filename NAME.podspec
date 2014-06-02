@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
   s.name             = "${POD_NAME}"
   s.version          = "0.1.0"
   s.summary          = "A short description of ${POD_NAME}."
-  s.description      = <<-DESC
+  s.description      = <<-DESC.strip_heredoc
                        An optional longer description of ${POD_NAME}
 
                        * Markdown format.
