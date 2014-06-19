@@ -123,3 +123,4 @@ end
 
 pod_name = ARGV.shift
 Pod::TemplateCofigurator.new(pod_name).run
+`pod init`
