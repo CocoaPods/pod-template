@@ -12,11 +12,9 @@
 		60AB5F3418E47CA8005FD253 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60AB5F3318E47CA8005FD253 /* UIKit.framework */; };
 		60AB5F3A18E47CA8005FD253 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 60AB5F3818E47CA8005FD253 /* InfoPlist.strings */; };
 		60AB5F3C18E47CA8005FD253 /* UnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 60AB5F3B18E47CA8005FD253 /* UnitTests.m */; };
-		E77B7DE5C07546D8B49693E1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2755ED54EC2443D183AB3F36 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2755ED54EC2443D183AB3F36 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		60AB5F2C18E47CA8005FD253 /* UnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		60AB5F2F18E47CA8005FD253 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		60AB5F3118E47CA8005FD253 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
@@ -35,7 +33,6 @@
 				60AB5F3018E47CA8005FD253 /* XCTest.framework in Frameworks */,
 				60AB5F3418E47CA8005FD253 /* UIKit.framework in Frameworks */,
 				60AB5F3218E47CA8005FD253 /* Foundation.framework in Frameworks */,
-				E77B7DE5C07546D8B49693E1 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,7 +62,6 @@
 				60AB5F2F18E47CA8005FD253 /* XCTest.framework */,
 				60AB5F3118E47CA8005FD253 /* Foundation.framework */,
 				60AB5F3318E47CA8005FD253 /* UIKit.framework */,
-				2755ED54EC2443D183AB3F36 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
