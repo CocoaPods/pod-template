@@ -1,8 +1,5 @@
 #!/usr/bin/env ruby
 
-pod_name = ARGV.shift
-puts pod_name
-
 module Pod
   class ConfigureIOS
     attr_reader :configurator
