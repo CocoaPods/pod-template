@@ -13,6 +13,7 @@ module Pod
       
       puts "#{question}? [#{possible_answers_string}]"
       answer = gets.downcase.chomp
+      
       unless possible_answers.map { |a| a.downcase }.include? answer
         puts "Possible answers: #{possible_answers_string}"
         ask_with_answers question, possible_answers
@@ -28,18 +29,33 @@ module Pod
         when :ios
           ConfigureIOS.perform(configurator: self)
         when :mac
-          puts "Creating Mac templates are not supported"
+          puts "Creating Mac templates are not supported yet, sorry!"
         when :both
-          puts "CONFIGURE BOTH"
-      ends
+          puts "Creating Mac + iOS templates are not supported yet, sorry!"
+        else
+          puts "UNKNOWN STATE " + platform 
+      end
       
       clean_template_files
       rename_template_files
       add_pods_to_podfile
       reinitialize_git_repo
+      run_pod_install
+      ending_message
     end
 
     #----------------------------------------#
+
+    def ending_message
+      puts "DONE"
+    end 
+
+    def run_pod_install
+      puts Dir.pwd
+      Dir.chdir(@pod_name + "/Example") do
+        `pod install`
+      end
+    end
 
     def clean_template_files
       `rm -rf ./**/.gitkeep`
@@ -50,7 +66,7 @@ module Pod
     end
 
     def replace_variables_in_files
-      file_names = ['LICENSE', 'POD_README.md', 'NAME.podspec', 'Podfile'] 
+      file_names = ['LICENSE', 'POD_README.md', 'NAME.podspec', podfile_path] 
       file_names.each do |file_name|
         text = File.read(file_name)
         text.gsub!("${POD_NAME}", @pod_name)
@@ -67,12 +83,12 @@ module Pod
     end
     
     def add_pods_to_podfile
-      podfile = File.read "Podfile"
+      podfile = File.read podfile_path
       podfile_content = @pods_for_podfile.map do |pod| 
         "pod '" + pod + "'"
       end.join("\n")
       podfile.gsub!("${POD_NAME}", podfile_content)
-      File.open(file_name, "w") { |file| file.puts podfile }
+      File.open(podfile_path, "w") { |file| file.puts podfile }
     end
 
     def rename_template_files
@@ -103,6 +119,10 @@ module Pod
 
     def date
       Time.now.strftime "%m/%d/%Y"
+    end
+
+    def podfile_path
+      'Example/Podfile'
     end
 
     #----------------------------------------#
