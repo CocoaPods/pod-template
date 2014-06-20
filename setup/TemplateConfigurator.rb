@@ -1,7 +1,7 @@
 module Pod
   class TemplateConfigurator
 
-    attr_reader :pod_name, :pods_for_podfile, :prefixes, :test_example_file
+    attr_reader :pod_name, :pods_for_podfile, :prefixes, :test_example_file, :username, :email
 
     def initialize(pod_name)
       @pod_name = pod_name
@@ -24,6 +24,8 @@ module Pod
 
     def run
       puts "Configuring #{pod_name}"
+      
+      validate_user_details
       platform = ask_with_answers("platform", ["iOS", "Mac", "Both"]).to_sym
 
       case platform
@@ -125,14 +127,18 @@ module Pod
       `git commit -m "Initial commit"`
     end
 
+    def validate_user_details
+      
+    end
+
     #----------------------------------------#
 
     def user_name
-      (ENV['GIT_COMMITTER_NAME'] || `git config user.name`).strip
+      (ENV['GIT_COMMITTER_NAME'] || `git config user.name` || @username).strip
     end
 
     def user_email
-      (ENV['GIT_COMMITTER_EMAIL'] || `git config user.email`).strip
+      (ENV['GIT_COMMITTER_EMAIL'] || `git config user.email` || @email).strip
     end
 
     def year
