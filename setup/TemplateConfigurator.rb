@@ -31,9 +31,7 @@ module Pod
           puts "Creating Mac templates are not supported"
         when :both
           puts "CONFIGURE BOTH"
-      end
-      
-      return
+      ends
       
       clean_template_files
       rename_template_files
