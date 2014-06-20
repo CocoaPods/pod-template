@@ -6,7 +6,6 @@ An opinionated template for creating a Pod with the following features:
 - Git as the source control management system.
 - Clean folder structure.
 - MIT license.
-- Rake as task management tool.
 - Testing as a standard
 
 ## Getting started
@@ -25,4 +24,4 @@ See the guides page: LINK
 
 ## Requirements:
 
-- CocoaPods 0.30
+- CocoaPods 0.31
