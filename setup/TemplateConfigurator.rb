@@ -1,7 +1,7 @@
 module Pod
   class TemplateConfigurator
 
-    attr_reader :pod_name, :pods_for_podfile, :prefixes
+    attr_reader :pod_name, :pods_for_podfile, :prefixes, :test_example_file
 
     def initialize(pod_name)
       @pod_name = pod_name
@@ -101,8 +101,16 @@ module Pod
     def customise_prefix
       prefix_path = "Example/Tests/Tests-Prefix.pch"
       pch = File.read prefix_path
-      pch.gsub!("${INCLUDED_PREFIXES}", @prefixes.join("\n") )
+      pch.gsub!("${INCLUDED_PREFIXES}", @prefixes.join("\n  ") )
       File.open(prefix_path, "w") { |file| file.puts pch }
+    end
+    
+    def set_test_framework(test_type)
+      content_path = "setup/test_examples/" + test_type + ".m"
+      tests_path = "templates/ios/Example/Tests/Tests.m"
+      tests = File.read tests_path
+      tests.gsub!("${TEST_EXAMPLE}", File.read(content_path) )
+      File.open(tests_path, "w") { |file| file.puts tests }
     end
 
     def rename_template_files
