@@ -1,10 +1,11 @@
 module Pod
-  class TemplateCofigurator
+  class TemplateConfigurator
 
     attr_reader :pod_name, :pods_for_podfile
 
     def initialize(pod_name)
       @pod_name = pod_name
+      @pods_for_podfile = []
     end
 
     def ask_with_answers(question, possible_answers)
@@ -12,7 +13,7 @@ module Pod
       
       puts "#{question}? [#{possible_answers_string}]"
       answer = gets.downcase.chomp
-      unless possible_answers.map { &.downcase }.include? answer
+      unless possible_answers.map { |a| a.downcase }.include? answer
         puts "Possible answers: #{possible_answers_string}"
         ask_with_answers question, possible_answers
       end
@@ -31,7 +32,9 @@ module Pod
         when :both
           puts "CONFIGURE BOTH"
       end
-
+      
+      return
+      
       clean_template_files
       rename_template_files
       add_pods_to_podfile
@@ -48,13 +51,8 @@ module Pod
       `rm -rf templates`
     end
 
-    def replace_variables_in_files(file_names)
-      file_names += ['LICENSE',
-                    'POD_README.md',
-                    'CHANGELOG.md',
-                    'NAME.podspec',
-                    'Podfile']
-                    
+    def replace_variables_in_files
+      file_names = ['LICENSE', 'POD_README.md', 'NAME.podspec', 'Podfile'] 
       file_names.each do |file_name|
         text = File.read(file_name)
         text.gsub!("${POD_NAME}", @pod_name)
@@ -72,9 +70,10 @@ module Pod
     
     def add_pods_to_podfile
       podfile = File.read "Podfile"
-      podfile.gsub!("${POD_NAME}", @pods_for_podfile.map do |pod| 
+      podfile_content = @pods_for_podfile.map do |pod| 
         "pod '" + pod + "'"
-      end.join"\n")
+      end.join("\n")
+      podfile.gsub!("${POD_NAME}", podfile_content)
       File.open(file_name, "w") { |file| file.puts podfile }
     end
 

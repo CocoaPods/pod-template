@@ -1,3 +1,5 @@
+require 'xcodeproj'
+
 module Pod
 
   class ProjectManipulator
@@ -14,22 +16,13 @@ module Pod
       @remove_demo_target = options.fetch(:remove_demo_project)
     end
 
-    def perform
-      project  = Xcodeproj::Project.open @xcodeproj_path
-      app_project = project.targets.select { |target| target.product_type == "com.apple.product-type.application" }.first
-      test_target = project.targets.select { |target| target.product_type == "com.apple.product-type.bundle.unit-test" }.first
-      
-      if @remove_demo_target
-        test_dependency = test_target.dependencies.first
-        test_dependency.remove_from_project
-        app_project.remove_from_project
-        project.save
-      end
+    def run
+      remove_demo_project if @remove_demo_target
       
       @string_replacements = {
-        "PROJECT" => @configurator.name,
+        "PROJECT_OWNER" => @configurator.user_name,
         "TODAYS_DATE" => @configurator.date,
-        "PROJECT_OWNER" => @configurator.user_name
+        "PROJECT" => @configurator.pod_name,
       }
       
       replace_internal_project_settings
@@ -37,22 +30,33 @@ module Pod
       rename_project_folder
     end
     
+    def remove_demo_project
+      project  = Xcodeproj::Project.open @xcodeproj_path
+      app_project = project.targets.select { |target| target.product_type == "com.apple.product-type.application" }.first
+      test_target = project.targets.select { |target| target.product_type == "com.apple.product-type.bundle.unit-test" }.first
+      
+      test_dependency = test_target.dependencies.first
+      test_dependency.remove_from_project
+      app_project.remove_from_project
+      project.save
+    end
+    
     def project_folder
       File.dirname @xcodeproj_path
     end
     
     def rename_files
-      File.rename(project_folder + "PROJECT.xcodeproj", project_folder + @configurator.name + ".xcodeproj")
+      File.rename(project_folder + "/PROJECT.xcodeproj", project_folder + "/" +  @configurator.pod_name + ".xcodeproj")
 
       ["PROJECT-Info.plist", "PROJECT-Prefix.pch"].each do |file|
         before = project_folder + "/PROJECT/" + file
-        after = project_folder + "/PROJECT/" + file.gsub("PROJECT", @configurator.name)
+        after = project_folder + "/PROJECT/" + file.gsub("PROJECT", @configurator.pod_name)
         File.rename before, after
       end      
     end
     
     def rename_project_folder
-      File.rename("PROJECT.xcodeproj", @configurator.name + ".xcodeproj")
+      File.rename(project_folder + "/PROJECT", project_folder + "/" + @configurator.pod_name)
     end
     
     def replace_internal_project_settings      
