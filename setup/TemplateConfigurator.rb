@@ -1,11 +1,12 @@
 module Pod
   class TemplateConfigurator
 
-    attr_reader :pod_name, :pods_for_podfile
+    attr_reader :pod_name, :pods_for_podfile, :prefixes
 
     def initialize(pod_name)
       @pod_name = pod_name
       @pods_for_podfile = []
+      @prefixes = []
     end
 
     def ask_with_answers(question, possible_answers)
@@ -18,7 +19,7 @@ module Pod
         puts "Possible answers: #{possible_answers_string}"
         ask_with_answers question, possible_answers
       end
-      answer.downcase
+      answer
     end
 
     def run
@@ -33,13 +34,14 @@ module Pod
         when :both
           puts "Creating Mac + iOS templates are not supported yet, sorry!"
         else
-          puts "UNKNOWN STATE " + platform 
+          puts "UNKNOWN STATE " + platform.to_s 
       end
       
       replace_variables_in_files
       clean_template_files
       rename_template_files
       add_pods_to_podfile
+      customise_prefix
       reinitialize_git_repo
       run_pod_install
       ending_message
@@ -53,7 +55,7 @@ module Pod
 
     def run_pod_install
       Dir.chdir("Example") do
-        puts `pod install`
+        system "pod install"
       end
     end
 
@@ -90,6 +92,17 @@ module Pod
       end.join("\n")
       podfile.gsub!("${INCLUDED_PODS}", podfile_content)
       File.open(podfile_path, "w") { |file| file.puts podfile }
+    end
+
+    def add_line_to_pch line
+      @prefixes << line
+    end
+
+    def customise_prefix
+      prefix_path = "Example/Tests/Tests-Prefix.pch"
+      pch = File.read prefix_path
+      pch.gsub!("${INCLUDED_PREFIXES}", @prefixes.join("\n") )
+      File.open(prefix_path, "w") { |file| file.puts pch }
     end
 
     def rename_template_files

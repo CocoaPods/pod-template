@@ -18,15 +18,26 @@ module Pod
         when :specta
           configurator.add_pod_to_podfile "Specta"
           configurator.add_pod_to_podfile "Expecta"
+
+          configurator.add_line_to_pch "#define EXP_SHORTHAND"
+          configurator.add_line_to_pch "#import <Specta/Specta.h>"
+          configurator.add_line_to_pch "#import <Expecta/Expecta.h>"
+          
         when :kiwi
           configurator.add_pod_to_podfile "Kiwi"
+          configurator.add_line_to_pch "#import <Kiwi/Kiwi.h>"
       end
       
       snapshots = configurator.ask_with_answers("Would you like to do view based testing", ["Yes", "No"]).to_sym
       case snapshots
         when :yes
           configurator.add_pod_to_podfile "FBSnapshotTestCase"
-          configurator.add_pod_to_podfile "EXPMatchers+FBSnapshotTest" if framework == :specta
+          configurator.add_line_to_pch "#import <FBSnapshotTestCase/FBSnapshotTestCase.h>"
+          
+          if framework == :specta
+              configurator.add_pod_to_podfile "EXPMatchers+FBSnapshotTest"
+              configurator.add_line_to_pch "#import <EXPMatchers+FBSnapshotTest/EXPMatchers+FBSnapshotTest.h>"
+          end
       end
       
       remove_demo = configurator.ask_with_answers("Would you like to have a demo project also", ["Yes", "No"]).to_sym
