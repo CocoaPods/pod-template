@@ -203,7 +203,7 @@
 			attributes = {
 				CLASSPREFIX = CPD;
 				LastUpgradeCheck = 0510;
-				ORGANIZATIONNAME = PROJECT_OWNER;
+				ORGANIZATIONNAME = "PROJECT_OWNER";
 				TargetAttributes = {
 					6003F5AD195388D20070C39A = {
 						TestTargetID = 6003F589195388D20070C39A;
