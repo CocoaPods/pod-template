@@ -36,6 +36,7 @@ module Pod
           puts "UNKNOWN STATE " + platform 
       end
       
+      replace_variables_in_files
       clean_template_files
       rename_template_files
       add_pods_to_podfile
@@ -51,9 +52,8 @@ module Pod
     end 
 
     def run_pod_install
-      puts Dir.pwd
-      Dir.chdir(@pod_name + "/Example") do
-        `pod install`
+      Dir.chdir("Example") do
+        puts `pod install`
       end
     end
 
@@ -63,6 +63,7 @@ module Pod
       `rm -rf _CONFIGURE.rb`
       `rm -rf README.md`
       `rm -rf templates`
+      `rm -rf setup`
     end
 
     def replace_variables_in_files
@@ -87,7 +88,7 @@ module Pod
       podfile_content = @pods_for_podfile.map do |pod| 
         "pod '" + pod + "'"
       end.join("\n")
-      podfile.gsub!("${POD_NAME}", podfile_content)
+      podfile.gsub!("${INCLUDED_PODS}", podfile_content)
       File.open(podfile_path, "w") { |file| file.puts podfile }
     end
 
