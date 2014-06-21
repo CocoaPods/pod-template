@@ -6,6 +6,6 @@
 
 #ifdef __OBJC__
 
-${INCLUDED_PREFIXES}
+  ${INCLUDED_PREFIXES}
 
 #endif

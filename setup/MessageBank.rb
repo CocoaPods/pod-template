@@ -38,7 +38,7 @@ module Pod
     end
 
     def farewell_message
-      puts " Congrats, you're ready to go."
+      puts "\n Congrats, you're ready to go."
       puts " We will start off by opening your project in Xcode"
       run_command "open 'Example/" + @configurator.pod_name + ".xcworkspace'"
     end
