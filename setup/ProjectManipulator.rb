@@ -58,6 +58,8 @@ module Pod
 
       project_app_group = @project.root_object.main_group.children.select { |group| group.display_name == "PROJECT" }.first
       project_app_group.remove_from_project
+
+      `rm -rf Example/PROJECT`
     end
 
     def project_folder
@@ -75,7 +77,9 @@ module Pod
     end
 
     def rename_project_folder
-      File.rename(project_folder + "/PROJECT", project_folder + "/" + @configurator.pod_name)
+      if Dir.exist? project_folder + "/PROJECT"
+        File.rename(project_folder + "/PROJECT", project_folder + "/" + @configurator.pod_name)
+      end
     end
 
     def replace_internal_project_settings
