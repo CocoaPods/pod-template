@@ -34,12 +34,11 @@ module Pod
 
       validate_user_details
 
-      return
 #      platform = ask_with_answers("platform", ["iOS", "Mac", "Both"]).to_sym
 #
 #      case platform
 #        when :ios
-          ConfigureIOS.perform(configurator: self)
+      ConfigureIOS.perform(configurator: self)
 #        when :mac
 #          puts "Creating Mac templates are not supported yet, sorry!"
 #        when :both
