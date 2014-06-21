@@ -14,10 +14,15 @@ module Pod
       @configurator = options.fetch(:configurator)
       @platform = options.fetch(:platform)
       @remove_demo_target = options.fetch(:remove_demo_project)
+      @remove_demo_target = options.fetch(:remove_demo_project)
+
+      @project = Xcodeproj::Project.open @xcodeproj_path
     end
 
     def run
       remove_demo_project if @remove_demo_target
+      add_podspec_metadata
+      @project.save
 
       @string_replacements = {
         "PROJECT_OWNER" => @configurator.user_name,
@@ -30,10 +35,16 @@ module Pod
       rename_project_folder
     end
 
+    def add_podspec_metadata
+      project_metadata_item = @project.root_object.main_group.children.select { |group| group.name == "Podspec Metadata" }.first
+      project_metadata_item.new_file "../" + @configurator.pod_name  + ".podspec"
+      project_metadata_item.new_file "../README.md"
+      project_metadata_item.new_file "../LICENSE"
+    end
+
     def remove_demo_project
-      project  = Xcodeproj::Project.open @xcodeproj_path
-      app_project = project.targets.select { |target| target.product_type == "com.apple.product-type.application" }.first
-      test_target = project.targets.select { |target| target.product_type == "com.apple.product-type.bundle.unit-test" }.first
+      app_project = @project.targets.select { |target| target.product_type == "com.apple.product-type.application" }.first
+      test_target = @project.targets.select { |target| target.product_type == "com.apple.product-type.bundle.unit-test" }.first
 
       # Remove the implicit dependency on the app
       test_dependency = test_target.dependencies.first
@@ -45,7 +56,6 @@ module Pod
         build_config.build_settings.delete "BUNDLE_LOADER"
       end
 
-      project.save
     end
 
     def project_folder

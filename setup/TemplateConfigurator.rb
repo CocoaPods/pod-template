@@ -14,10 +14,9 @@ module Pod
 
     def ask_with_answers(question, possible_answers)
       possible_answers_string = possible_answers.join(" ")
-
       puts "#{question}? [#{possible_answers_string}]"
-      answer = gets.downcase.chomp
-
+      answer = ""
+      
       loop do
         @message_bank.show_prompt
         answer = gets.downcase.chomp
@@ -32,22 +31,7 @@ module Pod
     def run
       @message_bank.welcome_message
 
-      validate_user_details
-
-#      platform = ask_with_answers("platform", ["iOS", "Mac", "Both"]).to_sym
-#
-#      case platform
-#        when :ios
       ConfigureIOS.perform(configurator: self)
-#        when :mac
-#          puts "Creating Mac templates are not supported yet, sorry!"
-#        when :both
-#          puts "Creating Mac + iOS templates are not supported yet, sorry!"
-#        else
-#          puts "UNKNOWN STATE " + platform.to_s
-#      end
-#
-
 
       replace_variables_in_files
       clean_template_files
@@ -61,10 +45,6 @@ module Pod
     end
 
     #----------------------------------------#
-
-    def ending_message
-      puts "DONE"
-    end
 
     def run_pod_install
       Dir.chdir("Example") do
