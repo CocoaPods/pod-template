@@ -56,6 +56,8 @@ module Pod
         build_config.build_settings.delete "BUNDLE_LOADER"
       end
 
+      project_app_group = @project.root_object.main_group.children.select { |group| group.display_name == "PROJECT" }.first
+      project_app_group.remove_from_project
     end
 
     def project_folder
