@@ -16,7 +16,7 @@ module Pod
       possible_answers_string = possible_answers.join(" ")
       puts "#{question}? [#{possible_answers_string}]"
       answer = ""
-      
+
       loop do
         @message_bank.show_prompt
         answer = gets.downcase.chomp
@@ -82,7 +82,7 @@ module Pod
       podfile = File.read podfile_path
       podfile_content = @pods_for_podfile.map do |pod|
         "pod '" + pod + "'"
-      end.join("\n")
+      end.join("\n  ")
       podfile.gsub!("${INCLUDED_PODS}", podfile_content)
       File.open(podfile_path, "w") { |file| file.puts podfile }
     end

@@ -51,15 +51,22 @@ module Pod
       test_dependency.remove_from_project
       app_project.remove_from_project
 
-      # remove the build target on the unit tests
+      # Remove the build target on the unit tests
       test_target.build_configuration_list.build_configurations.each do |build_config|
         build_config.build_settings.delete "BUNDLE_LOADER"
       end
 
+      # Remove the references in xcode
       project_app_group = @project.root_object.main_group.children.select { |group| group.display_name == "PROJECT" }.first
       project_app_group.remove_from_project
 
+      # Remove the actual folder + files
       `rm -rf Example/PROJECT`
+
+      # Remove the section in the Podfile for the lib by removing top 3 lines
+      podfile_path =  "Podfile"
+      podfile_text = File.read(podfile_path).lines[3..-1].join
+      File.open(podfile_path, "w") { |file| file.puts podfile_text }
     end
 
     def project_folder
