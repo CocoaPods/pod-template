@@ -1,3 +1,5 @@
+require 'colored'
+
 module Pod
   class TemplateConfigurator
 
@@ -7,38 +9,47 @@ module Pod
       @pod_name = pod_name
       @pods_for_podfile = []
       @prefixes = []
+      @message_bank = MessageBank.new(self)
     end
 
     def ask_with_answers(question, possible_answers)
       possible_answers_string = possible_answers.join(" ")
-      
+
       puts "#{question}? [#{possible_answers_string}]"
       answer = gets.downcase.chomp
-      
-      unless possible_answers.map { |a| a.downcase }.include? answer
+
+      loop do
+        @message_bank.show_prompt
+        answer = gets.downcase.chomp
+        break if possible_answers.map { |a| a.downcase }.include? answer
+
         puts "Possible answers: #{possible_answers_string}"
-        ask_with_answers question, possible_answers
       end
+
       answer
     end
 
     def run
-      puts "Configuring #{pod_name}"
-      
-      validate_user_details
-      platform = ask_with_answers("platform", ["iOS", "Mac", "Both"]).to_sym
+      @message_bank.welcome_message
 
-      case platform
-        when :ios
+      validate_user_details
+
+      return
+#      platform = ask_with_answers("platform", ["iOS", "Mac", "Both"]).to_sym
+#
+#      case platform
+#        when :ios
           ConfigureIOS.perform(configurator: self)
-        when :mac
-          puts "Creating Mac templates are not supported yet, sorry!"
-        when :both
-          puts "Creating Mac + iOS templates are not supported yet, sorry!"
-        else
-          puts "UNKNOWN STATE " + platform.to_s 
-      end
-      
+#        when :mac
+#          puts "Creating Mac templates are not supported yet, sorry!"
+#        when :both
+#          puts "Creating Mac + iOS templates are not supported yet, sorry!"
+#        else
+#          puts "UNKNOWN STATE " + platform.to_s
+#      end
+#
+
+
       replace_variables_in_files
       clean_template_files
       rename_template_files
@@ -46,14 +57,15 @@ module Pod
       customise_prefix
       reinitialize_git_repo
       run_pod_install
-      ending_message
+
+      @message_bank.farewell_message
     end
 
     #----------------------------------------#
 
     def ending_message
       puts "DONE"
-    end 
+    end
 
     def run_pod_install
       Dir.chdir("Example") do
@@ -71,7 +83,7 @@ module Pod
     end
 
     def replace_variables_in_files
-      file_names = ['LICENSE', 'POD_README.md', 'NAME.podspec', podfile_path] 
+      file_names = ['LICENSE', 'POD_README.md', 'NAME.podspec', podfile_path]
       file_names.each do |file_name|
         text = File.read(file_name)
         text.gsub!("${POD_NAME}", @pod_name)
@@ -82,14 +94,14 @@ module Pod
         File.open(file_name, "w") { |file| file.puts text }
       end
     end
-    
+
     def add_pod_to_podfile podname
       @pods_for_podfile << podname
     end
-    
+
     def add_pods_to_podfile
       podfile = File.read podfile_path
-      podfile_content = @pods_for_podfile.map do |pod| 
+      podfile_content = @pods_for_podfile.map do |pod|
         "pod '" + pod + "'"
       end.join("\n")
       podfile.gsub!("${INCLUDED_PODS}", podfile_content)
@@ -106,7 +118,7 @@ module Pod
       pch.gsub!("${INCLUDED_PREFIXES}", @prefixes.join("\n  ") )
       File.open(prefix_path, "w") { |file| file.puts pch }
     end
-    
+
     def set_test_framework(test_type)
       content_path = "setup/test_examples/" + test_type + ".m"
       tests_path = "templates/ios/Example/Tests/Tests.m"
@@ -128,17 +140,17 @@ module Pod
     end
 
     def validate_user_details
-      
+        return (user_email.length > 0) && (user_name.length > 0)
     end
 
     #----------------------------------------#
 
     def user_name
-      (ENV['GIT_COMMITTER_NAME'] || `git config user.name` || @username).strip
+      (ENV['GIT_COMMITTER_NAME'] || `git config user.name`).strip
     end
 
     def user_email
-      (ENV['GIT_COMMITTER_EMAIL'] || `git config user.email` || @email).strip
+      (ENV['GIT_COMMITTER_EMAIL'] || `git config user.email`).strip
     end
 
     def year
