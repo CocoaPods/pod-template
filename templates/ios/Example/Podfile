@@ -1,5 +1,7 @@
-pod "${POD_NAME}", :path => "../"
-  
+target '${POD_NAME}', :exclusive => true do
+  pod "${POD_NAME}", :path => "../"
+end
+
 target 'Tests', :exclusive => true do
   pod "${POD_NAME}", :path => "../"
 
