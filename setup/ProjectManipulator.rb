@@ -45,7 +45,6 @@ module Pod
         build_config.build_settings.delete "BUNDLE_LOADER"
       end
 
-
       project.save
     end
 
