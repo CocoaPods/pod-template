@@ -38,6 +38,13 @@ module Pod
       test_dependency = test_target.dependencies.first
       test_dependency.remove_from_project
       app_project.remove_from_project
+      
+      # remove the build target on the unit tests
+      test_target.build_configuration_list.build_configurations.each do |build_config|
+        build_config.build_settings.delete "BUNDLE_LOADER"
+      end
+      
+      
       project.save
     end
     
