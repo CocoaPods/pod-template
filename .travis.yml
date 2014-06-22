@@ -2,6 +2,4 @@ reference: http://www.objc.io/issue-6/travis-ci.html
 language: objective-c
 cache: bundler
 script:
-- xctool -workspace Example/${POD_NAME}.xcworkspace -scheme ${POD_NAME} -sdk iphoneos -configuration Release OBJROOT=$PWD/build SYMROOT=$PWD/build ONLY_ACTIVE_ARCH=NO
 - xctool test -workspace Example/${POD_NAME}.xcworkspace -scheme ${POD_NAME} -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
-

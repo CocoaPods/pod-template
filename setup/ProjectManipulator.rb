@@ -76,6 +76,9 @@ module Pod
     end
 
     def rename_files
+      scheme_path = project_folder + "/PROJECT.xcodeproj/xcshareddata/xcschemes/"
+      File.rename(scheme_path + "PROJECT.xcscheme", scheme_path +  @configurator.pod_name + ".xcscheme")
+
       File.rename(project_folder + "/PROJECT.xcodeproj", project_folder + "/" +  @configurator.pod_name + ".xcodeproj")
 
       ["PROJECT-Info.plist", "PROJECT-Prefix.pch"].each do |file|
@@ -83,6 +86,7 @@ module Pod
         after = project_folder + "/PROJECT/" + file.gsub("PROJECT", @configurator.pod_name)
         File.rename before, after
       end
+
     end
 
     def rename_project_folder
@@ -92,7 +96,7 @@ module Pod
     end
 
     def replace_internal_project_settings
-      Dir.glob(project_folder + "/*/*").each do |name|
+      Dir.glob(project_folder + "/*/*/*/*").each do |name|
         next if Dir.exists? name
         text = File.read(name)
 

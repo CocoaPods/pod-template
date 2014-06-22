@@ -13,7 +13,9 @@ module Pod
 
     def perform
 
-      framework = configurator.ask_with_answers("What testing frameworks will you use", ["Specta", "Kiwi"]).to_sym
+      remove_demo = configurator.ask_with_answers("Would you like to have a demo for your library", ["Yes", "No"]).to_sym
+
+      framework = configurator.ask_with_answers("Which testing frameworks will you use", ["Specta", "Kiwi"]).to_sym
       case framework
         when :specta
           configurator.add_pod_to_podfile "Specta"
@@ -43,7 +45,6 @@ module Pod
           end
       end
 
-      remove_demo = configurator.ask_with_answers("Would you like to have a demo project also", ["Yes", "No"]).to_sym
 
       Pod::ProjectManipulator.new({
         :configurator => @configurator,
