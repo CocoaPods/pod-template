@@ -45,6 +45,7 @@ module Pod
     def remove_demo_project
       app_project = @project.targets.select { |target| target.product_type == "com.apple.product-type.application" }.first
       test_target = @project.targets.select { |target| target.product_type == "com.apple.product-type.bundle.unit-test" }.first
+      test_target.name = @configurator.pod_name
 
       # Remove the implicit dependency on the app
       test_dependency = test_target.dependencies.first
@@ -64,8 +65,9 @@ module Pod
       `rm -rf Example/PROJECT`
 
       # Remove the section in the Podfile for the lib by removing top 3 lines
-      podfile_path =  "Podfile"
+      podfile_path =  project_folder + "/Podfile"
       podfile_text = File.read(podfile_path).lines[3..-1].join
+      podfile_text = podfile_text.gsub("Tests", @configurator.pod_name)
       File.open(podfile_path, "w") { |file| file.puts podfile_text }
     end
 

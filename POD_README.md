@@ -1,9 +1,9 @@
 # ${POD_NAME}
 
-
-[![Version](http://cocoapod-badges.herokuapp.com/v/${POD_NAME}/badge.png)](http://cocoadocs.org/docsets/${POD_NAME})
-[![Platform](http://cocoapod-badges.herokuapp.com/p/${POD_NAME}/badge.png)](http://cocoadocs.org/docsets/${POD_NAME})
-[![Build Status](http://img.shields.io/travis/${USER_NAME}/${POD_NAME}/v0.6.svg?style=flat)](https://travis-ci.org/${USER_NAME}/${POD_NAME})
+[![CI Status](http://img.shields.io/travis/${USER_NAME}/${POD_NAME}.svg?style=flat)](https://travis-ci.org/${USER_NAME}/${POD_NAME})
+[![Version](https://img.shields.io/cocoapods/v/${POD_NAME}.svg?style=flat)](http://cocoadocs.org/docsets/${POD_NAME})
+[![License](https://img.shields.io/cocoapods/l/${POD_NAME}.svg?style=flat)](http://cocoadocs.org/docsets/${POD_NAME})
+[![Platform](https://img.shields.io/cocoapods/p/${POD_NAME}.svg?style=flat)](http://cocoadocs.org/docsets/${POD_NAME})
 
 ## Usage
 

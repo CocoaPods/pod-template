@@ -14,7 +14,7 @@ module Pod
 
     def ask_with_answers(question, possible_answers)
       possible_answers_string = possible_answers.join(" ")
-      puts "#{question}? [#{possible_answers_string}]"
+      puts " #{question}? [#{possible_answers_string}]"
       answer = ""
 
       loop do
@@ -62,7 +62,7 @@ module Pod
     end
 
     def replace_variables_in_files
-      file_names = ['LICENSE', 'POD_README.md', 'NAME.podspec', podfile_path]
+      file_names = ['LICENSE', 'POD_README.md', 'NAME.podspec', '.travis.yml', podfile_path]
       file_names.each do |file_name|
         text = File.read(file_name)
         text.gsub!("${POD_NAME}", @pod_name)

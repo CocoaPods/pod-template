@@ -33,8 +33,7 @@ module Pod
         run_setup_questions
       end
 
-      puts " We need to ask 3-4 questions to get you set up with a fresh project"
-      puts " "
+      puts "We need to ask 3 questions to get you started, this should only take a minute."
     end
 
     def farewell_message
