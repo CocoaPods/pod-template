@@ -22,8 +22,10 @@ module Pod
       "! ".red
     end
 
-    def run_command command
-      puts "  " + command.magenta
+    def run_command command, output_command=nil
+      output_command ||= command
+
+      puts "  " + output_command.magenta
       system command
     end
 
@@ -33,13 +35,26 @@ module Pod
         run_setup_questions
       end
 
-      puts "We need to ask 3 questions to get you started, this should only take a minute."
+      puts ""
+      puts "To get you started we need to ask 3 questions, this should only take a minute."
+      puts ""
+
+      puts "If this is your first time we recommend running through with the guide: "
+      puts " - "  + "http://guides.cocoapods.org/making/using-pod-lib-create.html".green
+      puts ""
+
+      if ENV["TERM_PROGRAM"] == "iTerm.app"
+        puts " ( hold cmd and click links to open in a browser. )".magenta
+      else
+        puts " ( hold cmd and double click links to open in a browser. )".magenta
+      end
     end
 
     def farewell_message
       puts "\n Congrats, you're ready to go."
       puts " We will start off by opening your project in Xcode"
-      run_command "open 'Example/" + @configurator.pod_name + ".xcworkspace'"
+      pod_name = + @configurator.pod_name
+      run_command "open 'Example/#{pod_name}.xcworkspace'", "open '#{pod_name}/Example/#{pod_name}.xcworkspace'"
     end
 
 
