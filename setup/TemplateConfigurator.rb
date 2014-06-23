@@ -14,6 +14,7 @@ module Pod
 
     def ask_with_answers(question, possible_answers)
       possible_answers_string = possible_answers.join(" ")
+      puts ""
       puts " #{question}? [#{possible_answers_string}]"
       answer = ""
 
