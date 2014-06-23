@@ -48,6 +48,9 @@ module Pod
     #----------------------------------------#
 
     def run_pod_install
+      puts "Running " + "pod install".magenta + " on your new library."
+      puts ""
+
       Dir.chdir("Example") do
         system "pod install"
       end
