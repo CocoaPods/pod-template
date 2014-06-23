@@ -41,17 +41,20 @@ module Pod
 
       puts "If this is your first time we recommend running through with the guide: "
       puts " - "  + "http://guides.cocoapods.org/making/using-pod-lib-create.html".green
-      puts ""
 
       if ENV["TERM_PROGRAM"] == "iTerm.app"
         puts " ( hold cmd and click links to open in a browser. )".magenta
       else
         puts " ( hold cmd and double click links to open in a browser. )".magenta
       end
+
+      puts ""
     end
 
     def farewell_message
-      puts "\n Congrats, you're ready to go."
+      puts ""
+
+      puts " Congrats, you're ready to go!"
       puts " We will start off by opening your project in Xcode"
       pod_name = + @configurator.pod_name
       run_command "open 'Example/#{pod_name}.xcworkspace'", "open '#{pod_name}/Example/#{pod_name}.xcworkspace'"

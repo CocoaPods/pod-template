@@ -96,7 +96,7 @@ module Pod
     end
 
     def replace_internal_project_settings
-      Dir.glob(project_folder + "/*/*/*/*").each do |name|
+      Dir.glob(project_folder + "/**/**/**/**").each do |name|
         next if Dir.exists? name
         text = File.read(name)
 
