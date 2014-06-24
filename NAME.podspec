@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "${POD_NAME}"
-  s.version          = "0.1.0"
+  s.version          = File.read('VERSION')
   s.summary          = "A short description of ${POD_NAME}."
   s.description      = <<-DESC
                        An optional longer description of ${POD_NAME}

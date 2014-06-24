@@ -79,12 +79,9 @@ module Pod
     end
 
     def clean_template_files
-      `rm -rf ./**/.gitkeep`
-      `rm -rf configure`
-      `rm -rf _CONFIGURE.rb`
-      `rm -rf README.md`
-      `rm -rf templates`
-      `rm -rf setup`
+      ["./**/.gitkeep", "configure", "_CONFIGURE.rb", "README.md", "LICENSE", "templates", "setup"].each do |asset|
+        `rm -rf #{asset}`
+      end
     end
 
     def replace_variables_in_files
@@ -134,6 +131,7 @@ module Pod
 
     def rename_template_files
       `mv POD_README.md README.md`
+      `mv POD_LICENSE LICENSE`
       `mv NAME.podspec #{pod_name}.podspec`
     end
 
