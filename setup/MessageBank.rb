@@ -35,8 +35,9 @@ module Pod
         run_setup_questions
       end
 
+      puts "\n------------------------------"
       puts ""
-      puts "To get you started we need to ask 3 questions, this should only take a minute."
+      puts "To get you started we need to ask 4 questions, this should only take a minute."
       puts ""
 
       puts "If this is your first time we recommend running through with the guide: "
