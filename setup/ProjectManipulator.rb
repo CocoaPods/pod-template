@@ -3,7 +3,7 @@ require 'xcodeproj'
 module Pod
 
   class ProjectManipulator
-    attr_reader :configurator, :xcodeproj_path, :platform, :remove_demo_target, :string_replacements
+    attr_reader :configurator, :xcodeproj_path, :platform, :remove_demo_target, :string_replacements, :prefix
 
     def self.perform(options)
       new(options).perform
@@ -14,7 +14,7 @@ module Pod
       @configurator = options.fetch(:configurator)
       @platform = options.fetch(:platform)
       @remove_demo_target = options.fetch(:remove_demo_project)
-      @remove_demo_target = options.fetch(:remove_demo_project)
+      @prefix = options.fetch(:prefix)
 
       @project = Xcodeproj::Project.open @xcodeproj_path
     end
@@ -28,6 +28,7 @@ module Pod
         "PROJECT_OWNER" => @configurator.user_name,
         "TODAYS_DATE" => @configurator.date,
         "PROJECT" => @configurator.pod_name,
+        "CPD" => @prefix
       }
 
       replace_internal_project_settings
@@ -76,11 +77,24 @@ module Pod
     end
 
     def rename_files
+
+      # shared schemes have project specific names
       scheme_path = project_folder + "/PROJECT.xcodeproj/xcshareddata/xcschemes/"
       File.rename(scheme_path + "PROJECT.xcscheme", scheme_path +  @configurator.pod_name + ".xcscheme")
 
+      # rename xcproject
       File.rename(project_folder + "/PROJECT.xcodeproj", project_folder + "/" +  @configurator.pod_name + ".xcodeproj")
 
+      unless @remove_demo_target
+        # change app file prefixes
+        ["CPDAppDelegate.h", "CPDAppDelegate.m", "CPDViewController.h", "CPDViewController.m"].each do |file|
+          before = project_folder + "/PROJECT/" + file
+          after = project_folder + "/PROJECT/" + file.gsub("CPD", prefix)
+          File.rename before, after
+        end
+      end
+
+      # rename project related files
       ["PROJECT-Info.plist", "PROJECT-Prefix.pch"].each do |file|
         before = project_folder + "/PROJECT/" + file
         after = project_folder + "/PROJECT/" + file.gsub("PROJECT", @configurator.pod_name)

@@ -12,6 +12,21 @@ module Pod
       @message_bank = MessageBank.new(self)
     end
 
+    def ask(question)
+      answer = ""
+      loop do
+        puts "\n#{question}?"
+
+        @message_bank.show_prompt
+        answer = gets.chomp
+
+        break if answer.length > 0
+
+        print "\nYou need to provide an answer."
+      end
+      answer
+    end
+
     def ask_with_answers(question, possible_answers)
 
       print "\n#{question}? ["
