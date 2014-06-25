@@ -18,7 +18,7 @@ module Pod
       framework = configurator.ask_with_answers("Which testing frameworks will you use", ["Specta", "Kiwi"]).to_sym
       case framework
         when :specta
-          configurator.add_pod_to_podfile "Specta"
+          configurator.add_pod_to_podfile "Specta, '~> 2.0'"
           configurator.add_pod_to_podfile "Expecta"
 
           configurator.add_line_to_pch "#define EXP_SHORTHAND"
