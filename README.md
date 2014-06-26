@@ -5,25 +5,19 @@ An opinionated template for creating a Pod with the following features:
 
 - Git as the source control management system.
 - Clean folder structure.
+- Project generation
 - MIT license.
-- Rake as task management tool.
+- Testing as a standard
+- Turnkey access to Travis CI
 
 ## Getting started
 
-1. Recursively delete the `delete_me` files.
-- Replace the placeholders in the license file.
-- Create your project in the `Example` folder.
-   - Optionally integrate your project with CocoaPods.
-   - The Podfile inherits the dependencies your podspec.
-- Add the source files of your library in the `Classes` folder.
-- Add the file assets of your library in the `Assets` folder.
-- Use `$ rake -T` to see the available tasks.
-- Use `$ rake release` to release a new version of the Pod (after editing the
-  version number in the podspec).
-- Replace the contents of this file.
+There are two reasons for wanting to work on this template, making your own or improving the one for everyone's. In both cases you will want to work with the ruby classes inside the `setup` folder, and the example base template that it works on from inside `template/ios/`. 
 
 ## Best practices
 
+The CocoaPods one aims to be congruent with this guide: http://guides.cocoapods.org/making/using-pod-lib-create.html so any changes of flow should be updated there also.
+
 ## Requirements:
 
-- CocoaPods 0.19
+- CocoaPods 0.31
