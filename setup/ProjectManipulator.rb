@@ -29,9 +29,10 @@ module Pod
       @project = Xcodeproj::Project.open(@xcodeproj_path)
       add_podspec_metadata
       remove_demo_project if @remove_demo_target
+      @project.save
+
       rename_files
       rename_project_folder
-      @project.save
     end
 
     def add_podspec_metadata
