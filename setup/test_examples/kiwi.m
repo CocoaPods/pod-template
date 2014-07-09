@@ -5,7 +5,7 @@ describe(@"My initial tests", ^{
   context(@"will fail", ^{
 
       it(@"can do maths", ^{
-          [[theValue(1) should] equal:theValue(2)];
+          [[@1 should] equal:@2];
       });
 
       it(@"can read", ^{
@@ -14,14 +14,14 @@ describe(@"My initial tests", ^{
     
       it(@"will wait and fail", ^{
           NSObject *object = [[NSObject alloc] init];
-          [[object shouldEventually] receive:@selector(autoContentAccessingProxy)];
+          [[expectFutureValue(object) shouldEventually] receive:@selector(autoContentAccessingProxy)];
       });
   });
 
   context(@"will pass", ^{
     
       it(@"can do maths", ^{
-        [[theValue(1) should] beLessThan:theValue(23)];
+        [[@1 should] beLessThan:@23];
       });
     
       it(@"can read", ^{
