@@ -28,7 +28,7 @@ module Pod
           configurator.set_test_framework("specta")
 
         when :kiwi
-          configurator.add_pod_to_podfile "Kiwi/XCTest"
+          configurator.add_pod_to_podfile "Kiwi"
           configurator.add_line_to_pch "#import <Kiwi/Kiwi.h>"
           configurator.set_test_framework("kiwi")
       end
