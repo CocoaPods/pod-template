@@ -1,6 +1,6 @@
 # ${POD_NAME}
 
-[![CI Status](http://img.shields.io/travis/${USER_NAME}/${POD_NAME}.svg?style=flat)](https://travis-ci.org/${USER_NAME}/${POD_NAME})
+[![CI Status](http://img.shields.io/travis/${USER_NAME}/${REPO_NAME}.svg?style=flat)](https://travis-ci.org/${USER_NAME}/${REPO_NAME})
 [![Version](https://img.shields.io/cocoapods/v/${POD_NAME}.svg?style=flat)](http://cocoadocs.org/docsets/${POD_NAME})
 [![License](https://img.shields.io/cocoapods/l/${POD_NAME}.svg?style=flat)](http://cocoadocs.org/docsets/${POD_NAME})
 [![Platform](https://img.shields.io/cocoapods/p/${POD_NAME}.svg?style=flat)](http://cocoadocs.org/docsets/${POD_NAME})
