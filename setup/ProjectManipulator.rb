@@ -15,25 +15,23 @@ module Pod
       @platform = options.fetch(:platform)
       @remove_demo_target = options.fetch(:remove_demo_project)
       @prefix = options.fetch(:prefix)
-
-      @project = Xcodeproj::Project.open @xcodeproj_path
     end
 
     def run
-      remove_demo_project if @remove_demo_target
-      add_podspec_metadata
-      @project.save
-
       @string_replacements = {
         "PROJECT_OWNER" => @configurator.user_name,
         "TODAYS_DATE" => @configurator.date,
         "PROJECT" => @configurator.pod_name,
         "CPD" => @prefix
       }
-
       replace_internal_project_settings
+
+      @project = Xcodeproj::Project.open(@xcodeproj_path)
+      add_podspec_metadata
+      remove_demo_project if @remove_demo_target
       rename_files
       rename_project_folder
+      @project.save
     end
 
     def add_podspec_metadata
