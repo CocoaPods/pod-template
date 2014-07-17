@@ -40,8 +40,8 @@ module Pod
           configurator.add_line_to_pch "#import <FBSnapshotTestCase/FBSnapshotTestCase.h>"
 
           if framework == :specta
-              configurator.add_pod_to_podfile "EXPMatchers+FBSnapshotTest"
-              configurator.add_line_to_pch "#import <EXPMatchers+FBSnapshotTest/EXPMatchers+FBSnapshotTest.h>"
+              configurator.add_pod_to_podfile "Expecta+Snapshots"
+              configurator.add_line_to_pch "#import <Expecta+Snapshots/EXPMatchers+FBSnapshotTest.h>"
           end
       end
 
