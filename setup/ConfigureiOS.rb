@@ -13,9 +13,9 @@ module Pod
 
     def perform
 
-      remove_demo = configurator.ask_with_answers("Would you like to have a demo for your library", ["Yes", "No"]).to_sym
+      keep_demo = configurator.ask_with_answers("Would you like to have a demo for your library", ["Yes", "No"]).to_sym
 
-      framework = configurator.ask_with_answers("Which testing frameworks will you use", ["Specta", "Kiwi"]).to_sym
+      framework = configurator.ask_with_answers("Which testing frameworks will you use", ["Specta", "Kiwi", "None"]).to_sym
       case framework
         when :specta
           configurator.add_pod_to_podfile "Specta', '~> 0.2.1"
@@ -31,6 +31,8 @@ module Pod
           configurator.add_pod_to_podfile "Kiwi"
           configurator.add_line_to_pch "#import <Kiwi/Kiwi.h>"
           configurator.set_test_framework("kiwi")
+
+        when :none
       end
 
       snapshots = configurator.ask_with_answers("Would you like to do view based testing", ["Yes", "No"]).to_sym
@@ -38,6 +40,11 @@ module Pod
         when :yes
           configurator.add_pod_to_podfile "FBSnapshotTestCase"
           configurator.add_line_to_pch "#import <FBSnapshotTestCase/FBSnapshotTestCase.h>"
+
+          if keep_demo == :no
+              puts " Putting demo application back in, you cannot do view tests without a host application."
+              keep_demo = :yes
+          end
 
           if framework == :specta
               configurator.add_pod_to_podfile "Expecta+Snapshots"
@@ -61,7 +68,7 @@ module Pod
         :configurator => @configurator,
         :xcodeproj_path => "templates/ios/Example/PROJECT.xcodeproj",
         :platform => :ios,
-        :remove_demo_project => (remove_demo == :no),
+        :remove_demo_project => (keep_demo == :no),
         :prefix => prefix
       }).run
 
