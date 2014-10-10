@@ -64,9 +64,11 @@ module Pod
       # Remove the actual folder + files
       `rm -rf Example/PROJECT`
 
-      # Remove the section in the Podfile for the lib by removing top 3 lines
-      podfile_path =  project_folder + "/Podfile"
-      podfile_text = File.read(podfile_path).lines[3..-1].join
+      # Remove the section in the Podfile for the lib by removing top 3 lines after the source
+      podfile_path = project_folder + "/Podfile"
+      podfile_lines = File.read(podfile_path).lines
+      3.times do  podfile_lines.delete_at 2 end
+      podfile_text = podfile_lines.join
       podfile_text = podfile_text.gsub("Tests", @configurator.pod_name)
       File.open(podfile_path, "w") { |file| file.puts podfile_text }
     end
