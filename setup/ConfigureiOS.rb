@@ -13,7 +13,7 @@ module Pod
 
     def perform
 
-      keep_demo = configurator.ask_with_answers("Would you like to have a demo for your library", ["Yes", "No"]).to_sym
+      keep_demo = configurator.ask_with_answers("Would you like to provide a demo application with your library", ["Yes", "No"]).to_sym
 
       framework = configurator.ask_with_answers("Which testing frameworks will you use", ["Specta", "Kiwi", "None"]).to_sym
       case framework
