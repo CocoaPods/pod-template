@@ -62,7 +62,7 @@ module Pod
       project_app_group.remove_from_project
 
       # Remove the actual folder + files
-      `rm -rf Example/PROJECT`
+      `rm -rf templates/ios/Example/PROJECT`
 
       # Remove the section in the Podfile for the lib by removing top 3 lines after the source
       podfile_path = project_folder + "/Podfile"
@@ -93,13 +93,13 @@ module Pod
           after = project_folder + "/PROJECT/" + file.gsub("CPD", prefix)
           File.rename before, after
         end
-      end
 
-      # rename project related files
-      ["PROJECT-Info.plist", "PROJECT-Prefix.pch"].each do |file|
-        before = project_folder + "/PROJECT/" + file
-        after = project_folder + "/PROJECT/" + file.gsub("PROJECT", @configurator.pod_name)
-        File.rename before, after
+        # rename project related files
+        ["PROJECT-Info.plist", "PROJECT-Prefix.pch"].each do |file|
+          before = project_folder + "/PROJECT/" + file
+          after = project_folder + "/PROJECT/" + file.gsub("PROJECT", @configurator.pod_name)
+          File.rename before, after
+        end
       end
 
     end
