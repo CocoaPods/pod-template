@@ -89,7 +89,7 @@ module Pod
 
         puts ""
         puts green_bang + "Setting your name in git to " + answer
-        run_command('git config --global user.name "' + answer + '"')
+        run_command('git config user.name "' + answer + '"')
       end
 
       unless @configurator.user_email.length > 0
@@ -106,7 +106,7 @@ module Pod
 
         puts ""
         puts green_bang + "Setting your email in git to " + answer
-        run_command('git config --global user.email "' + answer + '"')
+        run_command('git config user.email "' + answer + '"')
       end
 
     end
