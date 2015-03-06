@@ -81,7 +81,7 @@ module Pod
         loop do
           show_prompt
 
-          answer = gets.downcase.chomp
+          answer = gets.chomp
           break if answer.length > 0
 
           puts red_bang + "Please enter a name."
