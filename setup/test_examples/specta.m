@@ -15,8 +15,6 @@ describe(@"these will fail", ^{
         
         });
     });
-
-    });
 });
 
 describe(@"these will pass", ^{
