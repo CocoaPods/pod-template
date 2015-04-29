@@ -1,3 +1,5 @@
+#import <XCTest/XCTest.h>
+
 @interface Tests : XCTestCase
 
 @end
