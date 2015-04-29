@@ -33,6 +33,7 @@ module Pod
           configurator.set_test_framework("kiwi")
 
         when :none
+          configurator.set_test_framework("xctest")
       end
 
       snapshots = configurator.ask_with_answers("Would you like to do view based testing", ["Yes", "No"]).to_sym
