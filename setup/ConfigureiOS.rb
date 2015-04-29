@@ -33,7 +33,6 @@ module Pod
           configurator.set_test_framework("kiwi")
 
         when :none
-          configurator.add_line_to_pch "#import <XCTest/XCTest.h>"
           configurator.set_test_framework("xctest")
       end
 
