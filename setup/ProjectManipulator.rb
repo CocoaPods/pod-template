@@ -62,7 +62,7 @@ module Pod
       project_app_group.remove_from_project
       
       # Remove the product reference
-      product = @project.project.products.select { |product| pdouct.path == @configurator.pod_name + ".app" }.first
+      product = @project.products.select { |product| product.path == @configurator.pod_name + ".app" }.first
       product.remove_from_project
 
       # Remove the actual folder + files
