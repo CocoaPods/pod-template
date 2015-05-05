@@ -60,6 +60,10 @@ module Pod
       # Remove the references in xcode
       project_app_group = @project.root_object.main_group.children.select { |group| group.display_name == @configurator.pod_name }.first
       project_app_group.remove_from_project
+      
+      # Remove the product reference
+      product = @project.project.products.select { |product| pdouct.path == @configurator.pod_name + ".app" }.first
+      product.remove_from_project
 
       # Remove the actual folder + files
       `rm -rf templates/ios/Example/PROJECT`
