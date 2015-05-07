@@ -70,7 +70,7 @@ module Pod
       `rm -rf templates/ios/Example/PROJECT`
       `rm -rf templates/swift/Example/PROJECT`
 
-      # Remove the section in the Podfile for the lib by removing top 3 lines after the source
+      # Remove the section in the Podfile for the lib by removing top 3 lines after the source + using_frameworks!
       podfile_path = project_folder + "/Podfile"
       podfile_lines = File.read(podfile_path).lines
       3.times do  podfile_lines.delete_at 3 end

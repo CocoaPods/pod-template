@@ -1,23 +1,49 @@
-// Swift
+# https://github.com/Quick/Quick
 
 import Quick
 import Nimble
 
 class TableOfContentsSpec: QuickSpec {
-  override func spec() {
-    describe("the 'Documentation' directory") {
-      it("has everything you need to get started") {
-        let sections = Directory("Documentation").sections
-        expect(sections).to(contain("Organized Tests with Quick Examples and Example Groups"))
-        expect(sections).to(contain("Installing Quick"))
-      }
+    override func spec() {
+        describe("these will fail") {
 
-      context("if it doesn't have what you're looking for") {
-        it("needs to be updated") {
-          let you = You(awesome: true)
-          expect{you.submittedAnIssue}.toEventually(beTruthy())
+            it("can do maths") {
+                expect(1) == 2
+            }
+
+            it("can read") {
+                expect("number") == "string"
+            }
+
+            it("will eventually fail") {
+                expect("time").toEventually( equal("done") )
+            }
         }
-      }
+
+        context("these will pass") {
+
+            it("can do maths") {
+                expect(23) == 23
+            }
+
+            it("can read") {
+                expect("🐮") == "🐮"
+            }
+
+            it("will exentually pass") {
+                var time = "passing"
+
+                dispatch_async(dispatch_get_main_queue()) {
+                    time = "done"
+                }
+
+                waitUntil { done in
+                    NSThread.sleepForTimeInterval(0.5)
+                    expect(time) == "done"
+
+                    done()
+                }
+            }
+        }
     }
-  }
 }
