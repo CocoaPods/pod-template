@@ -65,8 +65,9 @@ module Pod
       product = @project.products.select { |product| product.path == @configurator.pod_name + ".app" }.first
       product.remove_from_project
 
-      # Remove the actual folder + files
+      # Remove the actual folder + files for both projects
       `rm -rf templates/ios/Example/PROJECT`
+      `rm -rf templates/swift/Example/PROJECT`
 
       # Remove the section in the Podfile for the lib by removing top 3 lines after the source
       podfile_path = project_folder + "/Podfile"
