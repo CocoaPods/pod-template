@@ -1,4 +1,4 @@
-# https://github.com/Quick/Quick
+// https://github.com/Quick/Quick
 
 import Quick
 import Nimble
