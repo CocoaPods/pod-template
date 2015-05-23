@@ -123,9 +123,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		607FACCF1AFB9204008FA782 /* PROJECT */ = {
+		607FACCF1AFB9204008FA782 /* PROJECT_Example */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 607FACEF1AFB9204008FA782 /* Build configuration list for PBXNativeTarget "PROJECT" */;
+			buildConfigurationList = 607FACEF1AFB9204008FA782 /* Build configuration list for PBXNativeTarget "PROJECT_Example" */;
 			buildPhases = (
 				607FACCC1AFB9204008FA782 /* Sources */,
 				607FACCD1AFB9204008FA782 /* Frameworks */,
@@ -135,7 +135,7 @@
 			);
 			dependencies = (
 			);
-			name = PROJECT;
+			name = PROJECT_Example;
 			productName = PROJECT;
 			productReference = 607FACD01AFB9204008FA782 /* PROJECT.app */;
 			productType = "com.apple.product-type.application";
@@ -189,7 +189,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				607FACCF1AFB9204008FA782 /* PROJECT */,
+				607FACCF1AFB9204008FA782 /* PROJECT_Example */,
 				607FACE41AFB9204008FA782 /* Tests */,
 			);
 		};
@@ -238,7 +238,7 @@
 /* Begin PBXTargetDependency section */
 		607FACE71AFB9204008FA782 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 607FACCF1AFB9204008FA782 /* PROJECT */;
+			target = 607FACCF1AFB9204008FA782 /* PROJECT_Example */;
 			targetProxy = 607FACE61AFB9204008FA782 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -410,7 +410,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		607FACEF1AFB9204008FA782 /* Build configuration list for PBXNativeTarget "PROJECT" */ = {
+		607FACEF1AFB9204008FA782 /* Build configuration list for PBXNativeTarget "PROJECT_Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				607FACF01AFB9204008FA782 /* Debug */,
