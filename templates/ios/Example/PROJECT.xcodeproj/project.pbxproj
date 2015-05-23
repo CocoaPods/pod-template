@@ -30,12 +30,12 @@
 			containerPortal = 6003F582195388D10070C39A /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 6003F589195388D20070C39A;
-			remoteInfo = PROJECT;
+			remoteInfo = "PROJECT";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		6003F58A195388D20070C39A /* PROJECT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PROJECT.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6003F58A195388D20070C39A /* PROJECT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = PROJECT.app; path = PROJECT_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		6003F591195388D20070C39A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -126,7 +126,7 @@
 				6003F594195388D20070C39A /* Supporting Files */,
 			);
 			name = "Example for PROJECT";
-			path = PROJECT;
+			path = "PROJECT";
 			sourceTree = "<group>";
 		};
 		6003F594195388D20070C39A /* Supporting Files */ = {
@@ -169,9 +169,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		6003F589195388D20070C39A /* PROJECT */ = {
+		6003F589195388D20070C39A /* PROJECT_Example */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6003F5BF195388D20070C39A /* Build configuration list for PBXNativeTarget "PROJECT" */;
+			buildConfigurationList = 6003F5BF195388D20070C39A /* Build configuration list for PBXNativeTarget "PROJECT_Example" */;
 			buildPhases = (
 				6003F586195388D20070C39A /* Sources */,
 				6003F587195388D20070C39A /* Frameworks */,
@@ -181,8 +181,8 @@
 			);
 			dependencies = (
 			);
-			name = PROJECT;
-			productName = PROJECT;
+			name = "PROJECT_Example";
+			productName = "PROJECT";
 			productReference = 6003F58A195388D20070C39A /* PROJECT.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -200,7 +200,7 @@
 				6003F5B4195388D20070C39A /* PBXTargetDependency */,
 			);
 			name = Tests;
-			productName = PROJECTTests;
+			productName = "PROJECTTests";
 			productReference = 6003F5AE195388D20070C39A /* Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
@@ -232,7 +232,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6003F589195388D20070C39A /* PROJECT */,
+				6003F589195388D20070C39A /* PROJECT_Example */,
 				6003F5AD195388D20070C39A /* Tests */,
 			);
 		};
@@ -284,7 +284,7 @@
 /* Begin PBXTargetDependency section */
 		6003F5B4195388D20070C39A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 6003F589195388D20070C39A /* PROJECT */;
+			target = 6003F589195388D20070C39A /* PROJECT_Example */;
 			targetProxy = 6003F5B3195388D20070C39A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -428,7 +428,7 @@
 		6003F5C3195388D20070C39A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/PROJECT.app/PROJECT";
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -442,7 +442,7 @@
 				);
 				INFOPLIST_FILE = "Tests/Tests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PROJECT_Example.app/PROJECT_Example";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Debug;
@@ -450,7 +450,7 @@
 		6003F5C4195388D20070C39A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/PROJECT.app/PROJECT";
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -460,7 +460,7 @@
 				GCC_PREFIX_HEADER = "Tests/Tests-Prefix.pch";
 				INFOPLIST_FILE = "Tests/Tests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PROJECT_Example.app/PROJECT_Example";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Release;
@@ -477,7 +477,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6003F5BF195388D20070C39A /* Build configuration list for PBXNativeTarget "PROJECT" */ = {
+		6003F5BF195388D20070C39A /* Build configuration list for PBXNativeTarget "PROJECT_Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6003F5C0195388D20070C39A /* Debug */,

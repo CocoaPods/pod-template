@@ -21,7 +21,7 @@
 			containerPortal = 607FACC81AFB9204008FA782 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 607FACCF1AFB9204008FA782;
-			remoteInfo = PROJECT;
+			remoteInfo = "PROJECT";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -86,7 +86,7 @@
 				607FACD31AFB9204008FA782 /* Supporting Files */,
 			);
 			name = "Example for PROJECT";
-			path = PROJECT;
+			path = "PROJECT";
 			sourceTree = "<group>";
 		};
 		607FACD31AFB9204008FA782 /* Supporting Files */ = {
@@ -136,8 +136,8 @@
 			);
 			dependencies = (
 			);
-			name = PROJECT_Example;
-			productName = PROJECT;
+			name = "PROJECT_Example";
+			productName = "PROJECT";
 			productReference = 607FACD01AFB9204008FA782 /* PROJECT_Example.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -349,7 +349,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = PROJECT/Info.plist;
+				INFOPLIST_FILE = "PROJECT/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -360,7 +360,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = PROJECT/Info.plist;
+				INFOPLIST_FILE = "PROJECT/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
