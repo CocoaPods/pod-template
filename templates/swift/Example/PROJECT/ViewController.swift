@@ -2,8 +2,8 @@
 //  ViewController.swift
 //  PROJECT
 //
-//  Created by Orta on 07/05/2015.
-//  Copyright (c) 2015 CocoaPods. All rights reserved.
+//  Created by PROJECT_OWNER on TODAYS_DATE.
+//  Copyright (c) TODAYS_YEAR PROJECT_OWNER. All rights reserved.
 //
 
 import UIKit
@@ -19,7 +19,6 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
 
 }
 
