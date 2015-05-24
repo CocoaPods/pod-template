@@ -85,6 +85,7 @@ module Pod
       rename_template_files
       add_pods_to_podfile
       customise_prefix
+      ensure_carthage_compatibility
       reinitialize_git_repo
       run_pod_install
 
@@ -93,6 +94,11 @@ module Pod
 
     #----------------------------------------#
 
+    def ensure_carthage_compatibility
+      FileUtils.ln_s('Example/Pods/Pods.xcodeproj', '_Carthage.xcodeproj')
+      FileUtils.ln_s("Example/#{pod_name}.xcworkspace", '_Carthage.xcworkspace')
+    end
+
     def run_pod_install
       puts "\nRunning " + "pod install".magenta + " on your new library."
       puts ""
@@ -100,9 +106,6 @@ module Pod
       Dir.chdir("Example") do
         system "pod install"
       end
-
-      FileUtils.ln_s('Example/Pods/Pods.xcodeproj', '_Carthage.xcodeproj')
-      FileUtils.ln_s("Example/#{pod_name}.xcworkspace", '_Carthage.xcworkspace')
     end
 
     def clean_template_files
