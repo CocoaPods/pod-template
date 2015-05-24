@@ -76,7 +76,7 @@ module Pod
       # or a framework won't be created, which is now default
       `touch Pod/Classes/ReplaceMe.m`
 
-      `mv ./templates/swift/* ./`
+      `mv ./templates/ios/* ./`
     end
   end
 
