@@ -102,6 +102,7 @@ module Pod
       end
 
       FileUtils.ln_s('Example/Pods/Pods.xcodeproj', '_Carthage.xcodeproj')
+      FileUtils.ln_s("Example/#{pod_name}.xcworkspace", '_Carthage.xcworkspace')
     end
 
     def clean_template_files
