@@ -21,26 +21,25 @@ module Pod
           configurator.add_pod_to_podfile "Specta"
           configurator.add_pod_to_podfile "Expecta"
 
-          configurator.add_line_to_pch "#define EXP_SHORTHAND"
-          configurator.add_line_to_pch "#import <Specta/Specta.h>"
-          configurator.add_line_to_pch "#import <Expecta/Expecta.h>"
+          configurator.add_line_to_pch "@import Specta;"
+          configurator.add_line_to_pch "@import Expecta;"
 
-          configurator.set_test_framework("specta")
+          configurator.set_test_framework("specta", "m")
 
         when :kiwi
           configurator.add_pod_to_podfile "Kiwi"
-          configurator.add_line_to_pch "#import <Kiwi/Kiwi.h>"
-          configurator.set_test_framework("kiwi")
+          configurator.add_line_to_pch "@import Kiwi;"
+          configurator.set_test_framework("kiwi", "m")
 
         when :none
-          configurator.set_test_framework("xctest")
+          configurator.set_test_framework("xctest", "m")
       end
 
       snapshots = configurator.ask_with_answers("Would you like to do view based testing", ["Yes", "No"]).to_sym
       case snapshots
         when :yes
           configurator.add_pod_to_podfile "FBSnapshotTestCase"
-          configurator.add_line_to_pch "#import <FBSnapshotTestCase/FBSnapshotTestCase.h>"
+          configurator.add_line_to_pch "@import FBSnapshotTestCase;"
 
           if keep_demo == :no
               puts " Putting demo application back in, you cannot do view tests without a host application."
@@ -49,7 +48,7 @@ module Pod
 
           if framework == :specta
               configurator.add_pod_to_podfile "Expecta+Snapshots"
-              configurator.add_line_to_pch "#import <Expecta+Snapshots/EXPMatchers+FBSnapshotTest.h>"
+              configurator.add_line_to_pch "@import Expecta_Snapshots;"
           end
       end
 
@@ -72,8 +71,12 @@ module Pod
         :remove_demo_project => (keep_demo == :no),
         :prefix => prefix
       }).run
+      
+      # There has to be a single file in the Classes dir
+      # or a framework won't be created, which is now default
+      `touch Pod/Classes/ReplaceMe.m`
 
-      `mv ./templates/ios/* ./`
+      FileUtils.mv "./templates/ios/*" "./"
     end
   end
 

@@ -21,6 +21,7 @@ module Pod
       @string_replacements = {
         "PROJECT_OWNER" => @configurator.user_name,
         "TODAYS_DATE" => @configurator.date,
+        "TODAYS_YEAR" => @configurator.date,
         "PROJECT" => @configurator.pod_name,
         "CPD" => @prefix
       }
@@ -65,13 +66,14 @@ module Pod
       product = @project.products.select { |product| product.path == @configurator.pod_name + ".app" }.first
       product.remove_from_project
 
-      # Remove the actual folder + files
+      # Remove the actual folder + files for both projects
       `rm -rf templates/ios/Example/PROJECT`
+      `rm -rf templates/swift/Example/PROJECT`
 
-      # Remove the section in the Podfile for the lib by removing top 3 lines after the source
+      # Remove the section in the Podfile for the lib by removing top 3 lines after the source + using_frameworks!
       podfile_path = project_folder + "/Podfile"
       podfile_lines = File.read(podfile_path).lines
-      3.times do  podfile_lines.delete_at 2 end
+      3.times do  podfile_lines.delete_at 3 end
       podfile_text = podfile_lines.join
       podfile_text = podfile_text.gsub("Tests", @configurator.pod_name)
       File.open(podfile_path, "w") { |file| file.puts podfile_text }
@@ -94,6 +96,8 @@ module Pod
         # change app file prefixes
         ["CPDAppDelegate.h", "CPDAppDelegate.m", "CPDViewController.h", "CPDViewController.m"].each do |file|
           before = project_folder + "/PROJECT/" + file
+          next unless File.exists? before
+          
           after = project_folder + "/PROJECT/" + file.gsub("CPD", prefix)
           File.rename before, after
         end
@@ -101,6 +105,8 @@ module Pod
         # rename project related files
         ["PROJECT-Info.plist", "PROJECT-Prefix.pch"].each do |file|
           before = project_folder + "/PROJECT/" + file
+          next unless File.exists? before
+          
           after = project_folder + "/PROJECT/" + file.gsub("PROJECT", @configurator.pod_name)
           File.rename before, after
         end

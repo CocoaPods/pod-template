@@ -1,3 +1,4 @@
+require 'fileutils'
 require 'colored'
 
 module Pod
@@ -69,7 +70,15 @@ module Pod
     def run
       @message_bank.welcome_message
 
-      ConfigureIOS.perform(configurator: self)
+      framework = self.ask_with_answers("What language do you want to use?", ["ObjC", "Swift"]).to_sym
+      case framework
+        when :swift
+          ConfigureSwift.perform(configurator: self)
+        
+        when :objc
+          ConfigureIOS.perform(configurator: self)
+      end
+      
 
       replace_variables_in_files
       clean_template_files
@@ -132,23 +141,26 @@ module Pod
 
     def customise_prefix
       prefix_path = "Example/Tests/Tests-Prefix.pch"
+      return unless File.exists? prefix_path
+      
       pch = File.read prefix_path
       pch.gsub!("${INCLUDED_PREFIXES}", @prefixes.join("\n  ") )
       File.open(prefix_path, "w") { |file| file.puts pch }
     end
 
-    def set_test_framework(test_type)
-      content_path = "setup/test_examples/" + test_type + ".m"
-      tests_path = "templates/ios/Example/Tests/Tests.m"
+    def set_test_framework(test_type, extension)
+      content_path = "setup/test_examples/" + test_type + "." + extension
+      folder = extension == "m" ? "ios" : "swift"
+      tests_path = "templates/" + folder + "/Example/Tests/Tests." + extension
       tests = File.read tests_path
       tests.gsub!("${TEST_EXAMPLE}", File.read(content_path) )
       File.open(tests_path, "w") { |file| file.puts tests }
     end
 
     def rename_template_files
-      `mv POD_README.md README.md`
-      `mv POD_LICENSE LICENSE`
-      `mv NAME.podspec #{pod_name}.podspec`
+      FileUtils.mv "POD_README.md" "README.md"
+      FileUtils.mv "POD_LICENSE" "LICENSE"
+      FileUtils.mv "NAME.podspec" "#{pod_name}.podspec"
     end
 
     def reinitialize_git_repo
