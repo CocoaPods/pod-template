@@ -100,6 +100,8 @@ module Pod
       Dir.chdir("Example") do
         system "pod install"
       end
+
+      FileUtils.ln_s('Example/Pods/Pods.xcodeproj', '_Carthage.xcodeproj')
     end
 
     def clean_template_files
