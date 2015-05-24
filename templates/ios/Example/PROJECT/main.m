@@ -6,8 +6,7 @@
 //  Copyright (c) 2014 PROJECT_OWNER. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
+@import UIKit;
 #import "CPDAppDelegate.h"
 
 int main(int argc, char * argv[])

@@ -28,7 +28,7 @@ module Pod
 
         when :kiwi
           configurator.add_pod_to_podfile "Kiwi"
-          configurator.add_line_to_pch "#import Kiwi;"
+          configurator.add_line_to_pch "@import Kiwi;"
           configurator.set_test_framework("kiwi", "m")
 
         when :none
@@ -76,7 +76,7 @@ module Pod
       # or a framework won't be created, which is now default
       `touch Pod/Classes/ReplaceMe.m`
 
-      `mv ./templates/ios/* ./`
+      FileUtils.mv "./templates/ios/*" "./"
     end
   end
 

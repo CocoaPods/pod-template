@@ -1,3 +1,4 @@
+require 'fileutils'
 require 'colored'
 
 module Pod
@@ -155,11 +156,11 @@ module Pod
       tests.gsub!("${TEST_EXAMPLE}", File.read(content_path) )
       File.open(tests_path, "w") { |file| file.puts tests }
     end
-    
+
     def rename_template_files
-      `mv POD_README.md README.md`
-      `mv POD_LICENSE LICENSE`
-      `mv NAME.podspec #{pod_name}.podspec`
+      FileUtils.mv "POD_README.md" "README.md"
+      FileUtils.mv "POD_LICENSE" "LICENSE"
+      FileUtils.mv "NAME.podspec" "#{pod_name}.podspec"
     end
 
     def reinitialize_git_repo
