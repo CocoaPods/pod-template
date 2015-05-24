@@ -96,7 +96,6 @@ module Pod
 
     def ensure_carthage_compatibility
       FileUtils.ln_s('Example/Pods/Pods.xcodeproj', '_Carthage.xcodeproj')
-      FileUtils.ln_s("Example/#{pod_name}.xcworkspace", '_Carthage.xcworkspace')
     end
 
     def run_pod_install
