@@ -59,11 +59,11 @@ module Pod
       end
 
       # Remove the references in xcode
-      project_app_group = @project.root_object.main_group.children.select { |group| group.display_name == @configurator.pod_name }.first
+      project_app_group = @project.root_object.main_group.children.select { |group| group.display_name.end_with? @configurator.pod_name }.first
       project_app_group.remove_from_project
       
       # Remove the product reference
-      product = @project.products.select { |product| product.path == @configurator.pod_name + ".app" }.first
+      product = @project.products.select { |product| product.path == @configurator.pod_name + "_Example.app" }.first
       product.remove_from_project
 
       # Remove the actual folder + files for both projects
