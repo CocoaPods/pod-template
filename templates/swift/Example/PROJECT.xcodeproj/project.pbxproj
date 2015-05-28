@@ -21,7 +21,7 @@
 			containerPortal = 607FACC81AFB9204008FA782 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 607FACCF1AFB9204008FA782;
-			remoteInfo = "PROJECT";
+			remoteInfo = PROJECT;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -86,7 +86,7 @@
 				607FACD31AFB9204008FA782 /* Supporting Files */,
 			);
 			name = "Example for PROJECT";
-			path = "PROJECT";
+			path = PROJECT;
 			sourceTree = "<group>";
 		};
 		607FACD31AFB9204008FA782 /* Supporting Files */ = {
@@ -136,14 +136,14 @@
 			);
 			dependencies = (
 			);
-			name = "PROJECT_Example";
-			productName = "PROJECT";
+			name = PROJECT_Example;
+			productName = PROJECT;
 			productReference = 607FACD01AFB9204008FA782 /* PROJECT_Example.app */;
 			productType = "com.apple.product-type.application";
 		};
-		607FACE41AFB9204008FA782 /* Tests */ = {
+		607FACE41AFB9204008FA782 /* PROJECT_Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 607FACF21AFB9204008FA782 /* Build configuration list for PBXNativeTarget "Tests" */;
+			buildConfigurationList = 607FACF21AFB9204008FA782 /* Build configuration list for PBXNativeTarget "PROJECT_Tests" */;
 			buildPhases = (
 				607FACE11AFB9204008FA782 /* Sources */,
 				607FACE21AFB9204008FA782 /* Frameworks */,
@@ -154,7 +154,7 @@
 			dependencies = (
 				607FACE71AFB9204008FA782 /* PBXTargetDependency */,
 			);
-			name = Tests;
+			name = PROJECT_Tests;
 			productName = Tests;
 			productReference = 607FACE51AFB9204008FA782 /* Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -191,7 +191,7 @@
 			projectRoot = "";
 			targets = (
 				607FACCF1AFB9204008FA782 /* PROJECT_Example */,
-				607FACE41AFB9204008FA782 /* Tests */,
+				607FACE41AFB9204008FA782 /* PROJECT_Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -349,7 +349,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = "PROJECT/Info.plist";
+				INFOPLIST_FILE = PROJECT/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -360,7 +360,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = "PROJECT/Info.plist";
+				INFOPLIST_FILE = PROJECT/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -422,7 +422,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		607FACF21AFB9204008FA782 /* Build configuration list for PBXNativeTarget "Tests" */ = {
+		607FACF21AFB9204008FA782 /* Build configuration list for PBXNativeTarget "PROJECT_Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				607FACF31AFB9204008FA782 /* Debug */,
