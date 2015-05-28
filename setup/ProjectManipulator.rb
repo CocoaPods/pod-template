@@ -46,7 +46,7 @@ module Pod
     def remove_demo_project
       app_project = @project.targets.select { |target| target.product_type == "com.apple.product-type.application" }.first
       test_target = @project.targets.select { |target| target.product_type == "com.apple.product-type.bundle.unit-test" }.first
-      test_target.name = @configurator.pod_name
+      test_target.name = @configurator.pod_name + "_Tests"
 
       # Remove the implicit dependency on the app
       test_dependency = test_target.dependencies.first
@@ -61,7 +61,7 @@ module Pod
       # Remove the references in xcode
       project_app_group = @project.root_object.main_group.children.select { |group| group.display_name.end_with? @configurator.pod_name }.first
       project_app_group.remove_from_project
-      
+
       # Remove the product reference
       product = @project.products.select { |product| product.path == @configurator.pod_name + "_Example.app" }.first
       product.remove_from_project
@@ -75,7 +75,6 @@ module Pod
       podfile_lines = File.read(podfile_path).lines
       3.times do  podfile_lines.delete_at 3 end
       podfile_text = podfile_lines.join
-      podfile_text = podfile_text.gsub("Tests", @configurator.pod_name)
       File.open(podfile_path, "w") { |file| file.puts podfile_text }
     end
 
@@ -84,7 +83,6 @@ module Pod
     end
 
     def rename_files
-
       # shared schemes have project specific names
       scheme_path = project_folder + "/PROJECT.xcodeproj/xcshareddata/xcschemes/"
       File.rename(scheme_path + "PROJECT.xcscheme", scheme_path +  @configurator.pod_name + "-Example.xcscheme")
@@ -97,7 +95,7 @@ module Pod
         ["CPDAppDelegate.h", "CPDAppDelegate.m", "CPDViewController.h", "CPDViewController.m"].each do |file|
           before = project_folder + "/PROJECT/" + file
           next unless File.exists? before
-          
+
           after = project_folder + "/PROJECT/" + file.gsub("CPD", prefix)
           File.rename before, after
         end
@@ -106,7 +104,7 @@ module Pod
         ["PROJECT-Info.plist", "PROJECT-Prefix.pch"].each do |file|
           before = project_folder + "/PROJECT/" + file
           next unless File.exists? before
-          
+
           after = project_folder + "/PROJECT/" + file.gsub("PROJECT", @configurator.pod_name)
           File.rename before, after
         end
