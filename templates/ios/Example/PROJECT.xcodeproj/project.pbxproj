@@ -30,7 +30,7 @@
 			containerPortal = 6003F582195388D10070C39A /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 6003F589195388D20070C39A;
-			remoteInfo = PROJECT;
+			remoteInfo = "PROJECT";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -126,7 +126,7 @@
 				6003F594195388D20070C39A /* Supporting Files */,
 			);
 			name = "Example for PROJECT";
-			path = PROJECT;
+			path = "PROJECT";
 			sourceTree = "<group>";
 		};
 		6003F594195388D20070C39A /* Supporting Files */ = {
@@ -181,8 +181,8 @@
 			);
 			dependencies = (
 			);
-			name = PROJECT_Example;
-			productName = PROJECT;
+			name = "PROJECT_Example";
+			productName = "PROJECT";
 			productReference = 6003F58A195388D20070C39A /* PROJECT.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -199,8 +199,8 @@
 			dependencies = (
 				6003F5B4195388D20070C39A /* PBXTargetDependency */,
 			);
-			name = PROJECT_Tests;
-			productName = PROJECTTests;
+			name = "PROJECT_Tests";
+			productName = "PROJECTTests";
 			productReference = 6003F5AE195388D20070C39A /* Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
@@ -212,7 +212,7 @@
 			attributes = {
 				CLASSPREFIX = CPD;
 				LastUpgradeCheck = 0510;
-				ORGANIZATIONNAME = PROJECT_OWNER;
+				ORGANIZATIONNAME = "PROJECT_OWNER";
 				TargetAttributes = {
 					6003F5AD195388D20070C39A = {
 						TestTargetID = 6003F589195388D20070C39A;
