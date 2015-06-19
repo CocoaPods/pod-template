@@ -5,7 +5,7 @@ target '${POD_NAME}_Example', :exclusive => true do
   pod "${POD_NAME}", :path => "../"
 end
 
-target 'Tests', :exclusive => true do
+target '${POD_NAME}_Tests', :exclusive => true do
   pod "${POD_NAME}", :path => "../"
 
   ${INCLUDED_PODS}
