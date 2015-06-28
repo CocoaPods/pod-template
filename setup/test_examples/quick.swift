@@ -31,7 +31,7 @@ class TableOfContentsSpec: QuickSpec {
                 expect("🐮") == "🐮"
             }
 
-            it("will exentually pass") {
+            it("will eventually pass") {
                 var time = "passing"
 
                 dispatch_async(dispatch_get_main_queue()) {
