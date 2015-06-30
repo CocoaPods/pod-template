@@ -130,6 +130,13 @@ module Pod
       end
     end
 
+    def set_platform_ios7
+      template_podfile_path = "templates/ios/Example/Podfile"
+      text = File.read(template_podfile_path)
+      text.gsub!('use_frameworks!', "platform :ios,'7.0'")
+      File.open(template_podfile_path, "w") { |file| file.puts text }
+    end
+    
     def add_pod_to_podfile podname
       @pods_for_podfile << podname
     end
