@@ -9,3 +9,27 @@ target '${POD_NAME}_Tests', :exclusive => true do
 
   ${INCLUDED_PODS}
 end
+
+# Add ${POD_NAME} target to build step of the example project
+# so that we get code coverage reports for ${POD_NAME}
+post_install do |installer|
+  # get ${POD_NAME} target from Pods project
+  pods_project = installer.pods_project
+  pods_targets = pods_project.targets
+  pod_target = pods_targets.select { |target| target.name == "${POD_NAME}" }.uniq.first
+
+  # get example project scheme
+  example_project = installer.aggregate_targets.map(&:user_project_path).uniq.first
+  example_shared_data_dir = Xcodeproj::XCScheme.shared_data_dir(example_project)
+  example_scheme_filename = "${POD_NAME}-Example.xcscheme"
+  example_scheme = Xcodeproj::XCScheme.new File.join(example_shared_data_dir, example_scheme_filename)
+
+  # create a build action that points to the pod target
+  pod_build_action_entry = Xcodeproj::XCScheme::BuildAction::Entry.new pod_target
+
+  # add the pod build action to the example project's build actions
+  example_build_action = example_scheme.build_action
+  example_build_action.add_entry(pod_build_action_entry)
+
+  example_scheme.save!
+end
