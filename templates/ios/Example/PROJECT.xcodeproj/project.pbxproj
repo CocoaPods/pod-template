@@ -178,7 +178,7 @@
 			);
 			dependencies = (
 			);
-			name = PROJECT_Example;
+			name = "PROJECT_Example";
 			productName = "PROJECT";
 			productReference = 6003F58A195388D20070C39A /* PROJECT_Example.app */;
 			productType = "com.apple.product-type.application";
@@ -196,8 +196,8 @@
 			dependencies = (
 				6003F5B4195388D20070C39A /* PBXTargetDependency */,
 			);
-			name = PROJECT_Tests;
-			productName = PROJECTTests;
+			name = "PROJECT_Tests";
+			productName = "PROJECTTests";
 			productReference = 6003F5AE195388D20070C39A /* PROJECT_Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
@@ -209,7 +209,7 @@
 			attributes = {
 				CLASSPREFIX = CPD;
 				LastUpgradeCheck = 0720;
-				ORGANIZATIONNAME = PROJECT_OWNER;
+				ORGANIZATIONNAME = "PROJECT_OWNER";
 				TargetAttributes = {
 					6003F5AD195388D20070C39A = {
 						TestTargetID = 6003F589195388D20070C39A;
