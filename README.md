@@ -22,4 +22,4 @@ It is open to communal input, but adding new features, or new ideas are probably
 
 ## Requirements:
 
-- CocoaPods 0.31
+- CocoaPods 1.0.0
