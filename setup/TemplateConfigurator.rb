@@ -70,7 +70,7 @@ module Pod
     def run
       @message_bank.welcome_message
 
-      framework = self.ask_with_answers("What language do you want to use?", ["ObjC", "Swift"]).to_sym
+      framework = self.ask_with_answers("What language do you want to use?", ["Swift", "ObjC"]).to_sym
       case framework
         when :swift
           ConfigureSwift.perform(configurator: self)
