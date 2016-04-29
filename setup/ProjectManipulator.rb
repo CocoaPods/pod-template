@@ -74,7 +74,7 @@ module Pod
       podfile_path = project_folder + "/Podfile"
       podfile_lines = File.read(podfile_path).lines
       3.times do  podfile_lines.delete_at 2 end
-      podfile_lines.delete_at 4 # inherit-statement
+      podfile_lines.delete_at 3 # inherit-statement
       podfile_lines.pop  # `end` matching the target
       podfile_text = podfile_lines.join
       File.open(podfile_path, "w") { |file| file.puts podfile_text }
