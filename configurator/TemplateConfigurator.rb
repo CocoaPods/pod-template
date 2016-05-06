@@ -49,7 +49,6 @@ module Pod
       end
 
       replace_variables_in_files
-      clean_template_files
       rename_template_files
       add_pods_to_podfile
       customise_prefix
@@ -81,16 +80,8 @@ module Pod
       end
     end
 
-    def clean_template_files
-      ["setup", "templates", ".gitignore", "configure", "LICENSE", "README"].each do |asset|
-        `rm -rf #{asset}`
-      end
-    end
-
     def rename_template_files
-      FileUtils.mv "POD_README.md", "README.md"
-      FileUtils.mv "POD_LICENSE", "LICENSE"
-      FileUtils.mv "NAME.podspec", "#{pod_name}.podspec"
+      FileUtils.mv "PROJECT.podspec", "#{pod_name}.podspec"
     end
 
     def add_pods_to_podfile
