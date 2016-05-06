@@ -18,9 +18,9 @@ module Pod
         when :quick
           configurator.add_pod_to_podfile "Quick', '~> 0.8"
           configurator.add_pod_to_podfile "Nimble', '~> 3.0"
-          `cp "templates/test_examples/quick.swift" "templates/swift/Example/Tests/Tests.swift"`
+          `mv "templates/test_examples/quick.swift" "templates/swift/Example/Tests/Tests.swift"`
         when :none
-          `cp "templates/test_examples/xctest.swift" "templates/swift/Example/Tests/Tests.swift"`
+          `mv "templates/test_examples/xctest.swift" "templates/swift/Example/Tests/Tests.swift"`
       end
 
       snapshots = configurator.ask_with_answers("Would you like to do view based testing", ["Yes", "No"]).to_sym
