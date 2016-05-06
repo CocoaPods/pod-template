@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  FDChessboardView iOS
+//  PROJECT iOS
 //
 //  Created by Full Decent on 4/25/16.
 //  Copyright © 2016 William Entriken. All rights reserved.

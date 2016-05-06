@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D9FEF4B31CCEBC0D0013FBDD"
-               BuildableName = "FDChessboardView.framework"
-               BlueprintName = "FDChessboardView"
-               ReferencedContainer = "container:FDChessboardView.xcodeproj">
+               BuildableName = "PROJECT.framework"
+               BlueprintName = "PROJECT"
+               ReferencedContainer = "container:PROJECT.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D9FEF4BD1CCEBC0F0013FBDD"
-               BuildableName = "FDChessboardViewTests.xctest"
-               BlueprintName = "FDChessboardViewTests"
-               ReferencedContainer = "container:FDChessboardView.xcodeproj">
+               BuildableName = "PROJECTTests.xctest"
+               BlueprintName = "PROJECTTests"
+               ReferencedContainer = "container:PROJECT.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -43,9 +43,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D9FEF4B31CCEBC0D0013FBDD"
-            BuildableName = "FDChessboardView.framework"
-            BlueprintName = "FDChessboardView"
-            ReferencedContainer = "container:FDChessboardView.xcodeproj">
+            BuildableName = "PROJECT.framework"
+            BlueprintName = "PROJECT"
+            ReferencedContainer = "container:PROJECT.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -65,9 +65,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D9FEF4B31CCEBC0D0013FBDD"
-            BuildableName = "FDChessboardView.framework"
-            BlueprintName = "FDChessboardView"
-            ReferencedContainer = "container:FDChessboardView.xcodeproj">
+            BuildableName = "PROJECT.framework"
+            BlueprintName = "PROJECT"
+            ReferencedContainer = "container:PROJECT.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -83,9 +83,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D9FEF4B31CCEBC0D0013FBDD"
-            BuildableName = "FDChessboardView.framework"
-            BlueprintName = "FDChessboardView"
-            ReferencedContainer = "container:FDChessboardView.xcodeproj">
+            BuildableName = "PROJECT.framework"
+            BlueprintName = "PROJECT"
+            ReferencedContainer = "container:PROJECT.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

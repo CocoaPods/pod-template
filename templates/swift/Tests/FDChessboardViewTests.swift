@@ -1,15 +1,15 @@
 //
-//  FDChessboardViewTests.swift
-//  FDChessboardViewTests
+//  PROJECTTests.swift
+//  PROJECTTests
 //
 //  Created by William Entriken on 4/25/16.
 //  Copyright © 2016 William Entriken. All rights reserved.
 //
 
 import XCTest
-@testable import FDChessboardView
+@testable import PROJECT
 
-class FDChessboardViewTests: XCTestCase {
+class PROJECTTests: XCTestCase {
 
     override func setUp() {
         super.setUp()

@@ -12,8 +12,8 @@
 		D94BE1C21CCEBF2C0042282A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D94BE1C01CCEBF2C0042282A /* Main.storyboard */; };
 		D94BE1C41CCEBF2C0042282A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D94BE1C31CCEBF2C0042282A /* Assets.xcassets */; };
 		D94BE1D31CCEC1730042282A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94BE1D21CCEC1730042282A /* AppDelegate.swift */; };
-		D99B39051CD68FF400E56AE2 /* FDChessboardView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D99B39011CD68FD900E56AE2 /* FDChessboardView.framework */; };
-		D99B39091CD6907300E56AE2 /* FDChessboardView.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = D99B39011CD68FD900E56AE2 /* FDChessboardView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D99B39051CD68FF400E56AE2 /* PROJECT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D99B39011CD68FD900E56AE2 /* PROJECT.framework */; };
+		D99B39091CD6907300E56AE2 /* PROJECT.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = D99B39011CD68FD900E56AE2 /* PROJECT.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D9CBAE971CCEC4ED006EC128 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9CBAE961CCEC4ED006EC128 /* Launch Screen.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -27,24 +27,24 @@
 		};
 		D99B39001CD68FD900E56AE2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = D99B38FB1CD68FD900E56AE2 /* FDChessboardView.xcodeproj */;
+			containerPortal = D99B38FB1CD68FD900E56AE2 /* PROJECT.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = D9FEF4B41CCEBC0D0013FBDD;
-			remoteInfo = FDChessboardView;
+			remoteInfo = PROJECT;
 		};
 		D99B39021CD68FD900E56AE2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = D99B38FB1CD68FD900E56AE2 /* FDChessboardView.xcodeproj */;
+			containerPortal = D99B38FB1CD68FD900E56AE2 /* PROJECT.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = D9FEF4BE1CCEBC0F0013FBDD;
-			remoteInfo = FDChessboardViewTests;
+			remoteInfo = PROJECTTests;
 		};
 		D99B39061CD6903C00E56AE2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = D99B38FB1CD68FD900E56AE2 /* FDChessboardView.xcodeproj */;
+			containerPortal = D99B38FB1CD68FD900E56AE2 /* PROJECT.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = D9FEF4B31CCEBC0D0013FBDD;
-			remoteInfo = FDChessboardView;
+			remoteInfo = PROJECT;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -55,7 +55,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				D99B39091CD6907300E56AE2 /* FDChessboardView.framework in Copy Frameworks */,
+				D99B39091CD6907300E56AE2 /* PROJECT.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -72,7 +72,7 @@
 		D94BE1C31CCEBF2C0042282A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D94BE1C81CCEBF2C0042282A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D94BE1D21CCEC1730042282A /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D99B38FB1CD68FD900E56AE2 /* FDChessboardView.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FDChessboardView.xcodeproj; path = ../FDChessboardView.xcodeproj; sourceTree = "<group>"; };
+		D99B38FB1CD68FD900E56AE2 /* PROJECT.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PROJECT.xcodeproj; path = ../PROJECT.xcodeproj; sourceTree = "<group>"; };
 		D9CBAE961CCEC4ED006EC128 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = "Launch Screen.storyboard"; path = "Base.lproj/Launch Screen.storyboard"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -88,7 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D99B39051CD68FF400E56AE2 /* FDChessboardView.framework in Frameworks */,
+				D99B39051CD68FF400E56AE2 /* PROJECT.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,7 +110,7 @@
 				D94BE1BB1CCEBF2C0042282A /* Source */,
 				D904BBC11CDD3F170083BD78 /* Tests */,
 				D94BE1BA1CCEBF2C0042282A /* Products */,
-				D99B38FB1CD68FD900E56AE2 /* FDChessboardView.xcodeproj */,
+				D99B38FB1CD68FD900E56AE2 /* PROJECT.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -139,8 +139,8 @@
 		D99B38FC1CD68FD900E56AE2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D99B39011CD68FD900E56AE2 /* FDChessboardView.framework */,
-				D99B39031CD68FD900E56AE2 /* FDChessboardViewTests.xctest */,
+				D99B39011CD68FD900E56AE2 /* PROJECT.framework */,
+				D99B39031CD68FD900E56AE2 /* PROJECTTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -181,7 +181,7 @@
 				D99B39071CD6903C00E56AE2 /* PBXTargetDependency */,
 			);
 			name = "iOS Example";
-			productName = "FDChessboardView iOS";
+			productName = "PROJECT iOS";
 			productReference = D94BE1B91CCEBF2C0042282A /* iOS Example.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -218,7 +218,7 @@
 			projectReferences = (
 				{
 					ProductGroup = D99B38FC1CD68FD900E56AE2 /* Products */;
-					ProjectRef = D99B38FB1CD68FD900E56AE2 /* FDChessboardView.xcodeproj */;
+					ProjectRef = D99B38FB1CD68FD900E56AE2 /* PROJECT.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -230,17 +230,17 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		D99B39011CD68FD900E56AE2 /* FDChessboardView.framework */ = {
+		D99B39011CD68FD900E56AE2 /* PROJECT.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			path = FDChessboardView.framework;
+			path = PROJECT.framework;
 			remoteRef = D99B39001CD68FD900E56AE2 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		D99B39031CD68FD900E56AE2 /* FDChessboardViewTests.xctest */ = {
+		D99B39031CD68FD900E56AE2 /* PROJECTTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			path = FDChessboardViewTests.xctest;
+			path = PROJECTTests.xctest;
 			remoteRef = D99B39021CD68FD900E56AE2 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
@@ -294,7 +294,7 @@
 		};
 		D99B39071CD6903C00E56AE2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = FDChessboardView;
+			name = PROJECT;
 			targetProxy = D99B39061CD6903C00E56AE2 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -426,7 +426,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Source/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "net.phor.FDChessboardView.FDChessboardView-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.phor.PROJECT.PROJECT-iOS";
 				PRODUCT_NAME = "iOS Example";
 			};
 			name = Debug;
@@ -437,7 +437,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Source/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "net.phor.FDChessboardView.FDChessboardView-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.phor.PROJECT.PROJECT-iOS";
 				PRODUCT_NAME = "iOS Example";
 			};
 			name = Release;

@@ -1,6 +1,6 @@
 //
-//  FDChessboardView.swift
-//  FDChessboardView
+//  PROJECT.swift
+//  PROJECT
 //
 //  Created by William Entriken on 2/2/16.
 //  Copyright © 2016 William Entriken. All rights reserved.
@@ -54,35 +54,35 @@ public enum FDChessboardPiece: String {
     case BlackKing = "bk"
 }
 
-public protocol FDChessboardViewDataSource: class {
+public protocol PROJECTDataSource: class {
     /// What piece is on the square?
-    func chessboardView(board: FDChessboardView, pieceForSquare square: FDChessboardSquare) -> FDChessboardPiece?
+    func chessboardView(board: PROJECT, pieceForSquare square: FDChessboardSquare) -> FDChessboardPiece?
 
     /// The last move
-    func chessboardViewLastMove(board: FDChessboardView) -> (from:FDChessboardSquare, to:FDChessboardSquare)?
+    func chessboardViewLastMove(board: PROJECT) -> (from:FDChessboardSquare, to:FDChessboardSquare)?
 
     /// The premove
-    func chessboardViewPremove(board: FDChessboardView) -> (from:FDChessboardSquare, to:FDChessboardSquare)?
+    func chessboardViewPremove(board: PROJECT) -> (from:FDChessboardSquare, to:FDChessboardSquare)?
 }
 
-public protocol FDChessboardViewDelegate: class {
+public protocol PROJECTDelegate: class {
     /// Where can this piece move to?
-    func chessboardView(board: FDChessboardView, legalDestinationsForPieceAtSquare from: FDChessboardSquare) -> [FDChessboardSquare]
+    func chessboardView(board: PROJECT, legalDestinationsForPieceAtSquare from: FDChessboardSquare) -> [FDChessboardSquare]
 
     /// Before a move happens (cannot be stopped)
-    func chessboardView(board: FDChessboardView, willMoveFrom from: FDChessboardSquare, to: FDChessboardSquare)
+    func chessboardView(board: PROJECT, willMoveFrom from: FDChessboardSquare, to: FDChessboardSquare)
 
     /// After a move happened
-    func chessboardView(board: FDChessboardView, didMoveFrom from: FDChessboardSquare, to: FDChessboardSquare)
+    func chessboardView(board: PROJECT, didMoveFrom from: FDChessboardSquare, to: FDChessboardSquare)
 
     /// Before a move happens (cannot be stopped)
-    func chessboardView(board: FDChessboardView, willMoveFrom from: FDChessboardSquare, to: FDChessboardSquare, withPromotion promotion: FDChessboardPiece)
+    func chessboardView(board: PROJECT, willMoveFrom from: FDChessboardSquare, to: FDChessboardSquare, withPromotion promotion: FDChessboardPiece)
 
     /// After a move happened
-    func chessboardView(board: FDChessboardView, didMoveFrom from: FDChessboardSquare, to: FDChessboardSquare, withPromotion promotion: FDChessboardPiece)
+    func chessboardView(board: PROJECT, didMoveFrom from: FDChessboardSquare, to: FDChessboardSquare, withPromotion promotion: FDChessboardPiece)
 }
 
-public class FDChessboardView: UIView {
+public class PROJECT: UIView {
     public var lightBackgroundColor = UIColor(red: 222.0/255, green:196.0/255, blue:160.0/255, alpha:1)
     public var darkBackgroundColor = UIColor(red: 160.0/255, green:120.0/255, blue:55.0/255, alpha:1)
     public var targetBackgroundColor = UIColor(hue: 0.75, saturation:0.5, brightness:0.5, alpha:1.0)
@@ -91,13 +91,13 @@ public class FDChessboardView: UIView {
     public var premoveColor = UIColor(hue: 0.15, saturation:0.5, brightness:0.5, alpha:1.0)
     public var pieceGraphicsDirectoryPath: String? = nil
 
-    public weak var dataSource: FDChessboardViewDataSource? = nil {
+    public weak var dataSource: PROJECTDataSource? = nil {
         didSet {
             reloadData()
         }
     }
 
-    public weak var delegate: FDChessboardViewDelegate? = nil
+    public weak var delegate: PROJECTDelegate? = nil
 
     public var doesAnimate: Bool = true
     public var doesShowLegalSquares: Bool = true

@@ -1,16 +1,16 @@
 //
 //  ViewController.swift
-//  FDChessboardView
+//  PROJECT
 //
 //  Created by William Entriken on 2/3/16.
 //  Copyright © 2016 William Entriken. All rights reserved.
 //
 
 import UIKit
-import FDChessboardView
+import PROJECT
 
 class ViewController: UIViewController {
-    @IBOutlet var chessboard: FDChessboardView!
+    @IBOutlet var chessboard: PROJECT!
 
     var piecesByIndex = [Int : FDChessboardPiece]()
 
@@ -53,16 +53,16 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: FDChessboardViewDataSource {
-    func chessboardView(board: FDChessboardView, pieceForSquare square: FDChessboardSquare) -> FDChessboardPiece? {
+extension ViewController: PROJECTDataSource {
+    func chessboardView(board: PROJECT, pieceForSquare square: FDChessboardSquare) -> FDChessboardPiece? {
         return piecesByIndex[square.index]
     }
 
-    func chessboardViewLastMove(board: FDChessboardView) -> (from: FDChessboardSquare, to: FDChessboardSquare)? {
+    func chessboardViewLastMove(board: PROJECT) -> (from: FDChessboardSquare, to: FDChessboardSquare)? {
         return nil
     }
 
-    func chessboardViewPremove(board: FDChessboardView) -> (from: FDChessboardSquare, to: FDChessboardSquare)? {
+    func chessboardViewPremove(board: PROJECT) -> (from: FDChessboardSquare, to: FDChessboardSquare)? {
         return nil
     }
 }
