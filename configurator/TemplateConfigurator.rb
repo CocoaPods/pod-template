@@ -19,12 +19,14 @@ module Pod
     end
 
     def date
-      Time.now.strftime "%Y-%m-/%d"
+      Time.now.strftime "%m/%d/%Y"
     end
 
     def podfile_path
       'Example/Podfile'
     end
+
+    #----------------------------------------#
 
     def initialize(pod_name)
       @pod_name = pod_name
@@ -33,11 +35,9 @@ module Pod
       @message_bank = MessageBank.new(self)
     end
 
-    #----------------------------------------#
-
     def run
       @message_bank.welcome_message
-      prepare_staging_directory
+      create_staging_directory
 
       framework = self.ask_with_answers("What language do you want to use?", ["Swift", "ObjC"]).to_sym
       case framework
@@ -60,11 +60,8 @@ module Pod
       @message_bank.farewell_message
     end
 
-    def prepare_staging_directory
-      [".git", "configurator", ".gitignore", "configure", "LICENSE", "README"].each do |asset|
-        `rm -rf #{asset}`
-      end
-      FileUtils.cp_r 'templates/baseline/.', '.'
+    def create_staging_directory
+      FileUtils.mv "templates/baseline", "staging"
     end
 
     def replace_variables_in_files
