@@ -117,8 +117,7 @@ module Pod
     end
 
     def finalize_staging_directory
-        `rm -rf templates`
-      end
+      `rm -rf templates`
     end
 
     #----------------------------------------#
