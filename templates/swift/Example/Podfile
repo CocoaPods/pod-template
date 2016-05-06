@@ -1,11 +1,11 @@
+source 'https://github.com/CocoaPods/Specs.git'
 use_frameworks!
 
-target '${POD_NAME}_Example', :exclusive => true do
-  pod '${POD_NAME}', :path => '../'
-end
-
-target '${POD_NAME}_Tests', :exclusive => true do
+target 'iOS Example' do
   pod '${POD_NAME}', :path => '../'
 
-  ${INCLUDED_PODS}
+  target 'Tests' do
+    inherit! :search_paths
+    ${INCLUDED_PODS}
+  end
 end
