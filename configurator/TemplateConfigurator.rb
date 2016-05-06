@@ -52,7 +52,6 @@ module Pod
       rename_template_files
       add_pods_to_podfile
       customise_prefix
-      rename_classes_folder
       reinitialize_git_repo
       run_pod_install
 
@@ -100,10 +99,6 @@ module Pod
       pch = File.read prefix_path
       pch.gsub!("${INCLUDED_PREFIXES}", @prefixes.join("\n  ") )
       File.open(prefix_path, "w") { |file| file.puts pch }
-    end
-
-    def rename_classes_folder
-      FileUtils.mv "POD", @pod_name
     end
 
     def reinitialize_git_repo
