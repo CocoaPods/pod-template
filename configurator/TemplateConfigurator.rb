@@ -54,6 +54,7 @@ module Pod
       customise_prefix
       run_pod_install
       initialize_git_repo
+      finalize_staging_directory
 
       @message_bank.farewell_message
     end
@@ -66,7 +67,7 @@ module Pod
     end
 
     def replace_variables_in_files
-      file_names = ['LICENSE', 'README.md', 'PROJECT.podspec', '.travis.yml', podfile_path]
+      file_names = ['LICENSE', 'README.md', 'PROJECT.podspec', '.travis.yml', 'PROJECT.xcworkspace/contents.xcworkspacedata', podfile_path]
       file_names.each do |file_name|
         text = File.read(file_name)
         text.gsub!("${POD_NAME}", @pod_name)
@@ -81,6 +82,8 @@ module Pod
 
     def rename_template_files
       FileUtils.mv "PROJECT.podspec", "#{pod_name}.podspec"
+      FileUtils.mv "PROJECT.xcodeproj", "#{pod_name}.xcodeproj"
+      FileUtils.mv "PROJECT.xcworkspace", "#{pod_name}.xcworkspace"
     end
 
     def add_pods_to_podfile
@@ -117,8 +120,7 @@ module Pod
     end
 
     def finalize_staging_directory
-        `rm -rf templates`
-      end
+      `rm -rf templates`
     end
 
     #----------------------------------------#
