@@ -1,26 +1,30 @@
 pod-template
 ============
 
-An opinionated template for creating a Pod with the following features:
+An opinionated template for Swift and Objective-C frameworks with the following features:
 
-- Git as the source control management system
+- Prompt-based project generation
+- Support for CocoaPods, Carthage and Swift Package Manager
 - Clean folder structure
-- Project generation
 - MIT license
 - Testing as a standard
 - Turnkey access to Travis CI
-- Also supports Carthage
+
 
 ## Getting started
 
-There are two reasons for wanting to work on this template, making your own or improving the one for everyone's. In both cases you will want to work with the ruby classes inside the `setup` folder, and the example base template that it works on from inside `template/ios/`. 
+Most CocoaPods framework developers will use `pod-template` by running `pod lib create POD_NAME`. You can also follow along with the guide at: https://guides.cocoapods.org/making/using-pod-lib-create.html
+
+You must run **CocoaPods 1.0.0+** to use this template.
+
+
+## Hacking
+
+To modify these templates or to create your own, please fork this repository or edit locally. Test your changes by running `pod lib create --template-url='YOUR_GIT_URL' POD_NAME`. Note that you can use a local git URL such as `file:///Users/username/Developer/pod-template`.
+
+To understand how this repository is used by CocoaPods, please start with `configure`. You can see the calling code in `configure_template` defined in [lib/cocoapods/command/lib.rb](https://github.com/CocoaPods/CocoaPods/blob/master/lib/cocoapods/command/lib.rb).
+
 
 ## Best practices
 
-The command `pod lib create` aims to be ran along with this guide: http://guides.cocoapods.org/making/using-pod-lib-create.html so any changes of flow should be updated there also.
-
-It is open to communal input, but adding new features, or new ideas are probably better off being discussed in an issue first. In general we try to think if an average Xcode user is going to use this feature or not, if it's unlikely is it a _very strongly_ encouraged best practice ( ala testing / CI. ) If it's something useful for saving a few minutes every deploy, or isn't easily documented in the guide it is likely to be denied in order to keep this project as simple as possible.
-
-## Requirements:
-
-- CocoaPods 1.0.0+
+This project welcomes communal input, but please discuss new features and new ideas as an issue before sending a pull request. In general we try to think if an average Xcode user is going to use this feature or not, if it's unlikely is it a _very strongly_ encouraged best practice (à la testing / continuous integration). If it's something useful for saving a few minutes every deploy, or isn't easily documented in the guide it is likely to be denied in order to keep this project as simple as possible.
