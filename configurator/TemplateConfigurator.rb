@@ -54,6 +54,7 @@ module Pod
       customise_prefix
       run_pod_install
       initialize_git_repo
+      finalize_staging_directory
 
       @message_bank.farewell_message
     end
