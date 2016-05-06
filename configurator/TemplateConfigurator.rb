@@ -82,6 +82,8 @@ module Pod
 
     def rename_template_files
       FileUtils.mv "PROJECT.podspec", "#{pod_name}.podspec"
+      FileUtils.mv "PROJECT.xcodeproj", "#{pod_name}.xcodeproj"
+      FileUtils.mv "PROJECT.xcworkspace", "#{pod_name}.xcworkspace"
     end
 
     def add_pods_to_podfile
