@@ -70,7 +70,7 @@ module Pod
     def replace_variables_in_files
       file_names = ['LICENSE', 'README.md', 'PROJECT.podspec', '.travis.yml', podfile_path]
       file_names.each do |file_name|
-        text = File.read('staging/' + file_name)
+        text = File.read(file_name)
         text.gsub!("${POD_NAME}", @pod_name)
         text.gsub!("${REPO_NAME}", @pod_name.gsub('+', '-'))
         text.gsub!("${USER_NAME}", user_name)
