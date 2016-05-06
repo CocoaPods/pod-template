@@ -1,10 +1,10 @@
-FDChessboardView
+PROJECT
 ================
 
-[![CI Status](http://img.shields.io/travis/fulldecent/FDChessboardView.svg?style=flat)](https://travis-ci.org/fulldecent/FDChessboardView)
-[![Version](https://img.shields.io/cocoapods/v/FDChessboardView.svg?style=flat)](http://cocoadocs.org/docsets/FDChessboardView)
-[![License](https://img.shields.io/cocoapods/l/FDChessboardView.svg?style=flat)](http://cocoadocs.org/docsets/FDChessboardView)
-[![Platform](https://img.shields.io/cocoapods/p/FDChessboardView.svg?style=flat)](http://cocoadocs.org/docsets/FDChessboardView)
+[![CI Status](http://img.shields.io/travis/fulldecent/PROJECT.svg?style=flat)](https://travis-ci.org/fulldecent/PROJECT)
+[![Version](https://img.shields.io/cocoapods/v/PROJECT.svg?style=flat)](http://cocoadocs.org/docsets/PROJECT)
+[![License](https://img.shields.io/cocoapods/l/PROJECT.svg?style=flat)](http://cocoadocs.org/docsets/PROJECT)
+[![Platform](https://img.shields.io/cocoapods/p/PROJECT.svg?style=flat)](http://cocoadocs.org/docsets/PROJECT)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 <a href="http://imgur.com/kcBBESo"><img width=200 height=200 src="http://i.imgur.com/kcBBESo.png" title="Hosted by imgur.com" /></a>
@@ -25,7 +25,7 @@ Usage
 Import, add the view to your storyboard and then set it up with:
 
 ```swift
-import FDChessboardView
+import PROJECT
 ...
 self.chessboard.dataSource = self
 ```
@@ -33,7 +33,7 @@ self.chessboard.dataSource = self
 Then implement the data source:
 
 ```swift
-func chessboardView(board: FDChessboardView, pieceForSquare square: FDChessboardSquare) -> FDChessboardPiece? {
+func chessboardView(board: PROJECT, pieceForSquare square: FDChessboardSquare) -> FDChessboardPiece? {
     return piecesByIndex[square.index] // you figure out which piece to show
 }
 ```
@@ -52,16 +52,16 @@ Installation
 $ gem install cocoapods
 ```
 
-> CocoaPods 0.39.0+ is required to build FDChessboardView 0.1.0+.
+> CocoaPods 0.39.0+ is required to build PROJECT 0.1.0+.
 
-To integrate FDChessboardView into your Xcode project using CocoaPods, specify it in your `Podfile`:
+To integrate PROJECT into your Xcode project using CocoaPods, specify it in your `Podfile`:
 
 ```ruby
 source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '9.0'
 use_frameworks!
 
-pod 'FDChessboardView', '~> 0.1'
+pod 'PROJECT', '~> 0.1'
 ```
 
 Then, run the following command:
@@ -81,13 +81,13 @@ $ brew update
 $ brew install carthage
 ```
 
-To integrate FDChessboardView into your Xcode project using Carthage, specify it in your `Cartfile`:
+To integrate PROJECT into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
-github "fulldecent/FDChessboardView" ~> 0.1
+github "fulldecent/PROJECT" ~> 0.1
 ```
 
-Run `carthage update` to build the framework and drag the built `FDChessboardView.framework` into your Xcode project.
+Run `carthage update` to build the framework and drag the built `PROJECT.framework` into your Xcode project.
 
 
 Upcoming Features

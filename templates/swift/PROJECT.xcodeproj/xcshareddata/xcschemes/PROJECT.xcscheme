@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0720"
+   LastUpgradeVersion = "0730"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6003F589195388D20070C39A"
-               BuildableName = "PROJECT_Example.app"
-               BlueprintName = "PROJECT_Example"
+               BlueprintIdentifier = "D9FEF4B31CCEBC0D0013FBDD"
+               BuildableName = "PROJECT.framework"
+               BlueprintName = "PROJECT"
                ReferencedContainer = "container:PROJECT.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,9 +32,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6003F5AD195388D20070C39A"
-               BuildableName = "PROJECT_Tests.xctest"
-               BlueprintName = "PROJECT_Tests"
+               BlueprintIdentifier = "D9FEF4BD1CCEBC0F0013FBDD"
+               BuildableName = "PROJECTTests.xctest"
+               BlueprintName = "PROJECTTests"
                ReferencedContainer = "container:PROJECT.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -42,9 +42,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6003F589195388D20070C39A"
-            BuildableName = "PROJECT_Example.app"
-            BlueprintName = "PROJECT_Example"
+            BlueprintIdentifier = "D9FEF4B31CCEBC0D0013FBDD"
+            BuildableName = "PROJECT.framework"
+            BlueprintName = "PROJECT"
             ReferencedContainer = "container:PROJECT.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -61,16 +61,15 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6003F589195388D20070C39A"
-            BuildableName = "PROJECT_Example.app"
-            BlueprintName = "PROJECT_Example"
+            BlueprintIdentifier = "D9FEF4B31CCEBC0D0013FBDD"
+            BuildableName = "PROJECT.framework"
+            BlueprintName = "PROJECT"
             ReferencedContainer = "container:PROJECT.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -80,16 +79,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6003F589195388D20070C39A"
-            BuildableName = "PROJECT_Example.app"
-            BlueprintName = "PROJECT_Example"
+            BlueprintIdentifier = "D9FEF4B31CCEBC0D0013FBDD"
+            BuildableName = "PROJECT.framework"
+            BlueprintName = "PROJECT"
             ReferencedContainer = "container:PROJECT.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
