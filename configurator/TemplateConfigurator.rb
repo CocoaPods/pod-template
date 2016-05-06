@@ -52,9 +52,8 @@ module Pod
       rename_template_files
       add_pods_to_podfile
       customise_prefix
-      rename_classes_folder
-      reinitialize_git_repo
       run_pod_install
+      initialize_git_repo
 
       @message_bank.farewell_message
     end
@@ -102,16 +101,6 @@ module Pod
       File.open(prefix_path, "w") { |file| file.puts pch }
     end
 
-    def rename_classes_folder
-      FileUtils.mv "POD", @pod_name
-    end
-
-    def reinitialize_git_repo
-      `rm -rf .git`
-      `git init`
-      `git add -A`
-    end
-
     def run_pod_install
       puts "\nRunning " + "pod install".magenta + " on your new library."
       puts ""
@@ -119,9 +108,17 @@ module Pod
       Dir.chdir("Example") do
         system "pod install"
       end
+    end
 
-      `git add Example/#{pod_name}.xcodeproj/project.pbxproj`
+    def initialize_git_repo
+      `git init`
+      `git add -A`
       `git commit -m "Initial commit"`
+    end
+
+    def finalize_staging_directory
+        `rm -rf templates`
+      end
     end
 
     #----------------------------------------#
