@@ -71,6 +71,7 @@ module Pod
       file_names.each do |file_name|
         text = File.read(file_name)
         text.gsub!("${POD_NAME}", @pod_name)
+        text.gsub!("PROJECT", @pod_name)
         text.gsub!("${REPO_NAME}", @pod_name.gsub('+', '-'))
         text.gsub!("${USER_NAME}", user_name)
         text.gsub!("${USER_EMAIL}", user_email)
@@ -79,6 +80,8 @@ module Pod
         File.open(file_name, "w") { |file| file.puts text }
       end
     end
+
+
 
     def rename_template_files
       # Move schemes
