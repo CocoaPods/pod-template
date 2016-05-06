@@ -117,8 +117,7 @@ module Pod
     end
 
     def finalize_staging_directory
-      ["templates"].each do |asset|
-        `rm -rf #{asset}`
+        `rm -rf templates`
       end
     end
 
