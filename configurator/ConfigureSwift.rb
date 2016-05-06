@@ -18,9 +18,9 @@ module Pod
         when :quick
           configurator.add_pod_to_podfile "Quick', '~> 0.8"
           configurator.add_pod_to_podfile "Nimble', '~> 3.0"
-          `cp "setup/test_examples/quick.swift" "templates/swift/Example/Tests/Tests.swift"`
+          `cp "templates/test_examples/quick.swift" "templates/swift/Example/Tests/Tests.swift"`
         when :none
-          `cp "setup/test_examples/xctest.swift" "templates/swift/Example/Tests/Tests.swift"`
+          `cp "templates/test_examples/xctest.swift" "templates/swift/Example/Tests/Tests.swift"`
       end
 
       snapshots = configurator.ask_with_answers("Would you like to do view based testing", ["Yes", "No"]).to_sym
@@ -47,10 +47,6 @@ module Pod
       }).run
 
       `mv ./templates/swift/* ./`
-
-      # There has to be a single file in the Classes dir
-      # or a framework won't be created
-      `touch Pod/Classes/ReplaceMe.swift`
     end
   end
 end

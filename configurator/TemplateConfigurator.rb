@@ -19,14 +19,12 @@ module Pod
     end
 
     def date
-      Time.now.strftime "%m/%d/%Y"
+      Time.now.strftime "%Y-%m-/%d"
     end
 
     def podfile_path
       'Example/Podfile'
     end
-
-    #----------------------------------------#
 
     def initialize(pod_name)
       @pod_name = pod_name
@@ -35,9 +33,11 @@ module Pod
       @message_bank = MessageBank.new(self)
     end
 
+    #----------------------------------------#
+
     def run
       @message_bank.welcome_message
-      create_staging_directory
+      prepare_staging_directory
 
       framework = self.ask_with_answers("What language do you want to use?", ["Swift", "ObjC"]).to_sym
       case framework
@@ -49,7 +49,6 @@ module Pod
       end
 
       replace_variables_in_files
-      clean_template_files
       rename_template_files
       add_pods_to_podfile
       customise_prefix
@@ -60,14 +59,17 @@ module Pod
       @message_bank.farewell_message
     end
 
-    def create_staging_directory
-      FileUtils.mv "templates/baseline", "staging"
+    def prepare_staging_directory
+      [".git", "configurator", ".gitignore", "configure", "LICENSE", "README"].each do |asset|
+        `rm -rf #{asset}`
+      end
+      FileUtils.cp_r 'templates/baseline/.', '.'
     end
 
     def replace_variables_in_files
       file_names = ['LICENSE', 'README.md', 'PROJECT.podspec', '.travis.yml', podfile_path]
       file_names.each do |file_name|
-        text = File.read('staging/' + file_name)
+        text = File.read(file_name)
         text.gsub!("${POD_NAME}", @pod_name)
         text.gsub!("${REPO_NAME}", @pod_name.gsub('+', '-'))
         text.gsub!("${USER_NAME}", user_name)
@@ -78,16 +80,8 @@ module Pod
       end
     end
 
-    def clean_template_files
-      ["setup", "templates", ".gitignore", "configure", "LICENSE", "README"].each do |asset|
-        `rm -rf #{asset}`
-      end
-    end
-
     def rename_template_files
-      FileUtils.mv "POD_README.md", "README.md"
-      FileUtils.mv "POD_LICENSE", "LICENSE"
-      FileUtils.mv "NAME.podspec", "#{pod_name}.podspec"
+      FileUtils.mv "PROJECT.podspec", "#{pod_name}.podspec"
     end
 
     def add_pods_to_podfile
