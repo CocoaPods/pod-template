@@ -1,6 +1,8 @@
 pod-template
 ============
 
+[![Build Status](https://travis-ci.org/fulldecent/pod-template.svg?branch=master)](https://travis-ci.org/fulldecent/pod-template)
+
 An opinionated template for Swift and Objective-C frameworks with the following features:
 
 - Prompt-based project generation
