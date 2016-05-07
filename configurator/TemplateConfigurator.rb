@@ -60,7 +60,7 @@ module Pod
     end
 
     def prepare_staging_directory
-      [".git", "configurator", ".gitignore", "configure", "LICENSE", "README"].each do |asset|
+      [".git", "configurator", "spec", ".gitignore", ".travis.yml", "configure", "Gemfile", "LICENSE", "Rakefile", "README.md", ].each do |asset|
         `rm -rf #{asset}`
       end
       FileUtils.cp_r 'templates/baseline/.', '.'
