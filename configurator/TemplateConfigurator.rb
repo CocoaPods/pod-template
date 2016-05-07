@@ -81,8 +81,6 @@ module Pod
       end
     end
 
-
-
     def rename_template_files
       # Move schemes
       FileUtils.mv "PROJECT.xcodeproj/xcshareddata/xcschemes/PROJECT.xcscheme", "PROJECT.xcodeproj/xcshareddata/xcschemes/#{pod_name}.xcscheme"

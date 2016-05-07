@@ -1,0 +1,3 @@
+language: ruby
+sudo: false
+# By default, this runs rake on the latest ruby
