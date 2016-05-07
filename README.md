@@ -6,7 +6,7 @@ pod-template
 An opinionated template for Swift and Objective-C frameworks with the following features:
 
 - Prompt-based project generation
-- Support for CocoaPods, Carthage and Swift Package Manager
+- Support for CocoaPods, Carthage and project layout compatible with Swift Package Manager
 - Clean folder structure
 - MIT license
 - Testing as a standard
