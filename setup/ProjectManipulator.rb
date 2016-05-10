@@ -82,7 +82,6 @@ end
 RUBY
       File.open(podfile_path, "w") { |file| file.puts podfile_text }
     end
-    end
 
     def project_folder
       File.dirname @xcodeproj_path
