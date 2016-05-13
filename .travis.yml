@@ -1,5 +1,16 @@
 language: ruby
 sudo: false
+
+cache: bundler
+rvm:
+  # OS X 10.9.5-10.10.0 (2.0.0-p481)
+  - system
+  # OS X 10.9.3-10.9.4
+  - 2.0.0-p451
+  # OS X 10.9.0-10.9.2
+  # TODO: currently unavailable: https://github.com/travis-ci/travis-ci/issues/2918
+  # - 2.0.0-p247
+
 # By default, this runs rake on the latest ruby and executes
 # bundle install --jobs=3 --retry=3
 # rake
