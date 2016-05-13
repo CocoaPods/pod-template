@@ -10,3 +10,12 @@ rvm:
 # By default, this runs rake on the latest ruby and executes
 # bundle install --jobs=3 --retry=3
 # rake
+
+# HACK TO GET GIT 1.9
+# see also https://github.com/CocoaPods/CocoaPods/blob/master/lib/cocoapods/command/lib.rb#L70
+addons:
+  apt:
+    sources:
+      - git-core
+    packages:
+      - git
