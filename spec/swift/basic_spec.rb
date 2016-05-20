@@ -14,6 +14,7 @@ describe "Swift Integration" do
       command = "bundle exec pod lib create --verbose --template-url='file://#{Dir.pwd}/../../' TestPod"
       Open3.popen3({'PATH' => path}, command) {|stdin, stdout, stderr, wait_thr|
         stdin.write "swift\n\n\n\n\n\n\n"
+        stdin.close
         print stdout.readlines.join {"\n"}
         print stderr.readlines.join {"\n"}
       }
