@@ -13,4 +13,4 @@ rvm:
 
 script:
  - git fetch --unshallow
- - rake
+ - bundle exec rake
