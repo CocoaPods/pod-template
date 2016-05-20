@@ -12,10 +12,10 @@ describe "Idiot Mode" do
       puts "Vendoring with default settings"
       path = Dir.pwd + '/../mock:' + ENV['PATH']
       command = "bundle exec pod lib create --verbose --template-url='file://#{Dir.pwd}/../../' TestPod"
-      Open3.popen3({'PATH' => path}, command) {|stdin, stdout, stderr, wait_thr|
+      Open3.popen2e({'PATH' => path}, command) { |stdin, stdout_and_stderr, wait_thr|
         stdin.write "\n\n\n\n\n\n\n"
-        print stdout.readlines.join {"\n"}
-        print stderr.readlines.join {"\n"}
+        stdin.close
+        print stdout_and_stderr.readlines.join {"\n"}
       }
       expect(1).to eq(1)
     end
