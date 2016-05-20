@@ -11,7 +11,7 @@ describe "Idiot Mode" do
     Dir.chdir('spec/staging') do
       puts "Vendoring with default settings"
       path = Dir.pwd + '/../mock:' + ENV['PATH']
-      command = "bundle exec pod lib create --template-url='file://#{Dir.pwd}/../../' TestPod"
+      command = "bundle exec pod lib create --verbose --template-url='file://#{Dir.pwd}/../../' TestPod"
       Open3.popen3({'PATH' => path}, command) {|stdin, stdout, stderr, wait_thr|
         stdin.write "\n\n\n\n\n\n\n"
         print stdout.readlines.join {"\n"}
