@@ -1,0 +1,7 @@
+#!/usr/local/bin/ruby
+
+puts "Mock open:"
+
+ARGV.each do |a|
+  puts "  Argument: #{a}"
+end

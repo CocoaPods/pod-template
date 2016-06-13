@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 $current_dir = File.dirname(File.expand_path(__FILE__))
-Dir[File.join($current_dir, "setup/*.rb")].each do |file|
+Dir[File.join($current_dir, "configurator/*.rb")].each do |file|
   require_relative(file)
 end
 
