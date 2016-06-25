@@ -1,13 +1,13 @@
 use_frameworks!
 
-target '${POD_NAME}_Example', :exclusive => true do
-  pod '${POD_NAME}', :path => '../'
-end
-
-target '${POD_NAME}_Tests', :exclusive => true do
+target '${POD_NAME}_Example' do
   pod '${POD_NAME}', :path => '../'
 
-  ${INCLUDED_PODS}
+  target '${POD_NAME}_Tests' do
+    inherit! :search_paths
+
+    ${INCLUDED_PODS}
+  end
 end
 
 # Add a ${POD_NAME} target to the build steps of the example project
