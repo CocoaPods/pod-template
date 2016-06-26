@@ -2,8 +2,8 @@
 //  PROJECTTests.swift
 //  PROJECTTests
 //
-//  Created by William Entriken on 4/25/16.
-//  Copyright © 2016 William Entriken. All rights reserved.
+//  Created by PROJECT_OWNER on TODAYS_DATE.
+//  Copyright © 2016 PROJECT_OWNER. All rights reserved.
 //
 
 import XCTest

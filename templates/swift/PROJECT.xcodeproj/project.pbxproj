@@ -154,7 +154,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0730;
-				ORGANIZATIONNAME = "William Entriken";
+				ORGANIZATIONNAME = "PROJECT_OWNER";
 				TargetAttributes = {
 					D9FEF4B31CCEBC0D0013FBDD = {
 						CreatedOnToolsVersion = 7.3;

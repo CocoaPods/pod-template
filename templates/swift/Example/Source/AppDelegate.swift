@@ -2,8 +2,8 @@
 //  AppDelegate.swift
 //  PROJECT iOS
 //
-//  Created by Full Decent on 4/25/16.
-//  Copyright © 2016 William Entriken. All rights reserved.
+//  Created by PROJECT_OWNER on TODAYS_DATE.
+//  Copyright (c) TODAYS_YEAR PROJECT_OWNER. All rights reserved.
 //
 
 import UIKit
