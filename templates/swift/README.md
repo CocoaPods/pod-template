@@ -1,5 +1,4 @@
-PROJECT
-================
+# PROJECT
 
 [![CI Status](http://img.shields.io/travis/fulldecent/PROJECT.svg?style=flat)](https://travis-ci.org/fulldecent/PROJECT)
 [![Version](https://img.shields.io/cocoapods/v/PROJECT.svg?style=flat)](http://cocoadocs.org/docsets/PROJECT)
@@ -7,40 +6,16 @@ PROJECT
 [![Platform](https://img.shields.io/cocoapods/p/PROJECT.svg?style=flat)](http://cocoadocs.org/docsets/PROJECT)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
-<a href="http://imgur.com/kcBBESo"><img width=200 height=200 src="http://i.imgur.com/kcBBESo.png" title="Hosted by imgur.com" /></a>
-
-Features
-========
-
- * High resolution graphics
- * Customizable themes and game graphics
- * Supports all single board chess variants: suicide, losers, atomic, etc.
- * Supports games with odd piece arrangement and non-standard castling (Fisher 960)
- * Very clean API, this is just a view
- * Supports a minimum deployment target of iOS 8 or OS X Mavericks (10.9)
-
-Usage
-=====
-
-Import, add the view to your storyboard and then set it up with:
-
-```swift
-import PROJECT
-...
-self.chessboard.dataSource = self
-```
-
-Then implement the data source:
-
-```swift
-func chessboardView(board: PROJECT, pieceForSquare square: FDChessboardSquare) -> FDChessboardPiece? {
-    return piecesByIndex[square.index] // you figure out which piece to show
-}
-```
+<a href="placehold.it/400?text=Screen+shot"><img width=200 height=200 src="placehold.it/400?text=Screen+shot" alt="Screenshot" /></a>
 
 
-Installation
-============
+## Example
+
+To run the example project, clone the repo, and run `pod install` from the Example directory first.
+
+
+## Requirements
+
 
 ## Installation
 
@@ -52,8 +27,6 @@ Installation
 $ gem install cocoapods
 ```
 
-> CocoaPods 0.39.0+ is required to build PROJECT 0.1.0+.
-
 To integrate PROJECT into your Xcode project using CocoaPods, specify it in your `Podfile`:
 
 ```ruby
@@ -61,7 +34,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '9.0'
 use_frameworks!
 
-pod 'PROJECT', '~> 0.1'
+pod 'PROJECT'
 ```
 
 Then, run the following command:
@@ -69,6 +42,7 @@ Then, run the following command:
 ```bash
 $ pod install
 ```
+
 
 ### Carthage
 
@@ -90,19 +64,11 @@ github "fulldecent/PROJECT" ~> 0.1
 Run `carthage update` to build the framework and drag the built `PROJECT.framework` into your Xcode project.
 
 
-Upcoming Features
-=================
+## Author
 
-These following items are in the API for discussion and awaiting implementation:
-
- * Display for last move
- * Mutable game state (i.e. can move the pieces)
- * Animation for piece moves
- * Highlighting of legal squares for a piece after begin dragging
- * Premove
+${USER_NAME}, ${USER_EMAIL}
 
 
-See Also
-===========
+## License
 
-See also Kibitz for Mac which is making a comeback https://github.com/fulldecent/kibitz
+${POD_NAME} is available under the MIT license. See the LICENSE file for more info.

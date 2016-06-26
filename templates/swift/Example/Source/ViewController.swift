@@ -10,7 +10,7 @@ import UIKit
 import PROJECT
 
 class ViewController: UIViewController {
-    @IBOutlet var chessboard: PROJECT!
+    @IBOutlet var theView: PROJECT!
 
     override func viewDidLoad() {
         super.viewDidLoad()
