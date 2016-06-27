@@ -8,3 +8,10 @@ target 'iOS Example' do
     ${INCLUDED_PODS}
   end
 end
+
+# Add a ${POD_NAME} target to the build steps of the example project
+# so that we get code coverage reports for ${POD_NAME}
+post_install do |installer|
+  require_relative "Tests/setup_code_coverage.rb"
+  enable_code_coverage "${POD_NAME}", installer
+end
