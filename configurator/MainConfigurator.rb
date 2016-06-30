@@ -1,9 +1,17 @@
+# THIS IS THE MAIN ENTRY POINT FOR CONFIGURATION
+#
+# We are responsible to:
+#  - Prepare the staging/ directory
+#  - Ask some questions, delegate to other configurators if necessary
+#  - Do other stuff in staging/ directory
+#  - Deploy the staging/ directory
+#
+
 require 'fileutils'
 require 'colored'
 
 module Pod
-  class TemplateConfigurator
-
+  class MainConfigurator
     attr_reader :pod_name, :pods_for_podfile, :prefixes, :test_example_file, :username, :email
 
     def user_name
@@ -38,37 +46,40 @@ module Pod
     def run
       @message_bank.welcome_message
       prepare_staging_directory
+      use_baseline_template
 
       framework = self.ask_with_answers("What language do you want to use?", ["Swift", "ObjC"]).to_sym
       case framework
         when :swift
-          ConfigureSwift.perform(configurator: self)
-
+          SwiftConfigurator.perform(configurator: self)
         when :objc
-          ConfigureObjC.perform(configurator: self)
+          ObjCConfigurator.perform(configurator: self)
       end
 
-      replace_variables_in_files
-      rename_template_files
-      add_pods_to_podfile
-      customise_prefix
-      run_pod_install
+      Dir.chdir('spec/staging') do
+        replace_variables_in_files
+        replace_variables_in_file_names
+        add_pods_to_podfile(podfile_path)
+        customise_prefix
+        run_pod_install
+        initialize_git_repo
+      end
+
       finalize_staging_directory
-      initialize_git_repo
 
       @message_bank.farewell_message
     end
 
     def prepare_staging_directory
-      [".git", "configurator", "spec", ".gitignore", ".travis.yml", "configure", "Gemfile", "LICENSE", "Rakefile", "README.md", ].each do |asset|
-        `rm -rf #{asset}`
-      end
-      FileUtils.cp_r 'templates/baseline/.', '.'
+      FileUtils::mkdir_p 'staging'
+    end
+
+    def use_baseline_template
+      FileUtils.cp_r 'templates/baseline/.', 'staging'
     end
 
     def replace_variables_in_files
-      file_names = ['LICENSE', 'README.md', 'PROJECT.podspec', '.travis.yml', 'PROJECT.xcworkspace/contents.xcworkspacedata', podfile_path]
-      file_names.each do |file_name|
+      Dir.glob("**/*") do |file_name|
         text = File.read(file_name)
         text.gsub!("${POD_NAME}", @pod_name)
         text.gsub!("PROJECT", @pod_name)
@@ -81,17 +92,20 @@ module Pod
       end
     end
 
-    def rename_template_files
-      # Move schemes
-      FileUtils.mv "PROJECT.xcodeproj/xcshareddata/xcschemes/PROJECT.xcscheme", "PROJECT.xcodeproj/xcshareddata/xcschemes/#{pod_name}.xcscheme"
-
-      # Move project files
-      FileUtils.mv "PROJECT.podspec", "#{pod_name}.podspec"
-      FileUtils.mv "PROJECT.xcodeproj", "#{pod_name}.xcodeproj"
-      FileUtils.mv "PROJECT.xcworkspace", "#{pod_name}.xcworkspace"
+    def replace_variables_in_file_names
+      Dir.foreach('.') do |file_name|
+        if file_name.match('PROJECT')
+          FileUtils.mv file_name, file_name.gsub('PROJECT', @pod_name)
+        end
+        if File.directory?(file_name.gsub('PROJECT', @pod_name))
+          Dir.chdir('spec/staging') do
+            replace_variables_in_file_names
+          end
+        end
+      end
     end
 
-    def add_pods_to_podfile
+    def add_pods_to_podfile(podfile_path)
       podfile = File.read podfile_path
       podfile_content = @pods_for_podfile.map do |pod|
         "pod '" + pod + "'"
@@ -118,14 +132,20 @@ module Pod
       end
     end
 
-    def finalize_staging_directory
-      `rm -rf templates`
-    end
-
     def initialize_git_repo
       `git init`
       `git add -A`
       `git commit -m "Initial commit"`
+    end
+
+    def deploy_staging_directory
+      Dir.foreach('.') do |file_name|
+        next if file_name == '.' or file_name == '..'
+        next if file_name == 'staging'
+        FileUtils.rm_rf file_name
+      end
+      FileUtils.cp_r 'staging/.', '.'
+      FileUtils.rm_rf 'staging'
     end
 
     #----------------------------------------#

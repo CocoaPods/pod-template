@@ -1,5 +1,12 @@
+# THIS PERFORMS ADDITIONAL CONFIGURATION IF THE USER SELECT THE SWIFT OPTION
+#
+# We are responsible to:
+#  - Prepare items in the templates/swift directory
+#  - Move items from templates/swift to the staging directory
+#
+
 module Pod
-  class ConfigureSwift
+  class SwiftConfigurator
     attr_reader :configurator
 
     def self.perform(options)
@@ -46,7 +53,7 @@ module Pod
         :prefix => ""
       }).run
 
-      `mv ./templates/swift/* ./`
+      `mv ./templates/swift/* ./staging`
     end
   end
 end
