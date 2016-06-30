@@ -99,7 +99,7 @@ module Pod
           FileUtils.mv file_name, file_name.gsub('PROJECT', @pod_name)
         end
         if File.directory?(file_name.gsub('PROJECT', @pod_name))
-          Dir.chdir('spec/staging') do
+          Dir.chdir(file_name.gsub('PROJECT', @pod_name)) do
             replace_variables_in_file_names
           end
         end
