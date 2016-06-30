@@ -10,7 +10,7 @@ describe "Swift Integration" do
     Dir.chdir('spec/staging') do
       puts "Vendoring with default settings"
       path = Dir.pwd + '/../mock:' + ENV['PATH']
-      command = "bundle exec pod lib create --verbose --template-url='file://#{Dir.pwd}/../../' TestPod-swift1"
+      command = "bundle exec pod lib create --verbose --template-url='file://#{Dir.pwd}/../../' TestPodSwift1"
       Open3.popen2e({'PATH' => path}, command) { |stdin, stdout_and_stderr, wait_thr|
         stdin.write "swift\n\n\n\n\n\n\n"
         stdin.close

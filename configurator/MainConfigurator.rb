@@ -56,7 +56,7 @@ module Pod
           ObjCConfigurator.perform(configurator: self)
       end
 
-      Dir.chdir('spec/staging') do
+      Dir.chdir('staging') do
         replace_variables_in_files
         replace_variables_in_file_names
         add_pods_to_podfile(podfile_path)

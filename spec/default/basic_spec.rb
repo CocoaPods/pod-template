@@ -10,7 +10,7 @@ describe "Idiot Mode" do
     Dir.chdir('spec/staging') do
       puts "Vendoring with simple settings"
       path = Dir.pwd + '/../mock:' + ENV['PATH']
-      command = "bundle exec pod lib create --verbose --template-url='file://#{Dir.pwd}/../../' TestPod-default1"
+      command = "bundle exec pod lib create --verbose --template-url='file://#{Dir.pwd}/../../' TestPodDefault1"
       Open3.popen2e({'PATH' => path}, command) { |stdin, stdout_and_stderr, wait_thr|
         stdin.write "Bob Smith\nbob.smith@example.com\n\n\n\n\n\n"
         stdin.close
