@@ -53,8 +53,8 @@ module Pod
       add_pods_to_podfile
       customise_prefix
       run_pod_install
-      initialize_git_repo
       finalize_staging_directory
+      initialize_git_repo
 
       @message_bank.farewell_message
     end
@@ -118,14 +118,14 @@ module Pod
       end
     end
 
+    def finalize_staging_directory
+      `rm -rf templates`
+    end
+
     def initialize_git_repo
       `git init`
       `git add -A`
       `git commit -m "Initial commit"`
-    end
-
-    def finalize_staging_directory
-      `rm -rf templates`
     end
 
     #----------------------------------------#
