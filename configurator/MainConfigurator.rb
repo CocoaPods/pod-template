@@ -65,7 +65,7 @@ module Pod
         initialize_git_repo
       end
 
-      finalize_staging_directory
+      deploy_staging_directory
 
       @message_bank.farewell_message
     end
@@ -80,6 +80,7 @@ module Pod
 
     def replace_variables_in_files
       Dir.glob("**/*") do |file_name|
+        next if File.directory?(file_name)
         text = File.read(file_name)
         text.gsub!("${POD_NAME}", @pod_name)
         text.gsub!("PROJECT", @pod_name)
