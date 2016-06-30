@@ -95,6 +95,7 @@ module Pod
 
     def replace_variables_in_file_names
       Dir.foreach('.') do |file_name|
+        next if file_name == '.' or file_name == '..'
         if file_name.match('PROJECT')
           FileUtils.mv file_name, file_name.gsub('PROJECT', @pod_name)
         end
