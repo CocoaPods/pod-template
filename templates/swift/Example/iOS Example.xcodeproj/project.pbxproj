@@ -69,11 +69,11 @@
 		D94BE1B91CCEBF2C0042282A /* iOS Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D94BE1BE1CCEBF2C0042282A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D94BE1C11CCEBF2C0042282A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		D94BE1C31CCEBF2C0042282A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		D94BE1C81CCEBF2C0042282A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D94BE1C31CCEBF2C0042282A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Source/Assets.xcassets; sourceTree = "<group>"; };
+		D94BE1C81CCEBF2C0042282A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Source/Info.plist; sourceTree = "<group>"; };
 		D94BE1D21CCEC1730042282A /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D99B38FB1CD68FD900E56AE2 /* PROJECT.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PROJECT.xcodeproj; path = ../PROJECT.xcodeproj; sourceTree = "<group>"; };
-		D9CBAE961CCEC4ED006EC128 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = "Launch Screen.storyboard"; path = "Base.lproj/Launch Screen.storyboard"; sourceTree = "<group>"; };
+		D9CBAE961CCEC4ED006EC128 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = "Launch Screen.storyboard"; path = "Source/Base.lproj/Launch Screen.storyboard"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				D94BE1BB1CCEBF2C0042282A /* Source */,
+				D9A11F981D507CB500348273 /* Supporting Files */,
 				D904BBC11CDD3F170083BD78 /* Tests */,
 				D94BE1BA1CCEBF2C0042282A /* Products */,
 				D99B38FB1CD68FD900E56AE2 /* PROJECT.xcodeproj */,
@@ -126,12 +127,8 @@
 		D94BE1BB1CCEBF2C0042282A /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				D9CBAE961CCEC4ED006EC128 /* Launch Screen.storyboard */,
 				D94BE1D21CCEC1730042282A /* AppDelegate.swift */,
 				D94BE1BE1CCEBF2C0042282A /* ViewController.swift */,
-				D94BE1C01CCEBF2C0042282A /* Main.storyboard */,
-				D94BE1C31CCEBF2C0042282A /* Assets.xcassets */,
-				D94BE1C81CCEBF2C0042282A /* Info.plist */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -143,6 +140,17 @@
 				D99B39031CD68FD900E56AE2 /* PROJECTTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		D9A11F981D507CB500348273 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D9CBAE961CCEC4ED006EC128 /* Launch Screen.storyboard */,
+				D94BE1C01CCEBF2C0042282A /* Main.storyboard */,
+				D94BE1C31CCEBF2C0042282A /* Assets.xcassets */,
+				D94BE1C81CCEBF2C0042282A /* Info.plist */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,7 +201,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0730;
-				ORGANIZATIONNAME = "PROJECT_OWNER";
+				ORGANIZATIONNAME = PROJECT_OWNER;
 				TargetAttributes = {
 					D904BBBF1CDD3F170083BD78 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -306,6 +314,7 @@
 				D94BE1C11CCEBF2C0042282A /* Base */,
 			);
 			name = Main.storyboard;
+			path = Source;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -452,6 +461,7 @@
 				D904BBC81CDD3F170083BD78 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D94BE1B41CCEBF2C0042282A /* Build configuration list for PBXProject "iOS Example" */ = {
 			isa = XCConfigurationList;
