@@ -1,7 +1,7 @@
 pod-template
 ============
 
-[![Build Status](https://travis-ci.org/fulldecent/pod-template.svg?branch=master)](https://travis-ci.org/fulldecent/pod-template)
+[![Build Status](https://travis-ci.org/CocoaPods/pod-template.svg?branch=develop)](https://travis-ci.org/CocoaPods/pod-template)
 
 An opinionated template for Swift and Objective-C frameworks with the following features:
 
@@ -22,9 +22,19 @@ You must run **CocoaPods 1.0.0+** to use this template.
 
 ## Hacking
 
-To modify these templates or to create your own, please fork this repository or edit locally. Test your changes by running `pod lib create --template-url='YOUR_GIT_URL' POD_NAME`. Note that you can use a local git URL such as `file:///Users/username/Developer/pod-template`.
-
-To understand how this repository is used by CocoaPods, please start with `configure`. You can see the calling code in `configure_template` defined in [lib/cocoapods/command/lib.rb](https://github.com/CocoaPods/CocoaPods/blob/master/lib/cocoapods/command/lib.rb).
+- Clone and `cd` into the directory
+- Run some stuff you need to run for any Ruby project:
+  - `gem install bundler`
+  - `bundle install`
+- Run the included test suite:
+  - `rake`
+  - Note: this uses the latest released version of CocoaPods to run this template (retrieved with Bundler above)
+- Try it for real:
+  - `cd ~/Desktop`
+  - `pod lib create --verbose --template-url='file:///PATH/TO/pod-template' NewPod`
+  - Note: this uses your INSTALLED VERSION of `pod` to run this template
+- Hacking:
+  - **Note: you MUST commit to git BEFORE you do `rake` testing or `pod lib create` testing. Both of those tools pull from master in your local repository. Learn how to squash commits :-)**
 
 
 ## Best practices
