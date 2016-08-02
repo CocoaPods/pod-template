@@ -53,7 +53,7 @@ module Pod
         when :swift
           SwiftConfigurator.perform(configurator: self)
         when :objc
-          ObjCConfigurator.perform(configurator: self)
+          ObjectiveCConfigurator.perform(configurator: self)
       end
 
       Dir.chdir('staging') do
