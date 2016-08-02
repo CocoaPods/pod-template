@@ -27,7 +27,7 @@
 		D94BE1CE1CCEBFD80042282A /* PROJECT.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PROJECT.swift; sourceTree = "<group>"; };
 		D9E066861CCECB3200E0D7CB /* wk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wk.png; sourceTree = "<group>"; };
 		D9FEF4B41CCEBC0D0013FBDD /* PROJECT.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PROJECT.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D9FEF4B91CCEBC0D0013FBDD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D9FEF4B91CCEBC0D0013FBDD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Source/Info.plist; sourceTree = "<group>"; };
 		D9FEF4BE1CCEBC0F0013FBDD /* PROJECTTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PROJECTTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9FEF4C31CCEBC100013FBDD /* PROJECTTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PROJECTTests.swift; sourceTree = "<group>"; };
 		D9FEF4C51CCEBC100013FBDD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -52,6 +52,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D9A11F971D507C7D00348273 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D9FEF4B91CCEBC0D0013FBDD /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		D9E0667E1CCECAFF00E0D7CB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -65,6 +73,7 @@
 			children = (
 				D9FEF4B61CCEBC0D0013FBDD /* Source */,
 				D9E0667E1CCECAFF00E0D7CB /* Resources */,
+				D9A11F971D507C7D00348273 /* Supporting Files */,
 				D9FEF4C21CCEBC0F0013FBDD /* Tests */,
 				D9FEF4B51CCEBC0D0013FBDD /* Products */,
 			);
@@ -83,7 +92,6 @@
 			isa = PBXGroup;
 			children = (
 				D94BE1CE1CCEBFD80042282A /* PROJECT.swift */,
-				D9FEF4B91CCEBC0D0013FBDD /* Info.plist */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -154,7 +162,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0730;
-				ORGANIZATIONNAME = "PROJECT_OWNER";
+				ORGANIZATIONNAME = PROJECT_OWNER;
 				TargetAttributes = {
 					D9FEF4B31CCEBC0D0013FBDD = {
 						CreatedOnToolsVersion = 7.3;
