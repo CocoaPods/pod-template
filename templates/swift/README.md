@@ -1,6 +1,6 @@
 # PROJECT
 
-[![CI Status](http://img.shields.io/travis/fulldecent/PROJECT.svg?style=flat)](https://travis-ci.org/fulldecent/PROJECT)
+[![CI Status](http://img.shields.io/travis/<GITHUB_USERNAME>/PROJECT.svg?style=flat)](https://travis-ci.org/<GITHUB_USERNAME>/PROJECT)
 [![Version](https://img.shields.io/cocoapods/v/PROJECT.svg?style=flat)](https://cocoapods.org/pods/PROJECT)
 [![License](https://img.shields.io/cocoapods/l/PROJECT.svg?style=flat)](https://cocoapods.org/pods/PROJECT)
 [![Platform](https://img.shields.io/cocoapods/p/PROJECT.svg?style=flat)](https://cocoapods.org/pods/PROJECT)
@@ -56,7 +56,7 @@ $ brew install carthage
 To integrate PROJECT into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
-github "fulldecent/PROJECT" ~> 0.1
+github "<GITHUB_USERNAME>/PROJECT" ~> 0.1
 ```
 
 Run `carthage update` to build the framework and drag the built `PROJECT.framework` into your Xcode project.
