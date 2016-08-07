@@ -30,8 +30,6 @@ $ gem install cocoapods
 To integrate PROJECT into your Xcode project using CocoaPods, specify it in your `Podfile`:
 
 ```ruby
-source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, '9.0'
 use_frameworks!
 
 pod 'PROJECT'
