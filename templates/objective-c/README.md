@@ -1,9 +1,9 @@
 # PROJECT
 
 [![CI Status](http://img.shields.io/travis/fulldecent/PROJECT.svg?style=flat)](https://travis-ci.org/fulldecent/PROJECT)
-[![Version](https://img.shields.io/cocoapods/v/PROJECT.svg?style=flat)](http://cocoadocs.org/docsets/PROJECT)
-[![License](https://img.shields.io/cocoapods/l/PROJECT.svg?style=flat)](http://cocoadocs.org/docsets/PROJECT)
-[![Platform](https://img.shields.io/cocoapods/p/PROJECT.svg?style=flat)](http://cocoadocs.org/docsets/PROJECT)
+[![Version](https://img.shields.io/cocoapods/v/PROJECT.svg?style=flat)](https://cocoapods.org/pods/PROJECT)
+[![License](https://img.shields.io/cocoapods/l/PROJECT.svg?style=flat)](https://cocoapods.org/pods/PROJECT)
+[![Platform](https://img.shields.io/cocoapods/p/PROJECT.svg?style=flat)](https://cocoapods.org/pods/PROJECT)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 <a href="placehold.it/400?text=Screen+shot"><img width=200 height=200 src="placehold.it/400?text=Screen+shot" alt="Screenshot" /></a>
