@@ -3,9 +3,8 @@ sudo: false
 
 cache: bundler
 rvm:
-  - 2.2
-  # OS X 10.9.3-10.9.4
-  - 2.0.0-p451
+  - 2.2.5
+  - head
 
 # By default, this runs rake on the latest ruby and executes
 # bundle install --jobs=3 --retry=3
