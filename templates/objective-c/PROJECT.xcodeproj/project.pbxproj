@@ -20,7 +20,7 @@
 			containerPortal = D9FEF4AB1CCEBC0D0013FBDD /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = D9FEF4B31CCEBC0D0013FBDD;
-			remoteInfo = PROJECT;
+			remoteInfo = "PROJECT;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -135,8 +135,8 @@
 			);
 			dependencies = (
 			);
-			name = PROJECT;
-			productName = PROJECT;
+			name = "PROJECT;
+			productName = "PROJECT";
 			productReference = D9FEF4B41CCEBC0D0013FBDD /* PROJECT.framework */;
 			productType = "com.apple.product-type.framework";
 		};
@@ -153,8 +153,8 @@
 			dependencies = (
 				D9FEF4C11CCEBC0F0013FBDD /* PBXTargetDependency */,
 			);
-			name = PROJECTTests;
-			productName = PROJECTTests;
+			name = "PROJECTTests";
+			productName = "PROJECTTests";
 			productReference = D9FEF4BE1CCEBC0F0013FBDD /* PROJECTTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
@@ -166,7 +166,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0730;
-				ORGANIZATIONNAME = PROJECT_OWNER;
+				ORGANIZATIONNAME = "PROJECT_OWNER";
 				TargetAttributes = {
 					D9FEF4B31CCEBC0D0013FBDD = {
 						CreatedOnToolsVersion = 7.3;

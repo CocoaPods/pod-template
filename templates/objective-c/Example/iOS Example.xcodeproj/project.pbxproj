@@ -30,7 +30,7 @@
 			containerPortal = D99B38FB1CD68FD900E56AE2 /* PROJECT.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = D9FEF4B41CCEBC0D0013FBDD;
-			remoteInfo = PROJECT;
+			remoteInfo = "PROJECT";
 		};
 		D99B39021CD68FD900E56AE2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -44,7 +44,7 @@
 			containerPortal = D99B38FB1CD68FD900E56AE2 /* PROJECT.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = D9FEF4B31CCEBC0D0013FBDD;
-			remoteInfo = PROJECT;
+			remoteInfo = "PROJECT";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -201,7 +201,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0730;
-				ORGANIZATIONNAME = PROJECT_OWNER;
+				ORGANIZATIONNAME = "PROJECT_OWNER";
 				TargetAttributes = {
 					D904BBBF1CDD3F170083BD78 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -241,14 +241,14 @@
 		D99B39011CD68FD900E56AE2 /* PROJECT.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			path = PROJECT.framework;
+			path = "PROJECT.framework";
 			remoteRef = D99B39001CD68FD900E56AE2 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		D99B39031CD68FD900E56AE2 /* PROJECTTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			path = PROJECTTests.xctest;
+			path = "PROJECTTests.xctest";
 			remoteRef = D99B39021CD68FD900E56AE2 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
@@ -302,7 +302,7 @@
 		};
 		D99B39071CD6903C00E56AE2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = PROJECT;
+			name = "PROJECT";
 			targetProxy = D99B39061CD6903C00E56AE2 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
