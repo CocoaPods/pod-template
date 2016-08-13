@@ -37,7 +37,7 @@
 			containerPortal = D99B38FB1CD68FD900E56AE2 /* PROJECT.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = D9FEF4BE1CCEBC0F0013FBDD;
-			remoteInfo = PROJECTTests;
+			remoteInfo = "PROJECTTests";
 		};
 		D99B39061CD6903C00E56AE2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
