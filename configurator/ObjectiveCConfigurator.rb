@@ -1,4 +1,4 @@
-# THIS PERFORMS ADDITIONAL CONFIGURATION IF THE USER SELECT THE OBJECTIVE-C OPTION
+# THIS PERFORMS ADDITIONAL CONFIGURATION IF THE USER SELECTS THE OBJECTIVE-C OPTION
 #
 # We are responsible to:
 #  - Prepare items in the templates/objective-c directory
@@ -22,27 +22,27 @@ module Pod
 
       framework = configurator.ask_with_answers("Which testing frameworks will you use", ["Quick", "None"]).to_sym
       case framework
-        when :quick
-          configurator.add_pod_to_podfile "Quick', '~> 0.8"
-          configurator.add_pod_to_podfile "Nimble', '~> 3.0"
-          `mv "templates/test_examples/quick.swift" "templates/swift/Example/Tests/Tests.swift"`
-        when :none
-          `mv "templates/test_examples/xctest.swift" "templates/swift/Example/Tests/Tests.swift"`
+      when :quick
+        configurator.add_pod_to_podfile "Quick', '~> 0.8"
+        configurator.add_pod_to_podfile "Nimble', '~> 3.0"
+        `mv "templates/test_examples/quick.swift" "templates/swift/Example/Tests/Tests.swift"`
+      when :none
+        `mv "templates/test_examples/xctest.swift" "templates/swift/Example/Tests/Tests.swift"`
       end
 
       snapshots = configurator.ask_with_answers("Would you like to do view based testing", ["Yes", "No"]).to_sym
       case snapshots
-        when :yes
-          configurator.add_pod_to_podfile "FBSnapshotTestCase"
+      when :yes
+        configurator.add_pod_to_podfile "FBSnapshotTestCase"
 
-          if keep_demo == :no
-              puts " Putting demo application back in, you cannot do view tests without a host application."
-              keep_demo = :yes
-          end
+        if keep_demo == :no
+          puts " Putting demo application back in, you cannot do view tests without a host application."
+          keep_demo = :yes
+        end
 
-          if framework == :quick
-              configurator.add_pod_to_podfile "Nimble-Snapshots"
-          end
+        if framework == :quick
+          configurator.add_pod_to_podfile "Nimble-Snapshots"
+        end
       end
 
       Pod::ProjectManipulator.new({
