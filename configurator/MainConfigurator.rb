@@ -81,7 +81,8 @@ module Pod
     def replace_variables_in_files
       Dir.glob("**/*") do |file_name|
         next if File.directory?(file_name)
-        text = File.read(file_name)
+        # See https://robots.thoughtbot.com/fight-back-utf-8-invalid-byte-sequences
+        text = File.read(file_name).encode('UTF-8', 'binary', invalid: :replace, undef: :replace, replace: '')
         text.gsub!("${POD_NAME}", @pod_name)
         text.gsub!("PROJECT", @pod_name)
         text.gsub!("${REPO_NAME}", @pod_name.gsub('+', '-'))
