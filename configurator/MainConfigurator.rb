@@ -44,6 +44,7 @@ module Pod
     #----------------------------------------#
 
     def run
+      abort_if_spaces_in_name
       @message_bank.welcome_message
       prepare_staging_directory
       use_baseline_template
@@ -198,7 +199,7 @@ module Pod
           print answer.yellow
         end
 
-        break if possible_answers.map { |a| a.downcase }.include? answer
+        break if possible_answers.map(&:downcase).include? answer
 
         print "\nPossible answers are ["
         print_info.call
@@ -207,17 +208,20 @@ module Pod
       answer
     end
 
-    def add_pod_to_podfile podname
+    def add_pod_to_podfile(podname)
       @pods_for_podfile << podname
     end
 
-    def add_line_to_pch line
+    def add_line_to_pch(line)
       @prefixes << line
     end
 
     def validate_user_details
-        return (user_email.length > 0) && (user_name.length > 0)
+      return (user_email.length > 0) && (user_name.length > 0)
     end
 
+    def abort_if_spaces_in_name
+      abort("You cannot have a space in the Pod's name, please re-run the command with just a single word") if @pod_name.include? " "
+    end
   end
 end
