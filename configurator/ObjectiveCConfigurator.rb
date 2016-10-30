@@ -36,7 +36,7 @@ module Pod
         configurator.add_pod_to_podfile "FBSnapshotTestCase"
 
         if keep_demo == :no
-          puts " Putting demo application back in, you cannot do view tests without a host application."
+          puts " - Putting the demo application back in, you cannot do view tests without a host application."
           keep_demo = :yes
         end
 

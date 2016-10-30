@@ -55,24 +55,29 @@ module Pod
       project_app_group.remove_from_project
 
       # Remove the product reference
-      product = @project.products.select { |product| product.path == @configurator.pod_name + "_Example.app" }.first
+      product = @project.products.select { |product| product.path == "iOS Example.app" }.first
+
       product.remove_from_project
 
-      # Remove the actual folder + files for both projects
-      `rm -rf templates/ios/Example/PROJECT`
-      `rm -rf templates/swift/Example/PROJECT`
+      # Remove the actual folder + files for all projects
+      `rm -rf templates/ios/Example`
+      `rm -rf templates/swift/Example`
+      `rm -rf templates/swift/PROJECT.xcworkspace`
+      `rm -rf templates/objective-c/Example`
+      `rm -rf templates/objective-c/PROJECT.xcworkspace`
 
-      # Replace the Podfile with a simpler one with only one target
-      podfile_path = project_folder + "/Podfile"
-      podfile_text = <<-RUBY
+      if @configurator.pods_for_podfile.length
+        # Replace the Podfile with a simpler one with only one target
+        podfile_path = "staging/Podfile"
+        podfile_text = <<-RUBY
 use_frameworks!
-target '#{test_target.name}' do
-  pod '#{@configurator.pod_name}', :path => '../'
-
+target '#{configurator.pod_name}' do
   ${INCLUDED_PODS}
 end
+
 RUBY
-      File.open(podfile_path, "w") { |file| file.puts podfile_text }
+        File.open(podfile_path, "w") { |file| file.puts podfile_text }
+      end
     end
 
     def project_folder
@@ -84,7 +89,7 @@ RUBY
         # change app file prefixes
         ["CPDAppDelegate.h", "CPDAppDelegate.m", "CPDViewController.h", "CPDViewController.m"].each do |file|
           before = project_folder + "/PROJECT/" + file
-          next unless File.exists? before
+          next unless File.exist? before
 
           after = project_folder + "/PROJECT/" + file.gsub("CPD", prefix)
           File.rename before, after
@@ -93,7 +98,7 @@ RUBY
         # rename project related files
         ["PROJECT-Info.plist", "PROJECT-Prefix.pch"].each do |file|
           before = project_folder + "/PROJECT/" + file
-          next unless File.exists? before
+          next unless File.exist? before
 
           after = project_folder + "/PROJECT/" + file.gsub("PROJECT", @configurator.pod_name)
           File.rename before, after
@@ -110,11 +115,12 @@ RUBY
 
     def replace_internal_project_settings
       Dir.glob(project_folder + "/**/**/**/**").each do |name|
-        next if Dir.exists? name
-        text = File.read(name)
+        next if Dir.exist? name
+        next if name.end_with? "png"
 
+        text = File.read(name)
         for find, replace in @string_replacements
-            text = text.gsub(find, replace)
+          text = text.gsub(find, replace)
         end
 
         File.open(name, "w") { |file| file.puts text }
