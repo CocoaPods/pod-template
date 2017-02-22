@@ -21,7 +21,7 @@
 			containerPortal = 607FACC81AFB9204008FA782 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 607FACCF1AFB9204008FA782;
-			remoteInfo = PROJECT;
+			remoteInfo = "PROJECT";
 		};
 /* End PBXContainerItemProxy section */
 
