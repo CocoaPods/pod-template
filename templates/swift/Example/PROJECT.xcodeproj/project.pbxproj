@@ -86,7 +86,7 @@
 				607FACD31AFB9204008FA782 /* Supporting Files */,
 			);
 			name = "Example for PROJECT";
-			path = PROJECT;
+			path = "PROJECT";
 			sourceTree = "<group>";
 		};
 		607FACD31AFB9204008FA782 /* Supporting Files */ = {
@@ -136,8 +136,8 @@
 			);
 			dependencies = (
 			);
-			name = PROJECT_Example;
-			productName = PROJECT;
+			name = "PROJECT_Example";
+			productName = "PROJECT";
 			productReference = 607FACD01AFB9204008FA782 /* PROJECT_Example.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -154,7 +154,7 @@
 			dependencies = (
 				607FACE71AFB9204008FA782 /* PBXTargetDependency */,
 			);
-			name = PROJECT_Tests;
+			name = "PROJECT_Tests";
 			productName = Tests;
 			productReference = 607FACE51AFB9204008FA782 /* PROJECT_Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -358,7 +358,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = PROJECT/Info.plist;
+				INFOPLIST_FILE = "PROJECT/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
@@ -371,7 +371,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = PROJECT/Info.plist;
+				INFOPLIST_FILE = "PROJECT/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
