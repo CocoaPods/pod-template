@@ -1,5 +1,5 @@
 require 'fileutils'
-require 'colored'
+require 'colored2'
 
 module Pod
   class TemplateConfigurator
