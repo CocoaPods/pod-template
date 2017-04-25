@@ -139,6 +139,10 @@ module Pod
       podfile_content = @pods_for_podfile.map do |pod|
         "pod '" + pod + "'"
       end.join("\n  ")
+
+      # Update pods with temporary Swift 2.0 versions
+      podfile_content.sub!("Nimble'", "Nimble', '= 2.0.0-rc.1'")
+      podfile_content.sub!("Nimble-Snapshots'", "Nimble-Snapshots', :git => 'https://github.com/pjenkins-cc/Nimble-Snapshots.git', :branch => 'swift-2.0'")
       podfile.gsub!("${INCLUDED_PODS}", podfile_content)
       File.open(podfile_path, "w") { |file| file.puts podfile }
     end
