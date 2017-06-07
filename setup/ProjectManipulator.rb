@@ -76,7 +76,7 @@ module Pod
 use_frameworks!
 target '#{test_target.name}' do
   pod '#{@configurator.pod_name}', :path => '../'
-  
+
   ${INCLUDED_PODS}
 end
 RUBY
@@ -85,6 +85,9 @@ RUBY
 
     def project_folder
       File.dirname @xcodeproj_path
+      puts "11111"
+      puts File.dirname @xcodeproj_path
+      puts "22222"
     end
 
     def rename_files
