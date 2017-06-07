@@ -85,9 +85,6 @@ RUBY
 
     def project_folder
       File.dirname @xcodeproj_path
-      puts "11111"
-      puts File.dirname @xcodeproj_path
-      puts "22222"
     end
 
     def rename_files
