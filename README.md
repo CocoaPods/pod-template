@@ -1,26 +1,55 @@
-pod-template
-============
+[![Build Status](https://travis-ci.org/fulldecent/swift3-module-template.svg?branch=master)](https://travis-ci.org/fulldecent/swift3-module-template)
 
-An opinionated template for creating a Pod with the following features:
+# Swift 3 Module Template
+Use this template as a starting point for any Swift 3 module that you want other people to include in their projects.
 
-- Git as the source control management system
-- Clean folder structure
-- Project generation
-- MIT license
-- Testing as a standard
-- Turnkey access to Travis CI
-- Also supports Carthage
+**STATUS: This template is ready to work in production code.**
 
-## Getting started
+![Swift 3 Module directory layout](https://cloud.githubusercontent.com/assets/382183/18574753/43dda33e-7b9e-11e6-9e91-cf91c4a03ccd.png)
 
-There are two reasons for wanting to work on this template, making your own or improving the one for everyone's. In both cases you will want to work with the ruby classes inside the `setup` folder, and the example base template that it works on from inside `template/ios/`. 
+## Features
+Your new Swift 3 module will immediately have working, compilable code, and all these features:
 
-## Best practices
+-   Ability to be used from Swift Package Manager, CocoaPods and Carthage
+-   Clean folder structure
+-   MIT license
+-   Testing as a standard
+-   Turnkey access to Travis CI
+-   Semantic versioning and a CHANGELOG
 
-The command `pod lib create` aims to be ran along with this guide: http://guides.cocoapods.org/making/using-pod-lib-create.html so any changes of flow should be updated there also.
+We make the assumption you are using an Xcode project to manage your code.
 
-It is open to communal input, but adding new features, or new ideas are probably better off being discussed in an issue first. In general we try to think if an average Xcode user is going to use this feature or not, if it's unlikely is it a _very strongly_ encouraged best practice ( ala testing / CI. ) If it's something useful for saving a few minutes every deploy, or isn't easily documented in the guide it is likely to be denied in order to keep this project as simple as possible.
+## How to use this
 
-## Requirements:
+Clone or [download a release](https://github.com/fulldecent/swift-package/releases) and run the  `./configure` program. It will ask you some questions and generate a project.
 
-- CocoaPods 1.0.0+
+You then add all the interesting features you want your module to have.
+
+### Using CocoaPods to manage dependencies for your example app
+
+You distribute an example app with your new Swift module to show that it works. You may also decide to add UI tests to your example app and some people like to use testing frameworks for those UI tests. If you would like to use CocoaPods to manage the dependencies of your example app, please see the discussion at https://github.com/fulldecent/swift3-module-template/issues/8.
+
+### Setting up predefined answers
+
+You can predefine answers to all configuration questions (e.g. for scripting).
+
+| Template variable                | Environment variable                     |
+| -------------------------------- | ---------------------------------------- |
+| `__PROJECT_NAME__`               | `SMT_PROJECT_NAME`                       |
+| `__ORGANIZATION NAME__`          | `SMT_ORGANIZATION_NAME`                  |
+| `com.AN.ORGANIZATION.IDENTIFIER` | `SMT_COM_AN_ORGANIZATION_IDENTIFIER`     |
+| `__AUTHOR NAME__`                | `SMT_AUTHOR_NAME`                        |
+| `__TODAYS_DATE__`                | `SMT_TODAYS_DATE`                        |
+| `__TODAYS_DATE__` (date format)  | `SMT_DATE_FORMAT_STRING` Note: this will ask you for today’s date but it will use this format in the template. |
+| `__TODAYS_YEAR__`                | `SMT_TODAYS_YEAR`                        |
+| `__GITHUB_USERNAME__`            | `SMT_GITHUB_USERNAME`                    |
+
+For example, you may use: `export SMT_ORGANIZATION_NAME='Awesome Org'`.
+
+Also note; the project name may be specified as a single command line argument like `./configure MyFantasticProject`.
+
+If an answer is pre-defined, the `./configure` program will use it; otherwise, it will ask for an answer interactively. If neither is given, it will fall back to the built-in default values.
+
+## Contributing
+
+See the file [`Recipe.md`](Recipe.md) for the complete steps (e.g. Open Xcode, make new project, click here, type that, ...) of how we made the template.
