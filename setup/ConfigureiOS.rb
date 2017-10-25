@@ -13,9 +13,10 @@ module Pod
 
     def perform
 
-      keep_demo = configurator.ask_with_answers("Would you like to include a demo application with your library", ["Yes", "No"]).to_sym
-
-      framework = configurator.ask_with_answers("Which testing frameworks will you use", ["Specta", "Kiwi", "None"]).to_sym
+      # keep_demo = configurator.ask_with_answers("Would you like to include a demo application with your library", ["Yes", "No"]).to_sym
+      keep_demo = :yes
+      # framework = configurator.ask_with_answers("Which testing frameworks will you use", ["Specta", "Kiwi", "None"]).to_sym
+      framework = :specta
       case framework
         when :specta
           configurator.add_pod_to_podfile "Specta"
@@ -35,7 +36,8 @@ module Pod
           configurator.set_test_framework("xctest", "m")
       end
 
-      snapshots = configurator.ask_with_answers("Would you like to do view based testing", ["Yes", "No"]).to_sym
+      # snapshots = configurator.ask_with_answers("Would you like to do view based testing", ["Yes", "No"]).to_sym
+      snapshots = :yes
       case snapshots
         when :yes
           configurator.add_pod_to_podfile "FBSnapshotTestCase"
@@ -55,8 +57,8 @@ module Pod
       prefix = nil
 
       loop do
-        prefix = configurator.ask("What is your class prefix")
-
+        # prefix = configurator.ask("What is your class prefix")
+        prefix = "LY"
         if prefix.include?(' ')
           puts 'Your class prefix cannot contain spaces.'.red
         else
@@ -71,7 +73,7 @@ module Pod
         :remove_demo_project => (keep_demo == :no),
         :prefix => prefix
       }).run
-      
+
       # There has to be a single file in the Classes dir
       # or a framework won't be created, which is now default
       `touch Pod/Classes/ReplaceMe.m`
