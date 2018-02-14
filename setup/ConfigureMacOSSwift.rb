@@ -27,13 +27,13 @@ module Pod
 
       Pod::ProjectManipulator.new({
         :configurator => @configurator,
-        :xcodeproj_path => "templates/mac-swift/Example/PROJECT.xcodeproj",
+        :xcodeproj_path => "templates/macos-swift/Example/PROJECT.xcodeproj",
         :platform => :osx,
         :remove_demo_project => (keep_demo == :no),
         :prefix => ""
       }).run
 
-      `mv ./templates/mac-swift/* ./`
+      `mv ./templates/macos-swift/* ./`
 
       # There has to be a single file in the Classes dir
       # or a framework won't be created
