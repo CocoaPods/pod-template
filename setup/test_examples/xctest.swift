@@ -1,4 +1,3 @@
-import UIKit
 import XCTest
 import PROJECT
 
