@@ -19,10 +19,10 @@ module Pod
         when :quick
           configurator.add_pod_to_podfile "Quick', '~> 1.2.0"
           configurator.add_pod_to_podfile "Nimble', '~> 7.0.2"
-          configurator.set_test_framework "quick", "swift"
+          configurator.set_test_framework "quick", "swift", "macos-swift"
 
         when :none
-          configurator.set_test_framework "xctest", "swift"
+          configurator.set_test_framework "xctest", "swift", "macos-swift"
       end
 
       Pod::ProjectManipulator.new({
