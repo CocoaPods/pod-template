@@ -70,13 +70,20 @@ module Pod
     def run
       @message_bank.welcome_message
 
-      framework = self.ask_with_answers("What language do you want to use?", ["Swift", "ObjC"]).to_sym
-      case framework
-        when :swift
-          ConfigureSwift.perform(configurator: self)
+      platform = self.ask_with_answers("What platform do you want to use?", ["iOS", "macOS"]).to_sym
 
-        when :objc
-          ConfigureIOS.perform(configurator: self)
+      case platform
+        when :macos
+          ConfigureMacOSSwift.perform(configurator: self)
+        when :ios
+          framework = self.ask_with_answers("What language do you want to use?", ["Swift", "ObjC"]).to_sym
+          case framework
+            when :swift
+              ConfigureSwift.perform(configurator: self)
+
+            when :objc
+              ConfigureIOS.perform(configurator: self)
+          end
       end
 
       replace_variables_in_files
@@ -156,9 +163,8 @@ module Pod
       File.open(prefix_path, "w") { |file| file.puts pch }
     end
 
-    def set_test_framework(test_type, extension)
+    def set_test_framework(test_type, extension, folder)
       content_path = "setup/test_examples/" + test_type + "." + extension
-      folder = extension == "m" ? "ios" : "swift"
       tests_path = "templates/" + folder + "/Example/Tests/Tests." + extension
       tests = File.read tests_path
       tests.gsub!("${TEST_EXAMPLE}", File.read(content_path) )

@@ -24,15 +24,15 @@ module Pod
           configurator.add_line_to_pch "@import Specta;"
           configurator.add_line_to_pch "@import Expecta;"
 
-          configurator.set_test_framework("specta", "m")
+          configurator.set_test_framework("specta", "m", "ios")
 
         when :kiwi
           configurator.add_pod_to_podfile "Kiwi"
           configurator.add_line_to_pch "@import Kiwi;"
-          configurator.set_test_framework("kiwi", "m")
+          configurator.set_test_framework("kiwi", "m", "ios")
 
         when :none
-          configurator.set_test_framework("xctest", "m")
+          configurator.set_test_framework("xctest", "m", "ios")
       end
 
       snapshots = configurator.ask_with_answers("Would you like to do view based testing", ["Yes", "No"]).to_sym
@@ -71,12 +71,15 @@ module Pod
         :remove_demo_project => (keep_demo == :no),
         :prefix => prefix
       }).run
-      
+
       # There has to be a single file in the Classes dir
       # or a framework won't be created, which is now default
       `touch Pod/Classes/ReplaceMe.m`
 
       `mv ./templates/ios/* ./`
+
+      # remove podspec for osx
+      `rm ./NAME-osx.podspec`
     end
   end
 
