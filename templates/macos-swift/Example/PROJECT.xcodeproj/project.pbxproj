@@ -149,7 +149,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0900;
 				LastUpgradeCheck = 0900;
-				ORGANIZATIONNAME = "Koji Murata";
+				ORGANIZATIONNAME = CocoaPods;
 				TargetAttributes = {
 					ED83F67720348A760038D96B = {
 						CreatedOnToolsVersion = 9.0;
