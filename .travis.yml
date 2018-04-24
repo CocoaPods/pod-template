@@ -1,5 +1,5 @@
 # references:
-# * http://www.objc.io/issue-6/travis-ci.html
+# * https://www.objc.io/issues/6-build-tools/travis-ci/
 # * https://github.com/supermarin/xcpretty#usage
 
 osx_image: xcode7.3
