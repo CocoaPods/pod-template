@@ -39,7 +39,7 @@ module Pod
       puts "To get you started we need to ask a few questions, this should only take a minute."
       puts ""
 
-      has_run_before = `defaults read org.cocoapods.pod-template HasRunbefore`.chomp == "1"
+      has_run_before = `defaults read org.cocoapods.pod-template HasRunBefore`.chomp == "1"
 
       puts "If this is your first time we recommend running through with the guide: "
       puts " - "  + "https://guides.cocoapods.org/making/using-pod-lib-create.html".blue.underlined
@@ -52,7 +52,7 @@ module Pod
 
       unless has_run_before
         puts "\n Press return to continue."
-        `defaults write org.cocoapods.pod-template HasRunbefore -bool true`
+        `defaults write org.cocoapods.pod-template HasRunBefore -bool true`
       end
 
       puts ""
