@@ -17,8 +17,8 @@ module Pod
       framework = configurator.ask_with_answers("Which testing frameworks will you use", ["Quick", "None"]).to_sym
       case framework
         when :quick
-          configurator.add_pod_to_podfile "Quick', '~> 1.2.0"
-          configurator.add_pod_to_podfile "Nimble', '~> 7.0"
+          configurator.add_pod_to_podfile "Quick', '~> 2.2.0"
+          configurator.add_pod_to_podfile "Nimble', '~> 8.0.7"
           configurator.set_test_framework "quick", "swift", "swift"
 
         when :none
@@ -36,7 +36,7 @@ module Pod
           end
 
           if framework == :quick
-              configurator.add_pod_to_podfile "Nimble-Snapshots' , '~> 6.3.0"
+              configurator.add_pod_to_podfile "Nimble-Snapshots' , '~> 8.0.0"
           end
       end
 
