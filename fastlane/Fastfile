@@ -13,7 +13,7 @@ lane :release_pod do |options|
   UI.message("👉 Start release lib #{target_project} new version #{target_version}")
 
   git_pull
-  ensure_git_branch
+  ensure_git_branch branch: 'main'
   version_bump_podspec(path: spec_path, version_number: target_version)
   git_add(path: '.')
   begin
