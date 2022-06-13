@@ -4,13 +4,14 @@ require 'colored2'
 module Pod
   class TemplateConfigurator
 
-    attr_reader :pod_name, :pods_for_podfile, :prefixes, :test_example_file, :username, :email
+    attr_reader :pod_name, :pods_for_podfile, :prefixes, :test_example_file, :username, :email, :organization
 
     def initialize(pod_name)
       @pod_name = pod_name
       @pods_for_podfile = []
       @prefixes = []
       @message_bank = MessageBank.new(self)
+      @organization = "RongCloud"
     end
 
     def ask(question)
@@ -70,13 +71,14 @@ module Pod
     def run
       @message_bank.welcome_message
 
-      platform = self.ask_with_answers("What platform do you want to use?", ["iOS", "macOS"]).to_sym
-
+#      platform = self.ask_with_answers("What platform do you want to use?", ["iOS", "macOS"]).to_sym
+    platform = :ios
       case platform
-        when :macos
-          ConfigureMacOSSwift.perform(configurator: self)
+#        when :macos
+#          ConfigureMacOSSwift.perform(configurator: self)
         when :ios
-          framework = self.ask_with_answers("What language do you want to use?", ["Swift", "ObjC"]).to_sym
+#          framework = self.ask_with_answers("What language do you want to use?", ["Swift", "ObjC"]).to_sym
+        framework = :objc
           case framework
             when :swift
               ConfigureSwift.perform(configurator: self)
@@ -93,6 +95,7 @@ module Pod
       customise_prefix
       rename_classes_folder
       ensure_carthage_compatibility
+      add_git_ignore
       reinitialize_git_repo
       run_pod_install
 
@@ -133,6 +136,7 @@ module Pod
         text.gsub!("${USER_EMAIL}", user_email)
         text.gsub!("${YEAR}", year)
         text.gsub!("${DATE}", date)
+        text.gsub!("${ORGNIZATION_NAME}", @organization)
         File.open(file_name, "w") { |file| file.puts text }
       end
     end
@@ -181,9 +185,17 @@ module Pod
       FileUtils.mv "Pod", @pod_name
     end
 
+    def add_git_ignore
+        `mv ./git/.gitignore .gitignore`
+        ["git"].each do |asset|
+          `rm -rf #{asset}`
+        end
+    end
+    
     def reinitialize_git_repo
       `rm -rf .git`
       `git init`
+      `git branch -M main`
       `git add -A`
     end
 
