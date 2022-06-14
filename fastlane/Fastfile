@@ -26,7 +26,6 @@ lane :release_pod do |options|
     error_message = "#{$!}"
     UI.message("⚠️ commit error:#{error_message}")
     unless error_message.include?("nothing to commit, working directory clean")
-      exit
     end
     UI.message("The local code has committed, skip the commit step!")
   end
