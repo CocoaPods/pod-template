@@ -152,11 +152,11 @@
 				ORGANIZATIONNAME = CocoaPods;
 				TargetAttributes = {
 					ED83F67720348A760038D96B = {
-						CreatedOnToolsVersion = 9.0;
+						CreatedOnToolsVersion = 10.0;
 						ProvisioningStyle = Automatic;
 					};
 					ED83F68920348A760038D96B = {
-						CreatedOnToolsVersion = 9.0;
+						CreatedOnToolsVersion = 10.0;
 						ProvisioningStyle = Automatic;
 						TestTargetID = ED83F67720348A760038D96B;
 					};
