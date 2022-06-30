@@ -36,7 +36,12 @@ lane :release_pod do |options|
   end
   add_git_tag(tag: target_version)
   push_git_tags
-  pod_lib_lint(allow_warnings: true)
-  pod_push(path: spec_path, allow_warnings: true)
+# pod_lib_lint(allow_warnings: true)
+# pod_push(path: spec_path, allow_warnings: true)
+
+  current_path = File.expand_path("..")
+  sh "pod lib lint #{current_path}/#{spec_path}  --allow-warnings --sources='https://github.com/CocoaPods/Specs'"
+  sh "pod trunk push #{current_path}/#{spec_path} --allow-warnings --sources='https://github.com/CocoaPods/Specs'"
+  
   UI.message("Release lib #{target_project} new version #{target_version} to CocoaPods/Specs Successfully! 🎉 ")
 end
