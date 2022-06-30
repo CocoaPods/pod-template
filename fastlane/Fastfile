@@ -40,8 +40,8 @@ lane :release_pod do |options|
 # pod_push(path: spec_path, allow_warnings: true)
 
   current_path = File.expand_path("..")
-  sh "pod lib lint #{current_path}/#{spec_path}  --allow-warnings --sources='https://github.com/CocoaPods/Specs'"
-  sh "pod trunk push #{current_path}/#{spec_path} --allow-warnings --sources='https://github.com/CocoaPods/Specs'"
+  sh "cd #{current_path} && pod lib lint #{spec_path.to_s.chomp} --no-clean --allow-warnings"
+  sh "cd #{current_path} && pod trunk push #{spec_path.to_s.chomp}  --allow-warnings "
   
   UI.message("Release lib #{target_project} new version #{target_version} to CocoaPods/Specs Successfully! 🎉 ")
 end
