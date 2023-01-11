@@ -99,7 +99,7 @@ RUBY
         # change app file prefixes
         ["CPDAppDelegate.h", "CPDAppDelegate.m", "CPDViewController.h", "CPDViewController.m"].each do |file|
           before = project_folder + "/PROJECT/" + file
-          next unless File.exists? before
+          next unless File.exist? before
 
           after = project_folder + "/PROJECT/" + file.gsub("CPD", prefix)
           File.rename before, after
@@ -108,7 +108,7 @@ RUBY
         # rename project related files
         ["PROJECT-Info.plist", "PROJECT-Prefix.pch", "PROJECT.entitlements"].each do |file|
           before = project_folder + "/PROJECT/" + file
-          next unless File.exists? before
+          next unless File.exist? before
 
           after = project_folder + "/PROJECT/" + file.gsub("PROJECT", @configurator.pod_name)
           File.rename before, after
@@ -125,7 +125,7 @@ RUBY
 
     def replace_internal_project_settings
       Dir.glob(project_folder + "/**/**/**/**").each do |name|
-        next if Dir.exists? name
+        next if Dir.exist? name
         text = File.read(name)
 
         for find, replace in @string_replacements

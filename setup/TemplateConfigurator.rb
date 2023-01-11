@@ -156,7 +156,7 @@ module Pod
 
     def customise_prefix
       prefix_path = "Example/Tests/Tests-Prefix.pch"
-      return unless File.exists? prefix_path
+      return unless File.exist? prefix_path
 
       pch = File.read prefix_path
       pch.gsub!("${INCLUDED_PREFIXES}", @prefixes.join("\n  ") )
